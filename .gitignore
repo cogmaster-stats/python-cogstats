@@ -1,3 +1,7 @@
+*~
+*.swp
+*/auto_examples
+
 *.py[cod]
 
 # C extensions
