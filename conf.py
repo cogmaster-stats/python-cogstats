@@ -16,7 +16,7 @@ import subprocess
 # If your extensions are in another directory, add it here. If the directory
 # is relative to the documentation root, use os.path.abspath to make it
 # absolute, like shown here.
-sys.path.append(os.path.abspath('sphinxext'))
+sys.path.append(os.path.abspath('_sphinxext'))
 
 # Try to override the matplotlib configuration as early as possible
 try:
@@ -155,7 +155,7 @@ html_theme = 'scipy_lectures'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = ['themes']
+html_theme_path = ['_themes']
 
 # The style sheet to use for HTML and HTML Help pages. A file of that name
 # must exist either in Sphinx' static/ path, or in one of the custom paths
@@ -188,7 +188,7 @@ html_title = "Statistics for the cog-master"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['themes/scipy_lectures/static']
+html_static_path = ['_themes/scipy_lectures/static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
