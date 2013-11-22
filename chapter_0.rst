@@ -50,7 +50,12 @@ v(i,j,k);
 surf(v(:,:,size(v,3)/2));
 
 3) time series
+SPM8 ne manipule pas de nifti 4D donc c'est un peu pedestre
 P=ls(path_to_images/*.nii);
+or
+P='';for nf=numero_image_debut:numero_image_end
+P(nf,:)=sprintf('path_to_image/nom_image-%.4d.nii',nf);end
+end
 s(:,1)=spm_get_data(P,[i;j;k]);
 figure;plot(s);
 s(:,1)=spm_get_data(P,[i;j;k]);
