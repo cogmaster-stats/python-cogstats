@@ -27,7 +27,7 @@ fMRI data
 
 As usual, we would like to measure a variation => temporal resolution
 Localization => spatial resolution
-Trade-off : it takes more time to acquire a large volume
+Trade-off : it takes more time to acquire more data points.
 
 The MRI scanner allows the BOLD signal to be recorded in a given space where the experimenter puts the object to measure, in our case, a living brain (and around: the human that sustains it).
 
@@ -50,10 +50,12 @@ v(i,j,k);
 surf(v(:,:,size(v,3)/2));
 
 3) time series
-P=ls(path_to_images.nii);
-s(:,1)=spm_get_data(P,[i;j;k])
-plot(s)
-
+P=ls(path_to_images/*.nii);
+s(:,1)=spm_get_data(P,[i;j;k]);
+figure;plot(s);
+s(:,1)=spm_get_data(P,[i;j;k]);
+hold on;
+plot(s(:,2));
 characteristics:
 - NOISY!!!!
 - Highly correlated, spatially, temporally!
