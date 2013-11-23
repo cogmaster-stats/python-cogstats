@@ -31,7 +31,7 @@ clean:
 	-rm -rf _build/*
 
 test:
-	nosetests -v --with-doctest --doctest-tests --doctest-extension=rst testing.py $(shell find intro advanced -name \*.rst -print)
+	nosetests -v --with-doctest --doctest-tests --doctest-extension=rst $(shell find . -name \*.rst -print)
 
 html:
 	mkdir -p _build/html _build/doctrees
