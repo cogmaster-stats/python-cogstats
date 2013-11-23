@@ -46,4 +46,31 @@ We can access the elements of x with **indexing, starting at 0**::
     >>> x[-1]   # Last element
     792.35799999999995
 
+Mathematical operations on arrays are done using the numpy module::
 
+    >>> np.max(x)
+    792.35799999999995
+    >>> np.sum(x[:3])
+    1505.2139999999999
+    >>> np.mean(x)
+    569.49219999999991
+    >>> np.log(x)
+    array([ 6.16265775,  6.22741573,  6.26164625,  6.27414413,  6.27451529,
+            6.34033108,  6.36700467,  6.36808427,  6.40286865,  6.67501331])
+
+.. topic:: **Finding help**
+
+   * The reference documentation can be found on http://docs.scipy.org
+   * http://scipy-lectures.github.io contains tutorials on Python, numpy,
+     and the scientific Python ecosystem.
+   * Typing `np.mean?` in IPython will display help on
+     :func:`numpy.mean`.
+   * :func:`numpy.lookfor` can be used to search for keywords in
+     functions help.
+
+
+.. topic:: **Exercise**
+    :class: green
+
+    * Display the last two entries of x
+    * Compute the 

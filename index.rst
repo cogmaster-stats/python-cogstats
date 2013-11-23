@@ -33,10 +33,7 @@ Cog-Master Statistics course: Python materials
     These are the Python materials for the statistics course of the
     cog-master
 
-    .. toctree::
-        :maxdepth: 1
-
-        README.rst
+    **Authors:** S. Charron, `G. Varoquaux <http://gael-varoquaux.info/>`_
 
 _____
 
