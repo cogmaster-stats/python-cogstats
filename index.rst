@@ -48,7 +48,7 @@ _____
    :numbered:
 
    basic_statistics.rst
-   chapter_2.rst
+   fmri_signals.rst
 
 _____
 
