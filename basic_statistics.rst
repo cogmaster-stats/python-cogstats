@@ -4,9 +4,8 @@ Basic statistics
 
 .. topic:: **Prerequisites**
 
-   This course assumes that you already know Python syntax. An
-   introduction to Python can be found in the `scipy-lectures
-   <http://scipy-lectures.github.io>`_.
+   This course assumes that you already know Python. The `scipy-lectures
+   <http://scipy-lectures.github.io>`_ give an introduction to Python.
 
 Interacting with data
 ======================
@@ -24,8 +23,8 @@ Work environment: IPython
     ">>>". If you need to copy-paste code, you can click on the top right
     of the code blocks, to hide the prompts and the outputs.
 
-Basic array manipulation
--------------------------
+Basic array manipulation: numpy
+--------------------------------
 
 We have the reaction times in a psychophysical experiment:
 
@@ -68,9 +67,34 @@ Mathematical operations on arrays are done using the numpy module::
    * :func:`numpy.lookfor` can be used to search for keywords in
      functions help.
 
+|
+
 
 .. topic:: **Exercise**
     :class: green
 
-    * Display the last two entries of x
-    * Compute the 
+    * Display the last two entries of x.
+    * Compute the standard deviation of x (how will you find the function
+      to do so?).
+
+
+Basic plotting: pylab
+----------------------
+
+.. image:: auto_examples/images/plot_basic_statistics_1.png
+   :scale: 40
+   :target: auto_examples/plot_localizer_analysis.html
+   :align: right
+
+Basic plotting is done with `matplotlib <http://matplotlib.org/>`_ ::
+
+    >>> from matplotlib import pyplot as plt
+    >>> plt.boxplot(x)
+
+|
+
+.. hint::
+
+   If a window doesn't display, you need to call `plt.show()`.
+
+   Under IPython, type `%matplotlib` to have plots display automatically.

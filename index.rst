@@ -31,7 +31,7 @@ Cog-Master Statistics course: Python materials
 .. topic:: This document
 
     These are the Python materials for the statistics course of the
-    cog-master
+    `CogMaster <http://sapience.dec.ens.fr/cogmaster/www/>`_.
 
     **Authors:** S. Charron, `G. Varoquaux <http://gael-varoquaux.info/>`_
 
