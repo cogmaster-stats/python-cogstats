@@ -50,4 +50,9 @@ _____
    basic_statistics.rst
    chapter_2.rst
 
+_____
+
+.. toctree::
+
+    auto_examples/index.rst
 

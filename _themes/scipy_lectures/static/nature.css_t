@@ -415,3 +415,13 @@ div.sidebar {
     margin-right: 2px;
 }
 
+/************* Code examples *****************/
+ul.horizontal img {
+    max-width: 100% ;
+}
+
+div.max-height pre {
+    overflow-y: scroll;
+    overflow-x: scroll;
+    max-height: 30em;
+}

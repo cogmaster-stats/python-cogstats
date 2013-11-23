@@ -1,4 +1,7 @@
 """
+GLM fitting in fMRI
+===================
+
 Full step-by-step example of fitting a GLM to experimental data and visualizing
 the results.
 
@@ -10,11 +13,6 @@ More specifically:
 4. A GLM is applied to the dataset (effect/covariance,
    then contrast estimation)
 
-Note that this corresponds to a single run.
-
-Needs matplotlib
-
-Author : Bertrand Thirion, 2010--2012
 """
 
 from os import mkdir, getcwd, path
@@ -92,14 +90,12 @@ contrasts["audio"] = contrasts["clicDaudio"] + contrasts["clicGaudio"] +\
                      contrasts["calculaudio"] + contrasts["phraseaudio"]
 contrasts["video"] = contrasts["clicDvideo"] + contrasts["clicGvideo"] + \
                      contrasts["calculvideo"] + contrasts["phrasevideo"]
-contrasts["left"] = contrasts["clicGaudio"] + contrasts["clicGvideo"]
-contrasts["right"] = contrasts["clicDaudio"] + contrasts["clicDvideo"]
+contrasts["left-right"] = (contrasts["clicGaudio"] + contrasts["clicGvideo"]
+                           - contrasts["clicDaudio"] - contrasts["clicDvideo"])
 contrasts["computation"] = contrasts["calculaudio"] + contrasts["calculvideo"]
 contrasts["sentences"] = contrasts["phraseaudio"] + contrasts["phrasevideo"]
 contrasts["H-V"] = contrasts["damier_H"] - contrasts["damier_V"]
 contrasts["V-H"] = contrasts["damier_V"] - contrasts["damier_H"]
-contrasts["left-right"] = contrasts["left"] - contrasts["right"]
-contrasts["right-left"] = contrasts["right"] - contrasts["left"]
 contrasts["audio-video"] = contrasts["audio"] - contrasts["video"]
 contrasts["video-audio"] = contrasts["video"] - contrasts["audio"]
 contrasts["computation-sentences"] = contrasts["computation"] -  \
@@ -131,19 +127,11 @@ for index, (contrast_id, contrast_val) in enumerate(contrasts.items()):
     save(z_map, image_path)
 
     # Create snapshots of the contrasts
-    vmax = max(- z_map.get_data().min(), z_map.get_data().max())
-    if index > 0:
-        plt.clf()
+    vmax = max(-z_map.get_data().min(), z_map.get_data().max())
     plot_map(z_map.get_data(), z_map.get_affine(),
-             cmap=cm.cold_hot,
-             vmin=- vmax,
-             vmax=vmax,
-             anat=None,
-             cut_coords=None,
-             slicer='z',
-             black_bg=True,  # looks much better thus
-             figure=10,
-             threshold=2.5)
+             cmap=cm.cold_hot, vmin=-vmax, vmax=vmax,
+             slicer='z', black_bg=True, threshold=2.5,
+             title=contrast_id)
     plt.savefig(path.join(write_dir, '%s_z_map.png' % contrast_id))
 
 print("All the  results were witten in %s" % write_dir)
