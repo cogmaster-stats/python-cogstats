@@ -132,6 +132,13 @@ The data are a mixture of numerical and categorical values. We will use
 
 `data` is a pandas dataframe, that resembles R's dataframe::
 
+    >>> print data.Gender  # doctest: +ELLIPSIS
+    0     Female
+    1       Male
+    2       Male
+    3       Male
+    4     Female
+    ...
     >>> print data.groupby('Gender').mean()
             Unnamed: 0   FSIQ     VIQ     PIQ  MRI_Count
     Gender                                              
