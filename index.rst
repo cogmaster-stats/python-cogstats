@@ -1,4 +1,4 @@
-Cog-Master Statistics course: Python materials
+CogMaster Statistics course: Python materials
 ===================================================================
 
 .. raw html to center the title

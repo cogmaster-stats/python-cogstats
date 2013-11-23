@@ -407,12 +407,14 @@ div.sidebar ul {
     margin-top: 0px;
     margin-bottom: 7px;
 }
+
 div.sidebar .first {
     margin-bottom: 5px;
 }
 
 div.sidebar {
     margin-right: 2px;
+    z-index: 50;
 }
 
 /************* Code examples *****************/

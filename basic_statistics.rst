@@ -86,10 +86,10 @@ Basic plotting: pylab
    :target: auto_examples/plot_localizer_analysis.html
    :align: right
 
-Basic plotting is done with `matplotlib <http://matplotlib.org/>`_ ::
+Basic plotting is done with `matplotlib <http://matplotlib.org/>`_::
 
     >>> from matplotlib import pyplot as plt
-    >>> plt.boxplot(x)
+    >>> plt.boxplot(x)      # doctest: +SKIP
 
 |
 
@@ -98,3 +98,43 @@ Basic plotting is done with `matplotlib <http://matplotlib.org/>`_ ::
    If a window doesn't display, you need to call `plt.show()`.
 
    Under IPython, type `%matplotlib` to have plots display automatically.
+
+Mixed-type data: pandas
+------------------------
+
+We have a CSV file giving observations of brain size and weight and IQ
+(Willerman et al. 1991):
+
+  .. include:: examples/brain_size.csv
+    :end-line: 5
+    :literal:
+
+.. sidebar:: **Separator**
+
+   Although this is a 'CSV' file, which stands for 'coma separated
+   values', the separator is ";".
+
+|
+
+The data are a mixture of numerical and categorical values. We will use
+`pandas <http://pandas.pydata.org>`_ to manipulate them::
+
+    >>> import pandas
+    >>> data = pandas.read_csv('examples/brain_size.csv', sep=';')
+    >>> print data  # doctest: +ELLIPSIS
+        Unnamed: 0  Gender  FSIQ  VIQ  PIQ Weight Height  MRI_Count
+    0            1  Female   133  132  124    118   64.5     816932
+    1            2    Male   140  150  124      .   72.5    1001121
+    2            3    Male   139  123  150    143   73.3    1038437
+    3            4    Male   133  129  128    172   68.8     965353
+    4            5  Female   137  132  134    147   65.0     951545
+    ...
+
+`data` is a pandas dataframe, that resembles R's dataframe::
+
+    >>> print data.groupby('Gender').mean()
+            Unnamed: 0   FSIQ     VIQ     PIQ  MRI_Count
+    Gender                                              
+    Female       19.65  111.9  109.45  110.45   862654.6
+    Male         21.35  115.0  115.25  111.60   954855.4
+
