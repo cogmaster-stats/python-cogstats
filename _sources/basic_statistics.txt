@@ -7,6 +7,12 @@ Basic statistics
    This course assumes that you already know Python. The `scipy-lectures
    <http://scipy-lectures.github.io>`_ give an introduction to Python.
 
+.. contents:: This page contents
+   :local:
+   :depth: 1
+
+|
+
 Interacting with data
 ======================
 
@@ -141,6 +147,9 @@ More plots
 Mixed-type data: pandas
 ------------------------
 
+Inputing data
+..............
+
 We have a CSV file giving observations of brain size and weight and IQ
 (Willerman et al. 1991):
 
@@ -174,6 +183,9 @@ The data are a mixture of numerical and categorical values. We will use
    don't specify the missing value (NA = not available) marker, we will
    not be able to do statistics on the weight.
 
+Manipulating data
+..................
+
 `data` is a pandas dataframe, that resembles R's dataframe::
 
     >>> print data['Gender']  # doctest: +ELLIPSIS
@@ -203,8 +215,8 @@ The data are a mixture of numerical and categorical values. We will use
 
 |
 
-.. image:: auto_examples/images/plot_categorical_variables_1.png
-   :target: auto_examples/plot_categorical_variables.html
+.. image:: auto_examples/images/plot_pandas_1.png
+   :target: auto_examples/plot_pandas.html
    :align: right
    :scale: 40
 
@@ -221,6 +233,35 @@ The data are a mixture of numerical and categorical values. We will use
     * What is the average value of MRI counts expressed in log units, for
       males and females?
 
+Plotting data
+..............
+
+Pandas comes with some plotting tools (that use matplotlib behind the
+scene) to display statistics on dataframes::
+
+    >>> from pandas.tools import plotting
+    >>> plotting.scatter_matrix(data[['Weight', 'Height', 'MRI_Count']])   # doctest: +SKIP
+
+.. image:: auto_examples/images/plot_pandas_2.png
+   :target: auto_examples/plot_pandas.html
+   :scale: 50
+   :align: center
+
+::
+
+    >>> plotting.scatter_matrix(data[['PIQ', 'VIQ', 'FSIQ']])   # doctest: +SKIP
+
+.. sidebar:: **Two populations**
+
+   The IQ metrics are bimodal. It looks like there are 2 sub-populations.
+   We will come back to this hypothesis.
+
+.. image:: auto_examples/images/plot_pandas_3.png
+   :target: auto_examples/plot_pandas.html
+   :scale: 50
+   :align: center
+
+|
 
 Hypothesis testing: two-group comparisons
 ==========================================

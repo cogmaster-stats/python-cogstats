@@ -124,34 +124,38 @@
           <div class="body">
             
   <div class="section" id="plotting-quantities-from-a-csv-file">
-<span id="example-plot-categorical-variables-py"></span><h1>Plotting quantities from a CSV file<a class="headerlink" href="#plotting-quantities-from-a-csv-file" title="Permalink to this headline">¶</a></h1>
+<span id="example-plot-pandas-py"></span><h1>Plotting quantities from a CSV file<a class="headerlink" href="#plotting-quantities-from-a-csv-file" title="Permalink to this headline">¶</a></h1>
 <p>This example loads from a CSV file data with mixed numerical and
 categorical entries, and plots a few quantities, separately for females
 and males, thanks to the pandas integrating plotting tool (that uses
 matplotlib behind the scene).</p>
 <ul class="horizontal">
-<li><img alt="../_images/plot_categorical_variables_1.png" class="first" src="../_images/plot_categorical_variables_1.png" />
+<li><img alt="../_images/plot_pandas_2.png" class="first" src="../_images/plot_pandas_2.png" />
 </li>
-<li><img alt="../_images/plot_categorical_variables_2.png" class="first" src="../_images/plot_categorical_variables_2.png" />
+<li><img alt="../_images/plot_pandas_3.png" class="first" src="../_images/plot_pandas_3.png" />
+</li>
+<li><img alt="../_images/plot_pandas_1.png" class="first" src="../_images/plot_pandas_1.png" />
 </li>
 </ul>
-<p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_categorical_variables.py"><tt class="xref download docutils literal"><span class="pre">plot_categorical_variables.py</span></tt></a></p>
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_pandas.py"><tt class="xref download docutils literal"><span class="pre">plot_pandas.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;brain_size.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&#39;;&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;brain_size.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&#39;;&#39;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">gender_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;Gender&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">gender_data</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;FSIQ&#39;</span><span class="p">,</span> <span class="s">&#39;VIQ&#39;</span><span class="p">,</span> <span class="s">&#39;PIQ&#39;</span><span class="p">])</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="kn">from</span> <span class="nn">pandas.tools</span> <span class="kn">import</span> <span class="n">plotting</span>
-<div class="newline"></div><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class="newline"></div><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s">&#39;Weight&#39;</span><span class="p">,</span> <span class="s">&#39;Height&#39;</span><span class="p">,</span> <span class="s">&#39;MRI_Count&#39;</span><span class="p">]])</span>
 <div class="newline"></div>
-<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a></a></a></a></a></a></a></a></a></a></a></a></a></a></a></a></a></a><span class="p">()</span>
+<div class="newline"></div><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s">&#39;PIQ&#39;</span><span class="p">,</span> <span class="s">&#39;VIQ&#39;</span><span class="p">,</span> <span class="s">&#39;FSIQ&#39;</span><span class="p">]])</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  1.82 seconds
-( 0 minutes  1.82 seconds)</p>
+<p><strong>Total running time of the example:</strong>  1.53 seconds
+( 0 minutes  1.53 seconds)</p>
 <p><div style="clear: both"></div></p>
 </div>
 

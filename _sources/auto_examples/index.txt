@@ -56,10 +56,10 @@ Code examples for the Python statistics course at the cogmaster.
 
     <div class="thumbnailContainer" tooltip="This example loads from a CSV file data with mixed numerical and categorical entries, and plots...">
 
-.. figure:: ./images/thumb/plot_categorical_variables.png
-   :target: ./plot_categorical_variables.html
+.. figure:: ./images/thumb/plot_pandas.png
+   :target: ./plot_pandas.html
 
-   :ref:`example_plot_categorical_variables.py`
+   :ref:`example_plot_pandas.py`
 
 
 .. raw:: html
@@ -71,7 +71,7 @@ Code examples for the Python statistics course at the cogmaster.
 .. toctree::
    :hidden:
 
-   ./plot_categorical_variables
+   ./plot_pandas
 
 
 
