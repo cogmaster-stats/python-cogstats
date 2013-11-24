@@ -274,6 +274,10 @@ to do so?).</li>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">print</span> <span class="n">name</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 <div class="newline"></div><span class="go">Female 109.45</span>
 <div class="newline"></div><span class="go">Male 115.25</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c"># Simpler selector</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;Gender&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;Female&#39;</span><span class="p">][</span><span class="s">&#39;VIQ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="newline"></div><span class="go">109.45</span>
 <div class="newline"></div></pre></div>
 </div>
 <div class="line-block">
@@ -310,7 +314,39 @@ scipy, see <a class="reference external" href="http://scipy-lectures.github.io/"
 </div>
 <div class="section" id="student-s-t-test">
 <h3>1.2.1. Student&#8217;s t-test<a class="headerlink" href="#student-s-t-test" title="Permalink to this headline">¶</a></h3>
-<p>Male vs Female</p>
+<div class="section" id="sample-t-test">
+<h4>1.2.1.1. 1-sample t-test<a class="headerlink" href="#sample-t-test" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html#scipy.stats.ttest_1samp" title="(in SciPy v0.13.0)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.stats.ttest_1samp()</span></tt></a> tests if observations are drawn from a
+Gaussian distributions of given population mean. It returns the T
+statistic, and the p-value (see the function&#8217;s help):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;VIQ&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<div class="newline"></div><span class="go">(30.088099970849338, 1.3289196468727784e-28)</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">With a p-value of 10^-28 we can claim that the population mean for
+the IQ (VIQ measure) is not 0.</p>
+</div>
+<a class="reference internal image-reference" href="_images/two_sided.png"><img alt="_images/two_sided.png" class="align-right" src="_images/two_sided.png" style="width: 228.5px; height: 223.5px;" /></a>
+<div class="green topic">
+<p class="topic-title first"><strong>Exercise</strong></p>
+<p>Is the test performed above one-sided or two-sided? Which one should
+we use, and what is the corresponding p-value?</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h4>1.2.1.2. 2-sample t-test<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>We have seen above that the mean VIQ in the male and female populations
+were different. To test if this is significant, we do a 2-sample t-test
+with <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html#scipy.stats.ttest_ind" title="(in SciPy v0.13.0)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.stats.ttest_ind()</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">female_viq</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;Gender&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;Female&#39;</span><span class="p">][</span><span class="s">&#39;VIQ&#39;</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">male_viq</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;Gender&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;Male&#39;</span><span class="p">][</span><span class="s">&#39;VIQ&#39;</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">female_viq</span><span class="p">,</span> <span class="n">male_viq</span><span class="p">)</span>
+<div class="newline"></div><span class="go">(-0.77261617232750124, 0.44452876778583217)</span>
+<div class="newline"></div></pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="paired-tests">
 <h3>1.2.2. Paired tests<a class="headerlink" href="#paired-tests" title="Permalink to this headline">¶</a></h3>
