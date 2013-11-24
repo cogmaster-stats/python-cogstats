@@ -22,7 +22,7 @@ plt.ylim(-1.5 * r, 1.5 * r)
 plt.xticks(())
 plt.yticks(())
 
-plt.text(-0.05, 1.02, " Pie Chart:           plt.pie(...)\n",
+plt.text(-0.05, 1.02, "Pie Chart:           plt.pie(...)\n",
         horizontalalignment='left',
         verticalalignment='top',
         size='xx-large',

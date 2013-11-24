@@ -21,6 +21,6 @@ Bar plots display vertical or horizontal lines
 .. literalinclude:: plot_bar.py
     :lines: 7-
 
-**Total running time of the example:**  0.10 seconds
-( 0 minutes  0.10 seconds)
+**Total running time of the example:**  0.08 seconds
+( 0 minutes  0.08 seconds)
     

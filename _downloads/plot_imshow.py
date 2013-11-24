@@ -20,7 +20,7 @@ plt.imshow(Z, interpolation='nearest', cmap='bone', origin='lower')
 plt.xticks(())
 plt.yticks(())
 
-plt.text(-0.05, 1.02, " Imshow:       plt.imshow(...)\n",
+plt.text(-0.05, 1.02, "Imshow:       plt.imshow(...)\n",
         horizontalalignment='left',
         verticalalignment='top',
         size='xx-large',
@@ -30,7 +30,6 @@ plt.text(-0.05, 1.02, " Imshow:       plt.imshow(...)\n",
 plt.text(-0.05, 1.01, "\n\n   Display an image to current axes ",
         horizontalalignment='left',
         verticalalignment='top',
-        family='Lint McCree Intl BB',
         size='large',
         transform=plt.gca().transAxes)
 

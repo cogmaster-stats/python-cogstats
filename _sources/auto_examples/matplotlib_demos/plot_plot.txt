@@ -22,6 +22,6 @@ Regular plots
 .. literalinclude:: plot_plot.py
     :lines: 8-
 
-**Total running time of the example:**  0.06 seconds
-( 0 minutes  0.06 seconds)
+**Total running time of the example:**  0.12 seconds
+( 0 minutes  0.12 seconds)
     

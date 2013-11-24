@@ -191,12 +191,12 @@ for a tutorial on using matplotlib.
 .. raw:: html
 
 
-    <div class="thumbnailContainer" tooltip="Polar axis can be turned on for most plot types. ">
+    <div class="thumbnailContainer" tooltip="Imshow displays image-like data ">
 
-.. figure:: matplotlib_demos/images/thumb/plot_polar.png
-   :target: ./matplotlib_demos/plot_polar.html
+.. figure:: matplotlib_demos/images/thumb/plot_imshow.png
+   :target: ./matplotlib_demos/plot_imshow.html
 
-   :ref:`example_matplotlib_demos_plot_polar.py`
+   :ref:`example_matplotlib_demos_plot_imshow.py`
 
 
 .. raw:: html
@@ -208,7 +208,7 @@ for a tutorial on using matplotlib.
 .. toctree::
    :hidden:
 
-   matplotlib_demos/plot_polar
+   matplotlib_demos/plot_imshow
 
 
 
@@ -263,30 +263,6 @@ for a tutorial on using matplotlib.
 .. raw:: html
 
 
-    <div class="thumbnailContainer" tooltip="Imshow displays image-like data ">
-
-.. figure:: matplotlib_demos/images/thumb/plot_imshow.png
-   :target: ./matplotlib_demos/plot_imshow.html
-
-   :ref:`example_matplotlib_demos_plot_imshow.py`
-
-
-.. raw:: html
-
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   matplotlib_demos/plot_imshow
-
-
-
-.. raw:: html
-
-
     <div class="thumbnailContainer" tooltip="Pie plots look like pies. ">
 
 .. figure:: matplotlib_demos/images/thumb/plot_pie.png
@@ -305,54 +281,6 @@ for a tutorial on using matplotlib.
    :hidden:
 
    matplotlib_demos/plot_pie
-
-
-
-.. raw:: html
-
-
-    <div class="thumbnailContainer" tooltip="Quicer plots display arrows. ">
-
-.. figure:: matplotlib_demos/images/thumb/plot_quiver.png
-   :target: ./matplotlib_demos/plot_quiver.html
-
-   :ref:`example_matplotlib_demos_plot_quiver.py`
-
-
-.. raw:: html
-
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   matplotlib_demos/plot_quiver
-
-
-
-.. raw:: html
-
-
-    <div class="thumbnailContainer" tooltip="Matplotlib has basic 3D plotting functionality.">
-
-.. figure:: matplotlib_demos/images/thumb/plot_plot3d.png
-   :target: ./matplotlib_demos/plot_plot3d.html
-
-   :ref:`example_matplotlib_demos_plot_plot3d.py`
-
-
-.. raw:: html
-
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   matplotlib_demos/plot_plot3d
 
 
 

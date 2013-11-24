@@ -21,7 +21,7 @@ for r, bar in zip(radii, bars):
 plt.gca().set_xticklabels([])
 plt.gca().set_yticklabels([])
 
-plt.text(-0.2, 1.02, " Polar Axis\n",
+plt.text(-0.2, 1.02, "Polar Axis\n",
       horizontalalignment='left',
       verticalalignment='top',
       size='xx-large',

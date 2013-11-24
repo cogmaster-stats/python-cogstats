@@ -105,9 +105,35 @@ Basic plotting is done with `matplotlib <http://matplotlib.org/>`_::
 More plots
 ...........
 
+.. image:: auto_examples/matplotlib_demos/images/plot_plot_1.png
+   :scale: 45
+   :target: auto_examples/matplotlib_demos/plot_plot.html
+.. image:: auto_examples/matplotlib_demos/images/plot_scatter_1.png
+   :scale: 45
+   :target: auto_examples/matplotlib_demos/plot_scatter.html
+.. image:: auto_examples/matplotlib_demos/images/plot_bar_1.png
+   :scale: 45
+   :target: auto_examples/matplotlib_demos/plot_bar.html
+.. image:: auto_examples/matplotlib_demos/images/plot_contour_1.png
+   :scale: 45
+   :target: auto_examples/matplotlib_demos/plot_contour.html
+.. image:: auto_examples/matplotlib_demos/images/plot_imshow_1.png
+   :scale: 45
+   :target: auto_examples/matplotlib_demos/plot_imshow.html
+.. image:: auto_examples/matplotlib_demos/images/plot_pie_1.png
+   :scale: 45
+   :target: auto_examples/matplotlib_demos/plot_pie.html
+.. image:: auto_examples/matplotlib_demos/images/plot_multiplot_1.png
+   :scale: 45
+   :target: auto_examples/matplotlib_demos/plot_multiplot.html
+.. image:: auto_examples/matplotlib_demos/images/plot_text_1.png
+   :scale: 45
+   :target: auto_examples/matplotlib_demos/plot_text.html
+
+
 .. seealso::
 
-   Matplotlib is very rich and has different types of plot. See the
+   Matplotlib is very rich and can be controlled in detail. See the
    `scipy lectures
    <http://scipy-lectures.github.io/intro/matplotlib/matplotlib.html>`_
    for more details.

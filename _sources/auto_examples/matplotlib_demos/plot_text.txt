@@ -22,6 +22,6 @@ Text can be displayed, optionally with mathematical formulas.
 .. literalinclude:: plot_text.py
     :lines: 8-
 
-**Total running time of the example:**  0.08 seconds
-( 0 minutes  0.08 seconds)
+**Total running time of the example:**  0.06 seconds
+( 0 minutes  0.06 seconds)
     
