@@ -12,7 +12,7 @@ ax = plt.subplot(2, 1, 1)
 ax.set_xticklabels([])
 ax.set_yticklabels([])
 
-plt.text(-0.05, 1.02, " Multiplot:     plt.subplot(...)\n",
+plt.text(-0.05, 1.02, "Multiplot:     plt.subplot(...)\n",
       horizontalalignment='left',
       verticalalignment='top',
       size='xx-large',

@@ -21,7 +21,7 @@ plt.clabel(C, inline=1, fontsize=10)
 plt.xticks(())
 plt.yticks(())
 
-plt.text(-0.05, 1.02, " Contour Plot: plt.contour(..)\n",
+plt.text(-0.05, 1.02, "Contour Plot: plt.contour(..)\n",
       horizontalalignment='left',
       verticalalignment='top',
       size='xx-large',

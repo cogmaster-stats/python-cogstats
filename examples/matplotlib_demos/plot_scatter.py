@@ -21,7 +21,7 @@ plt.xticks(())
 plt.ylim(-1.5, 1.5)
 plt.yticks(())
 
-plt.text(-0.05, 1.02, " Scatter Plot:  plt.scatter(...)\n",
+plt.text(-0.05, 1.02, "Scatter Plot:  plt.scatter(...)\n",
       horizontalalignment='left',
       verticalalignment='top',
       size='xx-large',

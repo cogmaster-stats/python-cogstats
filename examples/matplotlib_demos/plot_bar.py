@@ -19,7 +19,7 @@ plt.xticks(())
 plt.ylim(-1, 1)
 plt.yticks(())
 
-plt.text(-0.05, 1.02, " Bar Plot:              plt.bar(...)\n",
+plt.text(-0.05, 1.02, "Bar Plot:              plt.bar(...)\n",
       horizontalalignment='left',
       verticalalignment='top',
       size='xx-large',

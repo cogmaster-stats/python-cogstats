@@ -18,7 +18,7 @@ plt.xticks(())
 plt.ylim(-1.2, 1.2)
 plt.yticks(())
 
-plt.text(-0.05, 1.02, " Regular Plot:      plt.plot(...)\n",
+plt.text(-0.05, 1.02, "Regular Plot:      plt.plot(...)\n",
         horizontalalignment='left',
         verticalalignment='top',
         size='xx-large',
