@@ -1,0 +1,30 @@
+
+
+.. _example_plot_categorical_variables.py:
+
+
+Plotting quantities from a CSV file
+=====================================
+
+This example loads from a CSV file data with mixed numerical and
+categorical entries, and plots a few quantities, separately for females
+and males, thanks to the pandas integrating plotting tool (that uses
+matplotlib behind the scene).
+
+
+
+
+.. image:: images/plot_categorical_variables_1.png
+    :align: center
+
+
+
+
+**Python source code:** :download:`plot_categorical_variables.py <plot_categorical_variables.py>`
+
+.. literalinclude:: plot_categorical_variables.py
+    :lines: 11-
+
+**Total running time of the example:**  0.27 seconds
+( 0 minutes  0.27 seconds)
+    

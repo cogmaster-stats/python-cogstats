@@ -1,0 +1,106 @@
+
+
+.. _example_plot_localizer_analysis.py:
+
+
+GLM fitting in fMRI
+===================
+
+Full step-by-step example of fitting a GLM to experimental data and visualizing
+the results.
+
+More specifically:
+
+1. A sequence of fMRI volumes are loaded
+2. A design matrix describing all the effects related to the data is computed
+3. a mask of the useful brain volume is computed
+4. A GLM is applied to the dataset (effect/covariance,
+   then contrast estimation)
+
+
+
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_localizer_analysis_3.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_2.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_4.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_6.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_1.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_8.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_7.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_9.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_5.png
+
+
+**Script output**:
+
+.. rst-class:: max_height
+
+ ::
+
+    Computation will be performed in directory: /home/varoquau/work/papers/talks/stats-cogmaster/examples/results
+  Loading design matrix...
+  Fitting a GLM (this takes time)...
+  Computing contrasts...
+    Contrast  1 out of 22: damier_V
+    Contrast  2 out of 22: V-H
+    Contrast  3 out of 22: clicGaudio
+    Contrast  4 out of 22: sentences
+    Contrast  5 out of 22: audio-video
+    Contrast  6 out of 22: video
+    Contrast  7 out of 22: computation
+    Contrast  8 out of 22: video-audio
+    Contrast  9 out of 22: damier_H
+    Contrast  10 out of 22: clicDaudio
+    Contrast  11 out of 22: effects_of_interest
+    Contrast  12 out of 22: computation-sentences
+    Contrast  13 out of 22: clicGvideo
+    Contrast  14 out of 22: reading-visual
+    Contrast  15 out of 22: calculaudio
+    Contrast  16 out of 22: H-V
+    Contrast  17 out of 22: left-right
+    Contrast  18 out of 22: clicDvideo
+    Contrast  19 out of 22: phraseaudio
+    Contrast  20 out of 22: calculvideo
+    Contrast  21 out of 22: phrasevideo
+    Contrast  22 out of 22: audio
+  All the  results were witten in /home/varoquau/work/papers/talks/stats-cogmaster/examples/results
+
+
+
+**Python source code:** :download:`plot_localizer_analysis.py <plot_localizer_analysis.py>`
+
+.. literalinclude:: plot_localizer_analysis.py
+    :lines: 17-
+
+**Total running time of the example:**  29.35 seconds
+( 0 minutes  29.35 seconds)
+    

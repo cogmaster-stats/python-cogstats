@@ -1,0 +1,26 @@
+
+
+.. _example_plot_basic_statistics.py:
+
+
+Basic plotting example
+======================
+
+Do a boxplot.
+
+
+
+.. image:: images/plot_basic_statistics_1.png
+    :align: center
+
+
+
+
+**Python source code:** :download:`plot_basic_statistics.py <plot_basic_statistics.py>`
+
+.. literalinclude:: plot_basic_statistics.py
+    :lines: 7-
+
+**Total running time of the example:**  0.07 seconds
+( 0 minutes  0.07 seconds)
+    

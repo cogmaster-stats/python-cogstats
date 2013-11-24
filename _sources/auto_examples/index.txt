@@ -1,0 +1,104 @@
+
+
+
+.. raw:: html
+
+
+    <style type="text/css">
+
+    div#sidebarbutton {
+        display: none;
+    }
+
+    </style>
+
+
+Examples
+========
+
+.. _examples-index:
+
+
+
+Code examples for the Python statistics course at the cogmaster.
+
+
+
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Do a boxplot. ">
+
+.. figure:: ./images/thumb/plot_basic_statistics.png
+   :target: ./plot_basic_statistics.html
+
+   :ref:`example_plot_basic_statistics.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_basic_statistics
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="This example loads from a CSV file data with mixed numerical and categorical entries, and plots...">
+
+.. figure:: ./images/thumb/plot_categorical_variables.png
+   :target: ./plot_categorical_variables.html
+
+   :ref:`example_plot_categorical_variables.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_categorical_variables
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Full step-by-step example of fitting a GLM to experimental data and visualizing the results.">
+
+.. figure:: ./images/thumb/plot_localizer_analysis.png
+   :target: ./plot_localizer_analysis.html
+
+   :ref:`example_plot_localizer_analysis.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_localizer_analysis
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    

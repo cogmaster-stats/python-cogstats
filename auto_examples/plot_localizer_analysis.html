@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>GLM fitting in fMRI &mdash; Statistics for the CogMaster</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2013',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="top" title="Statistics for the CogMaster" href="../index.html" />
+    <link rel="up" title="Examples" href="index.html" />
+    <link rel="prev" title="Plotting quantities from a CSV file" href="plot_categorical_variables.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_categorical_variables.html" title="Plotting quantities from a CSV file"
+             accesskey="P">previous</a></li>
+        <li><a href="../index.html">Statistics for the CogMaster</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Examples</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="glm-fitting-in-fmri">
+<span id="example-plot-localizer-analysis-py"></span><h1>GLM fitting in fMRI<a class="headerlink" href="#glm-fitting-in-fmri" title="Permalink to this headline">¶</a></h1>
+<p>Full step-by-step example of fitting a GLM to experimental data and visualizing
+the results.</p>
+<p>More specifically:</p>
+<ol class="arabic simple">
+<li>A sequence of fMRI volumes are loaded</li>
+<li>A design matrix describing all the effects related to the data is computed</li>
+<li>a mask of the useful brain volume is computed</li>
+<li>A GLM is applied to the dataset (effect/covariance,
+then contrast estimation)</li>
+</ol>
+<ul class="horizontal">
+<li><img alt="../_images/plot_localizer_analysis_3.png" class="first" src="../_images/plot_localizer_analysis_3.png" />
+</li>
+<li><img alt="../_images/plot_localizer_analysis_2.png" class="first" src="../_images/plot_localizer_analysis_2.png" />
+</li>
+<li><img alt="../_images/plot_localizer_analysis_4.png" class="first" src="../_images/plot_localizer_analysis_4.png" />
+</li>
+<li><img alt="../_images/plot_localizer_analysis_6.png" class="first" src="../_images/plot_localizer_analysis_6.png" />
+</li>
+<li><img alt="../_images/plot_localizer_analysis_1.png" class="first" src="../_images/plot_localizer_analysis_1.png" />
+</li>
+<li><img alt="../_images/plot_localizer_analysis_8.png" class="first" src="../_images/plot_localizer_analysis_8.png" />
+</li>
+<li><img alt="../_images/plot_localizer_analysis_7.png" class="first" src="../_images/plot_localizer_analysis_7.png" />
+</li>
+<li><img alt="../_images/plot_localizer_analysis_9.png" class="first" src="../_images/plot_localizer_analysis_9.png" />
+</li>
+<li><img alt="../_images/plot_localizer_analysis_5.png" class="first" src="../_images/plot_localizer_analysis_5.png" />
+</li>
+</ul>
+<p><strong>Script output</strong>:</p>
+<div class="max-height highlight-python"><pre>  Computation will be performed in directory: /home/varoquau/work/papers/talks/stats-cogmaster/examples/results
+Loading design matrix...
+Fitting a GLM (this takes time)...
+Computing contrasts...
+  Contrast  1 out of 22: damier_V
+  Contrast  2 out of 22: V-H
+  Contrast  3 out of 22: clicGaudio
+  Contrast  4 out of 22: sentences
+  Contrast  5 out of 22: audio-video
+  Contrast  6 out of 22: video
+  Contrast  7 out of 22: computation
+  Contrast  8 out of 22: video-audio
+  Contrast  9 out of 22: damier_H
+  Contrast  10 out of 22: clicDaudio
+  Contrast  11 out of 22: effects_of_interest
+  Contrast  12 out of 22: computation-sentences
+  Contrast  13 out of 22: clicGvideo
+  Contrast  14 out of 22: reading-visual
+  Contrast  15 out of 22: calculaudio
+  Contrast  16 out of 22: H-V
+  Contrast  17 out of 22: left-right
+  Contrast  18 out of 22: clicDvideo
+  Contrast  19 out of 22: phraseaudio
+  Contrast  20 out of 22: calculvideo
+  Contrast  21 out of 22: phrasevideo
+  Contrast  22 out of 22: audio
+All the  results were witten in /home/varoquau/work/papers/talks/stats-cogmaster/examples/results</pre>
+</div>
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_localizer_analysis.py"><tt class="xref download docutils literal"><span class="pre">plot_localizer_analysis.py</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">mkdir</span><span class="p">,</span> <span class="n">getcwd</span><span class="p">,</span> <span class="n">path</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">nibabel</span> <span class="kn">import</span> <span class="n">save</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">nipy.modalities.fmri.glm</span> <span class="kn">import</span> <span class="n">FMRILinearModel</span>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">nipy.modalities.fmri.design_matrix</span> <span class="kn">import</span> <span class="n">make_dmtx</span>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">nipy.modalities.fmri.experimental_paradigm</span> <span class="kn">import</span> \
+<div class="newline"></div>    <span class="n">load_paradigm_from_csv_file</span>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">nipy.labs.viz</span> <span class="kn">import</span> <span class="n">plot_map</span><span class="p">,</span> <span class="n">cm</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="c">#######################################</span>
+<div class="newline"></div><span class="c"># Data and analysis parameters</span>
+<div class="newline"></div><span class="c">#######################################</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># volume mask</span>
+<div class="newline"></div><span class="c"># This dataset is large</span>
+<div class="newline"></div><span class="n">data_file</span> <span class="o">=</span> <span class="s">&#39;s12069_swaloc1_corr.nii.gz&#39;</span>
+<div class="newline"></div><span class="n">paradigm_file</span> <span class="o">=</span> <span class="s">&#39;localizer_paradigm.csv&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># timing</span>
+<div class="newline"></div><span class="n">n_scans</span> <span class="o">=</span> <span class="mi">128</span>
+<div class="newline"></div><span class="n">tr</span> <span class="o">=</span> <span class="mf">2.4</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># paradigm</span>
+<div class="newline"></div><span class="n">frametimes</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.linspace.html#numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">tr</span><span class="p">,</span> <span class="p">(</span><span class="n">n_scans</span> <span class="o">-</span> <span class="o">.</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">tr</span><span class="p">,</span> <span class="n">n_scans</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># confounds</span>
+<div class="newline"></div><span class="n">hrf_model</span> <span class="o">=</span> <span class="s">&#39;canonical with derivative&#39;</span>
+<div class="newline"></div><span class="n">drift_model</span> <span class="o">=</span> <span class="s">&quot;cosine&quot;</span>
+<div class="newline"></div><span class="n">hfcut</span> <span class="o">=</span> <span class="mi">128</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># write directory</span>
+<div class="newline"></div><span class="n">write_dir</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s">&#39;results&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">write_dir</span><span class="p">):</span>
+<div class="newline"></div>    <span class="n">mkdir</span><span class="p">(</span><span class="n">write_dir</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="s">&#39;Computation will be performed in directory: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">write_dir</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c">########################################</span>
+<div class="newline"></div><span class="c"># Design matrix</span>
+<div class="newline"></div><span class="c">########################################</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="s">&#39;Loading design matrix...&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">paradigm</span> <span class="o">=</span> <span class="n">load_paradigm_from_csv_file</span><span class="p">(</span><span class="n">paradigm_file</span><span class="p">)[</span><span class="s">&#39;0&#39;</span><span class="p">]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">design_matrix</span> <span class="o">=</span> <span class="n">make_dmtx</span><span class="p">(</span><span class="n">frametimes</span><span class="p">,</span> <span class="n">paradigm</span><span class="p">,</span> <span class="n">hrf_model</span><span class="o">=</span><span class="n">hrf_model</span><span class="p">,</span>
+<div class="newline"></div>                          <span class="n">drift_model</span><span class="o">=</span><span class="n">drift_model</span><span class="p">,</span> <span class="n">hfcut</span><span class="o">=</span><span class="n">hfcut</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">ax</span> <span class="o">=</span> <span class="n">design_matrix</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">set_position</span><span class="p">([</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span> <span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">9</span><span class="p">,</span> <span class="o">.</span><span class="mi">65</span><span class="p">])</span>
+<div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Design matrix&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.savefig"><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span></a><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">write_dir</span><span class="p">,</span> <span class="s">&#39;design_matrix.png&#39;</span><span class="p">))</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c">#########################################</span>
+<div class="newline"></div><span class="c"># Specify the contrasts</span>
+<div class="newline"></div><span class="c">#########################################</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># simplest ones</span>
+<div class="newline"></div><span class="n">contrasts</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="newline"></div><span class="n">n_columns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">design_matrix</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+<div class="newline"></div><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">paradigm</span><span class="o">.</span><span class="n">n_conditions</span><span class="p">):</span>
+<div class="newline"></div>    <span class="n">contrasts</span><span class="p">[</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">design_matrix</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.eye.html#numpy.eye"><span class="n">np</span><span class="o">.</span><span class="n">eye</span></a><span class="p">(</span><span class="n">n_columns</span><span class="p">)[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span><span class="p">]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># and more complex/ interesting ones</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;audio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;clicDaudio&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;clicGaudio&quot;</span><span class="p">]</span> <span class="o">+</span>\
+<div class="newline"></div>                     <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;calculaudio&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;phraseaudio&quot;</span><span class="p">]</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;video&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;clicDvideo&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;clicGvideo&quot;</span><span class="p">]</span> <span class="o">+</span> \
+<div class="newline"></div>                     <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;calculvideo&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;phrasevideo&quot;</span><span class="p">]</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;left-right&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;clicGaudio&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;clicGvideo&quot;</span><span class="p">]</span>
+<div class="newline"></div>                           <span class="o">-</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;clicDaudio&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;clicDvideo&quot;</span><span class="p">])</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;computation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;calculaudio&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;calculvideo&quot;</span><span class="p">]</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;sentences&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;phraseaudio&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;phrasevideo&quot;</span><span class="p">]</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;H-V&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;damier_H&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;damier_V&quot;</span><span class="p">]</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;V-H&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;damier_V&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;damier_H&quot;</span><span class="p">]</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;audio-video&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;audio&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;video&quot;</span><span class="p">]</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;video-audio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;video&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;audio&quot;</span><span class="p">]</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;computation-sentences&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;computation&quot;</span><span class="p">]</span> <span class="o">-</span>  \
+<div class="newline"></div>                                     <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;sentences&quot;</span><span class="p">]</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;reading-visual&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;sentences&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> \
+<div class="newline"></div>                              <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;damier_H&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">contrasts</span><span class="p">[</span><span class="s">&quot;damier_V&quot;</span><span class="p">]</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&#39;effects_of_interest&#39;</span><span class="p">]</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.eye.html#numpy.eye"><span class="n">np</span><span class="o">.</span><span class="n">eye</span></a><span class="p">(</span><span class="mi">25</span><span class="p">)[:</span><span class="mi">20</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c">########################################</span>
+<div class="newline"></div><span class="c"># Perform a GLM analysis</span>
+<div class="newline"></div><span class="c">########################################</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="s">&#39;Fitting a GLM (this takes time)...&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="n">fmri_glm</span> <span class="o">=</span> <span class="n">FMRILinearModel</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="n">design_matrix</span><span class="o">.</span><span class="n">matrix</span><span class="p">,</span>
+<div class="newline"></div>                           <span class="n">mask</span><span class="o">=</span><span class="s">&#39;compute&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="n">fmri_glm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">do_scaling</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s">&#39;ar1&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c">#########################################</span>
+<div class="newline"></div><span class="c"># Estimate the contrasts</span>
+<div class="newline"></div><span class="c">#########################################</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="s">&#39;Computing contrasts...&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">contrast_id</span><span class="p">,</span> <span class="n">contrast_val</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">contrasts</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+<div class="newline"></div>    <span class="k">print</span><span class="p">(</span><span class="s">&#39;  Contrast </span><span class="si">% 2i</span><span class="s"> out of </span><span class="si">%i</span><span class="s">: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span>
+<div class="newline"></div>          <span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">contrasts</span><span class="p">),</span> <span class="n">contrast_id</span><span class="p">))</span>
+<div class="newline"></div>    <span class="c"># save the z_image</span>
+<div class="newline"></div>    <span class="n">image_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">write_dir</span><span class="p">,</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">_z_map.nii&#39;</span> <span class="o">%</span> <span class="n">contrast_id</span><span class="p">)</span>
+<div class="newline"></div>    <span class="n">z_map</span><span class="p">,</span> <span class="o">=</span> <span class="n">fmri_glm</span><span class="o">.</span><span class="n">contrast</span><span class="p">(</span><span class="n">contrast_val</span><span class="p">,</span> <span class="n">con_id</span><span class="o">=</span><span class="n">contrast_id</span><span class="p">,</span> <span class="n">output_z</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="newline"></div>    <span class="n">save</span><span class="p">(</span><span class="n">z_map</span><span class="p">,</span> <span class="n">image_path</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div>    <span class="c"># Create snapshots of the contrasts</span>
+<div class="newline"></div>    <span class="n">vmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="n">z_map</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">z_map</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<div class="newline"></div>    <span class="n">plot_map</span><span class="p">(</span><span class="n">z_map</span><span class="o">.</span><span class="n">get_data</span><span class="p">(),</span> <span class="n">z_map</span><span class="o">.</span><span class="n">get_affine</span><span class="p">(),</span>
+<div class="newline"></div>             <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">cold_hot</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="n">vmax</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
+<div class="newline"></div>             <span class="n">slicer</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span> <span class="n">black_bg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+<div class="newline"></div>             <span class="n">title</span><span class="o">=</span><span class="n">contrast_id</span><span class="p">)</span>
+<div class="newline"></div>    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.savefig"><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span></a><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">write_dir</span><span class="p">,</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">_z_map.png&#39;</span> <span class="o">%</span> <span class="n">contrast_id</span><span class="p">))</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="s">&quot;All the  results were witten in </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">write_dir</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><strong>Total running time of the example:</strong>  29.35 seconds
+( 0 minutes  29.35 seconds)</p>
+<p><div style="clear: both"></div></p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_categorical_variables.html" title="Plotting quantities from a CSV file"
+             >previous</a></li>
+        <li><a href="../index.html">Statistics for the CogMaster</a> &raquo;</li>
+          <li><a href="index.html" >Examples</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
