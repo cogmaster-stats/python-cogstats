@@ -111,7 +111,7 @@ We have a CSV file giving observations of brain size and weight and IQ
 
 .. sidebar:: **Separator**
 
-   Although this is a 'CSV' file, the separator is ";".
+   Although it is a 'CSV' file, the separator is ";".
 
 |
 
@@ -119,25 +119,25 @@ The data are a mixture of numerical and categorical values. We will use
 `pandas <http://pandas.pydata.org>`_ to manipulate them::
 
     >>> import pandas
-    >>> data = pandas.read_csv('examples/brain_size.csv', sep=';')
+    >>> data = pandas.read_csv('examples/brain_size.csv', sep=';', na_values=".")
     >>> print data  # doctest: +ELLIPSIS
-        Unnamed: 0  Gender  FSIQ  VIQ  PIQ Weight Height  MRI_Count
-    0            1  Female   133  132  124    118   64.5     816932
-    1            2    Male   140  150  124      .   72.5    1001121
-    2            3    Male   139  123  150    143   73.3    1038437
-    3            4    Male   133  129  128    172   68.8     965353
-    4            5  Female   137  132  134    147   65.0     951545
+        Unnamed: 0  Gender  FSIQ  VIQ  PIQ  Weight  Height  MRI_Count
+    0            1  Female   133  132  124     118    64.5     816932
+    1            2    Male   140  150  124     NaN    72.5    1001121
+    2            3    Male   139  123  150     143    73.3    1038437
+    3            4    Male   133  129  128     172    68.8     965353
+    4            5  Female   137  132  134     147    65.0     951545
     ...
 
-.. sidebar:: **Missing values**
+.. warning:: **Missing values**
 
-   Note that the weight of the second individual is missing.
-
-|
+   The weight of the second individual is missing in the CSV file. If we
+   don't specify the missing value (NA = not available) marker, we will
+   not be able to do statistics on the weight.
 
 `data` is a pandas dataframe, that resembles R's dataframe::
 
-    >>> print data.Gender  # doctest: +ELLIPSIS
+    >>> print data['Gender']  # doctest: +ELLIPSIS
     0     Female
     1       Male
     2       Male
@@ -146,10 +146,11 @@ The data are a mixture of numerical and categorical values. We will use
     ...
     >>> gender_data = data.groupby('Gender')
     >>> print gender_data.mean()
-            Unnamed: 0   FSIQ     VIQ     PIQ  MRI_Count
-    Gender                                              
-    Female       19.65  111.9  109.45  110.45   862654.6
-    Male         21.35  115.0  115.25  111.60   954855.4
+            Unnamed: 0   FSIQ     VIQ     PIQ      Weight     Height  MRI_Count
+    Gender                                                                     
+    Female       19.65  111.9  109.45  110.45  137.200000  65.765000   862654.6
+    Male         21.35  115.0  115.25  111.60  166.444444  71.431579   954855.4
+
 
     >>> # More manual, but more versatile
     >>> for name, value in gender_data['VIQ']:

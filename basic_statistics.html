@@ -228,7 +228,7 @@ to do so?).</li>
 </div></blockquote>
 <div class="sidebar">
 <p class="first sidebar-title"><strong>Separator</strong></p>
-<p class="last">Although this is a &#8216;CSV&#8217; file, the separator is &#8221;;&#8221;.</p>
+<p class="last">Although it is a &#8216;CSV&#8217; file, the separator is &#8221;;&#8221;.</p>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -236,26 +236,26 @@ to do so?).</li>
 <p>The data are a mixture of numerical and categorical values. We will use
 <a class="reference external" href="http://pandas.pydata.org">pandas</a> to manipulate them:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;examples/brain_size.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&#39;;&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;examples/brain_size.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&#39;;&#39;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">data</span>  
-<div class="newline"></div><span class="go">    Unnamed: 0  Gender  FSIQ  VIQ  PIQ Weight Height  MRI_Count</span>
-<div class="newline"></div><span class="go">0            1  Female   133  132  124    118   64.5     816932</span>
-<div class="newline"></div><span class="go">1            2    Male   140  150  124      .   72.5    1001121</span>
-<div class="newline"></div><span class="go">2            3    Male   139  123  150    143   73.3    1038437</span>
-<div class="newline"></div><span class="go">3            4    Male   133  129  128    172   68.8     965353</span>
-<div class="newline"></div><span class="go">4            5  Female   137  132  134    147   65.0     951545</span>
+<div class="newline"></div><span class="go">    Unnamed: 0  Gender  FSIQ  VIQ  PIQ  Weight  Height  MRI_Count</span>
+<div class="newline"></div><span class="go">0            1  Female   133  132  124     118    64.5     816932</span>
+<div class="newline"></div><span class="go">1            2    Male   140  150  124     NaN    72.5    1001121</span>
+<div class="newline"></div><span class="go">2            3    Male   139  123  150     143    73.3    1038437</span>
+<div class="newline"></div><span class="go">3            4    Male   133  129  128     172    68.8     965353</span>
+<div class="newline"></div><span class="go">4            5  Female   137  132  134     147    65.0     951545</span>
 <div class="newline"></div><span class="gp">...</span>
 <div class="newline"></div></pre></div>
 </div>
-<div class="sidebar">
-<p class="first sidebar-title"><strong>Missing values</strong></p>
-<p class="last">Note that the weight of the second individual is missing.</p>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p><strong>Missing values</strong></p>
+<p class="last">The weight of the second individual is missing in the CSV file. If we
+don&#8217;t specify the missing value (NA = not available) marker, we will
+not be able to do statistics on the weight.</p>
 </div>
 <p><cite>data</cite> is a pandas dataframe, that resembles R&#8217;s dataframe:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">data</span><span class="o">.</span><span class="n">Gender</span>  
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;Gender&#39;</span><span class="p">]</span>  
 <div class="newline"></div><span class="go">0     Female</span>
 <div class="newline"></div><span class="go">1       Male</span>
 <div class="newline"></div><span class="go">2       Male</span>
@@ -264,10 +264,11 @@ to do so?).</li>
 <div class="newline"></div><span class="gp">...</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">gender_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;Gender&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">gender_data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<div class="newline"></div><span class="go">        Unnamed: 0   FSIQ     VIQ     PIQ  MRI_Count</span>
+<div class="newline"></div><span class="go">        Unnamed: 0   FSIQ     VIQ     PIQ      Weight     Height  MRI_Count</span>
 <div class="newline"></div><span class="go">Gender</span>
-<div class="newline"></div><span class="go">Female       19.65  111.9  109.45  110.45   862654.6</span>
-<div class="newline"></div><span class="go">Male         21.35  115.0  115.25  111.60   954855.4</span>
+<div class="newline"></div><span class="go">Female       19.65  111.9  109.45  110.45  137.200000  65.765000   862654.6</span>
+<div class="newline"></div><span class="go">Male         21.35  115.0  115.25  111.60  166.444444  71.431579   954855.4</span>
+<div class="newline"></div>
 <div class="newline"></div>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c"># More manual, but more versatile</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">gender_data</span><span class="p">[</span><span class="s">&#39;VIQ&#39;</span><span class="p">]:</span>
