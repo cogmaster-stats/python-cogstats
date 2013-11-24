@@ -1,0 +1,26 @@
+
+
+.. _example_matplotlib_demos_plot_polar.py:
+
+
+Polar axis
+===========
+
+Polar axis can be turned on for most plot types.
+
+
+
+.. image:: images/plot_polar_1.png
+    :align: center
+
+
+
+
+**Python source code:** :download:`plot_polar.py <plot_polar.py>`
+
+.. literalinclude:: plot_polar.py
+    :lines: 7-
+
+**Total running time of the example:**  0.10 seconds
+( 0 minutes  0.10 seconds)
+    

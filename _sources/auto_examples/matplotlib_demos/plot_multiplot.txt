@@ -1,0 +1,27 @@
+
+
+.. _example_matplotlib_demos_plot_multiplot.py:
+
+
+Multiple plots with 'subplot'
+==============================
+
+The 'subplot' command can be used to stack multiple plots in a figure.
+
+
+
+
+.. image:: images/plot_multiplot_1.png
+    :align: center
+
+
+
+
+**Python source code:** :download:`plot_multiplot.py <plot_multiplot.py>`
+
+.. literalinclude:: plot_multiplot.py
+    :lines: 8-
+
+**Total running time of the example:**  0.17 seconds
+( 0 minutes  0.17 seconds)
+    

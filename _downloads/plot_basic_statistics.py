@@ -2,7 +2,7 @@
 Basic plotting example
 ======================
 
-Do a boxplot.
+Do a boxplot on numerical data.
 """
 
 import numpy as np

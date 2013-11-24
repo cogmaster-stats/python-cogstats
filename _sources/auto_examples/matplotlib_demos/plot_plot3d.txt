@@ -1,0 +1,27 @@
+
+
+.. _example_matplotlib_demos_plot_plot3d.py:
+
+
+3D plots
+=========
+
+Matplotlib has basic 3D plotting functionality.
+
+
+
+
+.. image:: images/plot_plot3d_1.png
+    :align: center
+
+
+
+
+**Python source code:** :download:`plot_plot3d.py <plot_plot3d.py>`
+
+.. literalinclude:: plot_plot3d.py
+    :lines: 8-
+
+**Total running time of the example:**  0.15 seconds
+( 0 minutes  0.15 seconds)
+    

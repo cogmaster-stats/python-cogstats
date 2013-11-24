@@ -101,6 +101,6 @@ More specifically:
 .. literalinclude:: plot_localizer_analysis.py
     :lines: 17-
 
-**Total running time of the example:**  29.35 seconds
-( 0 minutes  29.35 seconds)
+**Total running time of the example:**  29.12 seconds
+( 0 minutes  29.12 seconds)
     

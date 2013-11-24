@@ -30,7 +30,7 @@ Code examples for the Python statistics course at the cogmaster.
 .. raw:: html
 
 
-    <div class="thumbnailContainer" tooltip="Do a boxplot. ">
+    <div class="thumbnailContainer" tooltip="Do a boxplot on numerical data. ">
 
 .. figure:: ./images/thumb/plot_basic_statistics.png
    :target: ./plot_basic_statistics.html
@@ -96,6 +96,287 @@ Code examples for the Python statistics course at the cogmaster.
    :hidden:
 
    ./plot_localizer_analysis
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    
+
+
+Matplotlib demo examples
+==========================
+
+Please refer to
+http://scipy-lectures.github.io/intro/matplotlib/matplotlibmatplotlib.html
+for a tutorial on using matplotlib.
+
+
+
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="'Regular' plots plot one value 'y' as a function of another, 'x'.">
+
+.. figure:: matplotlib_demos/images/thumb/plot_plot.png
+   :target: ./matplotlib_demos/plot_plot.html
+
+   :ref:`example_matplotlib_demos_plot_plot.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   matplotlib_demos/plot_plot
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="The 'subplot' command can be used to stack multiple plots in a figure.">
+
+.. figure:: matplotlib_demos/images/thumb/plot_multiplot.png
+   :target: ./matplotlib_demos/plot_multiplot.html
+
+   :ref:`example_matplotlib_demos_plot_multiplot.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   matplotlib_demos/plot_multiplot
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Bar plots display vertical or horizontal lines ">
+
+.. figure:: matplotlib_demos/images/thumb/plot_bar.png
+   :target: ./matplotlib_demos/plot_bar.html
+
+   :ref:`example_matplotlib_demos_plot_bar.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   matplotlib_demos/plot_bar
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Polar axis can be turned on for most plot types. ">
+
+.. figure:: matplotlib_demos/images/thumb/plot_polar.png
+   :target: ./matplotlib_demos/plot_polar.html
+
+   :ref:`example_matplotlib_demos_plot_polar.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   matplotlib_demos/plot_polar
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Scatter plots display unconnected data points.">
+
+.. figure:: matplotlib_demos/images/thumb/plot_scatter.png
+   :target: ./matplotlib_demos/plot_scatter.html
+
+   :ref:`example_matplotlib_demos_plot_scatter.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   matplotlib_demos/plot_scatter
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Contour plots draw iso-contours of 2D data. ">
+
+.. figure:: matplotlib_demos/images/thumb/plot_contour.png
+   :target: ./matplotlib_demos/plot_contour.html
+
+   :ref:`example_matplotlib_demos_plot_contour.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   matplotlib_demos/plot_contour
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Imshow displays image-like data ">
+
+.. figure:: matplotlib_demos/images/thumb/plot_imshow.png
+   :target: ./matplotlib_demos/plot_imshow.html
+
+   :ref:`example_matplotlib_demos_plot_imshow.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   matplotlib_demos/plot_imshow
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Pie plots look like pies. ">
+
+.. figure:: matplotlib_demos/images/thumb/plot_pie.png
+   :target: ./matplotlib_demos/plot_pie.html
+
+   :ref:`example_matplotlib_demos_plot_pie.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   matplotlib_demos/plot_pie
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Quicer plots display arrows. ">
+
+.. figure:: matplotlib_demos/images/thumb/plot_quiver.png
+   :target: ./matplotlib_demos/plot_quiver.html
+
+   :ref:`example_matplotlib_demos_plot_quiver.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   matplotlib_demos/plot_quiver
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Matplotlib has basic 3D plotting functionality.">
+
+.. figure:: matplotlib_demos/images/thumb/plot_plot3d.png
+   :target: ./matplotlib_demos/plot_plot3d.html
+
+   :ref:`example_matplotlib_demos_plot_plot3d.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   matplotlib_demos/plot_plot3d
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Text can be displayed, optionally with mathematical formulas.">
+
+.. figure:: matplotlib_demos/images/thumb/plot_text.png
+   :target: ./matplotlib_demos/plot_text.html
+
+   :ref:`example_matplotlib_demos_plot_text.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   matplotlib_demos/plot_text
 
 
 .. raw:: html

@@ -1,0 +1,26 @@
+
+
+.. _example_matplotlib_demos_plot_quiver.py:
+
+
+Quiver plots
+=============
+
+Quicer plots display arrows.
+
+
+
+.. image:: images/plot_quiver_1.png
+    :align: center
+
+
+
+
+**Python source code:** :download:`plot_quiver.py <plot_quiver.py>`
+
+.. literalinclude:: plot_quiver.py
+    :lines: 7-
+
+**Total running time of the example:**  0.08 seconds
+( 0 minutes  0.08 seconds)
+    

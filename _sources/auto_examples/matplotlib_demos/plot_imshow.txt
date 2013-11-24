@@ -1,0 +1,26 @@
+
+
+.. _example_matplotlib_demos_plot_imshow.py:
+
+
+Imshow demo
+============
+
+Imshow displays image-like data
+
+
+
+.. image:: images/plot_imshow_1.png
+    :align: center
+
+
+
+
+**Python source code:** :download:`plot_imshow.py <plot_imshow.py>`
+
+.. literalinclude:: plot_imshow.py
+    :lines: 7-
+
+**Total running time of the example:**  0.08 seconds
+( 0 minutes  0.08 seconds)
+    

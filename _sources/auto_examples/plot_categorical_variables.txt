@@ -33,6 +33,6 @@ matplotlib behind the scene).
 .. literalinclude:: plot_categorical_variables.py
     :lines: 11-
 
-**Total running time of the example:**  1.67 seconds
-( 0 minutes  1.67 seconds)
+**Total running time of the example:**  1.82 seconds
+( 0 minutes  1.82 seconds)
     
