@@ -190,8 +190,37 @@ For simple statistical tests, we will use the `stats` sub-module of
    Scipy is a vast library. For a tutorial covering the whole scope of
    scipy, see http://scipy-lectures.github.io/
 
+
 Student's t-test
 -----------------
+
+1 sample t-test
+...............
+
+:func:`scipy.stats.ttest_1samp` tests if observations are drawn from a
+Gaussian distributions of given population mean. It returns the T
+statistic, and the p-value (see the function's help)::
+
+    >>> stats.ttest_1samp(data['VIQ'], 0)
+    (30.088099970849338, 1.3289196468727784e-28)
+
+.. tip::
+   
+    With a p-value of 10^-28 we can claim that the population mean for
+    the IQ (VIQ measure) is not 0.
+
+.. image:: images/two_sided.png
+   :scale: 50
+   :align: right
+
+.. topic:: **Exercise**
+    :class: green
+
+    Is the test performed above one-sided or two-sided? Which one should
+    we use, and what is the corresponding p-value?
+
+2 sample t-test
+................
 
 Male vs Female
 
