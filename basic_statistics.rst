@@ -111,8 +111,7 @@ We have a CSV file giving observations of brain size and weight and IQ
 
 .. sidebar:: **Separator**
 
-   Although this is a 'CSV' file, which stands for 'coma separated
-   values', the separator is ";".
+   Although this is a 'CSV' file, the separator is ";".
 
 |
 
@@ -159,6 +158,11 @@ The data are a mixture of numerical and categorical values. We will use
     Male 115.25
 
 |
+
+.. image:: auto_examples/images/plot_categorical_variables_1.png
+   :target: auto_examples/plot_categorical_variables.html
+   :align: right
+   :scale: 40
 
 .. topic:: **Exercise**
     :class: green
