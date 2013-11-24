@@ -46,10 +46,5 @@ _____
 
    basic_statistics.rst
    fmri_signals.rst
-
-_____
-
-.. toctree::
-
-    auto_examples/index.rst
+   auto_examples/index.rst
 

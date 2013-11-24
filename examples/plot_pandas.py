@@ -22,4 +22,11 @@ plotting.scatter_matrix(data[['Weight', 'Height', 'MRI_Count']])
 
 plotting.scatter_matrix(data[['PIQ', 'VIQ', 'FSIQ']])
 
+plt.figure(figsize=(4, 3))
+data.boxplot(column=['FSIQ', 'PIQ'])
+
+plt.figure(figsize=(4, 3))
+plt.boxplot(data['FSIQ'] - data['PIQ'])
+plt.xticks((1, ), ('FSIQ - PIQ', ))
+
 plt.show()
