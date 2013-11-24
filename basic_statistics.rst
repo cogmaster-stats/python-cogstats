@@ -81,6 +81,9 @@ Mathematical operations on arrays are done using the numpy module::
 Basic plotting: pylab
 ----------------------
 
+The box plot
+.............
+
 .. image:: auto_examples/images/plot_basic_statistics_1.png
    :scale: 40
    :target: auto_examples/plot_localizer_analysis.html
@@ -98,6 +101,16 @@ Basic plotting is done with `matplotlib <http://matplotlib.org/>`_::
    If a window doesn't display, you need to call `plt.show()`.
 
    Under IPython, type `%matplotlib` to have plots display automatically.
+
+More plots
+...........
+
+.. seealso::
+
+   Matplotlib is very rich and has different types of plot. See the
+   `scipy lectures
+   <http://scipy-lectures.github.io/intro/matplotlib/matplotlib.html>`_
+   for more details.
 
 Mixed-type data: pandas
 ------------------------
@@ -168,6 +181,7 @@ The data are a mixture of numerical and categorical values. We will use
    :target: auto_examples/plot_categorical_variables.html
    :align: right
    :scale: 40
+
 
 .. topic:: **Exercise**
     :class: green
