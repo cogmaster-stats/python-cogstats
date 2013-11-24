@@ -157,6 +157,10 @@ The data are a mixture of numerical and categorical values. We will use
     Female 109.45
     Male 115.25
 
+    >>> # Simpler selector
+    >>> data[data['Gender'] == 'Female']['VIQ'].mean()
+    109.45
+
 |
 
 .. image:: auto_examples/images/plot_categorical_variables_1.png
@@ -194,7 +198,7 @@ For simple statistical tests, we will use the `stats` sub-module of
 Student's t-test
 -----------------
 
-1 sample t-test
+1-sample t-test
 ...............
 
 :func:`scipy.stats.ttest_1samp` tests if observations are drawn from a
@@ -219,10 +223,17 @@ statistic, and the p-value (see the function's help)::
     Is the test performed above one-sided or two-sided? Which one should
     we use, and what is the corresponding p-value?
 
-2 sample t-test
+2-sample t-test
 ................
 
-Male vs Female
+We have seen above that the mean VIQ in the male and female populations
+were different. To test if this is significant, we do a 2-sample t-test
+with :func:`scipy.stats.ttest_ind`::
+
+    >>> female_viq = data[data['Gender'] == 'Female']['VIQ']
+    >>> male_viq = data[data['Gender'] == 'Male']['VIQ']
+    >>> stats.ttest_ind(female_viq, male_viq)
+    (-0.77261617232750124, 0.44452876778583217)
 
 Paired tests
 ------------
