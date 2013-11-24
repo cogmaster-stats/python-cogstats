@@ -85,16 +85,16 @@ zip: html
 	cp -r _build/html _build/cogmaster-stats ;
 	zip -r _build/cogmaster-stats.zip _build/cogmaster-stats
 
-install: pdf html 
-	rm -rf _build/cogmaster-stats.github.com
+install: html
+	rm -rf _build/gh-pages
 	cd _build/ && \
-	git clone git@github.com:cogmaster-stats cogmaster-stats.github.com.git && \
-	cp -r html/* cogmaster-stats.github.com && \
-	cd cogmaster-stats.github.com && \
+        git clone git@github.com:cogmaster-stats/python-cogstats.git && \
+	cd python-cogstats && git checkout gh-pages && \
+	cp -r ../html/* . && \
 	git add * && \
 	git commit -a -m 'Make install' && \
 	git push
- 
+
 epub:
 	$(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) _build/epub
 	@echo
