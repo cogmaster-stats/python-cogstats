@@ -4,7 +4,8 @@ Plotting quantities from a CSV file
 
 This example loads from a CSV file data with mixed numerical and
 categorical entries, and plots a few quantities, separately for females
-and males.
+and males, thanks to the pandas integrating plotting tool (that uses
+matplotlib behind the scene).
 
 """
 

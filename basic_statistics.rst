@@ -170,10 +170,36 @@ The data are a mixture of numerical and categorical values. We will use
     * What is the mean value for VIQ for the full population?
     * How many males/females were included in this study?
 
-      **Hint** use the 'tab' completion to find out the methods that can be
+      **Hint** use 'tab completion' to find out the methods that can be
       called, instead of 'mean' in the above example.
 
     * What is the average value of MRI counts expressed in log units, for
       males and females?
 
 
+Hypothesis testing: two-group comparisons
+==========================================
+
+For simple statistical tests, we will use the `stats` sub-module of 
+`scipy <http://docs.scipy.org/doc/>`_::
+
+    >>> from scipy import stats
+
+.. seealso::
+
+   Scipy is a vast library. For a tutorial covering the whole scope of
+   scipy, see http://scipy-lectures.github.io/
+
+Student's t-test
+-----------------
+
+Male vs Female
+
+Paired tests
+------------
+
+VIQ vs another IQ
+
+Wilcoxon paired
+
+Binomial test?
