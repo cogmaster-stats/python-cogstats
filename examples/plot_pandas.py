@@ -13,11 +13,13 @@ import pandas
 
 import matplotlib.pyplot as plt
 
-data = pandas.read_csv('brain_size.csv', sep=';')
+data = pandas.read_csv('brain_size.csv', sep=';', na_values='.')
 gender_data = data.groupby('Gender')
 gender_data.boxplot(column=['FSIQ', 'VIQ', 'PIQ'])
 
 from pandas.tools import plotting
-plotting.scatter_matrix(data)
+plotting.scatter_matrix(data[['Weight', 'Height', 'MRI_Count']])
+
+plotting.scatter_matrix(data[['PIQ', 'VIQ', 'FSIQ']])
 
 plt.show()
