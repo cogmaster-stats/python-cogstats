@@ -130,6 +130,12 @@ The data are a mixture of numerical and categorical values. We will use
     4            5  Female   137  132  134    147   65.0     951545
     ...
 
+.. sidebar:: **Missing values**
+
+   Note that the weight of the second individual is missing.
+
+|
+
 `data` is a pandas dataframe, that resembles R's dataframe::
 
     >>> print data.Gender  # doctest: +ELLIPSIS
@@ -139,9 +145,31 @@ The data are a mixture of numerical and categorical values. We will use
     3       Male
     4     Female
     ...
-    >>> print data.groupby('Gender').mean()
+    >>> gender_data = data.groupby('Gender')
+    >>> print gender_data.mean()
             Unnamed: 0   FSIQ     VIQ     PIQ  MRI_Count
     Gender                                              
     Female       19.65  111.9  109.45  110.45   862654.6
     Male         21.35  115.0  115.25  111.60   954855.4
+
+    >>> # More manual, but more versatile
+    >>> for name, value in gender_data['VIQ']:
+    ...     print name, np.mean(value)
+    Female 109.45
+    Male 115.25
+
+|
+
+.. topic:: **Exercise**
+    :class: green
+
+    * What is the mean value for VIQ for the full population?
+    * How many males/females were included in this study?
+
+      **Hint** use the 'tab' completion to find out the methods that can be
+      called, instead of 'mean' in the above example.
+
+    * What is the average value of MRI counts expressed in log units, for
+      males and females?
+
 
