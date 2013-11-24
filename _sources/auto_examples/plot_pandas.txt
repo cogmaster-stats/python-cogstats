@@ -23,6 +23,14 @@ matplotlib behind the scene).
 
     *
 
+      .. image:: images/plot_pandas_5.png
+
+    *
+
+      .. image:: images/plot_pandas_4.png
+
+    *
+
       .. image:: images/plot_pandas_3.png
 
     *
@@ -37,6 +45,6 @@ matplotlib behind the scene).
 .. literalinclude:: plot_pandas.py
     :lines: 11-
 
-**Total running time of the example:**  1.53 seconds
-( 0 minutes  1.53 seconds)
+**Total running time of the example:**  1.64 seconds
+( 0 minutes  1.64 seconds)
     

@@ -20,6 +20,9 @@ Examples
 
 
 
+This course's code examples
+----------------------------
+
 Code examples for the Python statistics course at the cogmaster.
 
 
@@ -105,7 +108,7 @@ Code examples for the Python statistics course at the cogmaster.
 
 
 Matplotlib demo examples
-==========================
+-------------------------
 
 Please refer to
 http://scipy-lectures.github.io/intro/matplotlib/matplotlibmatplotlib.html

@@ -353,6 +353,11 @@ scene) to display statistics on dataframes:</p>
 We will come back to this hypothesis.</p>
 </div>
 <a class="reference external image-reference" href="auto_examples/plot_pandas.html"><img alt="_images/plot_pandas_3.png" class="align-center" src="_images/plot_pandas_3.png" style="width: 400.0px; height: 300.0px;" /></a>
+<div class="green topic">
+<p class="topic-title first"><strong>Exercise</strong></p>
+<p>Plot the scatter matrix for males only, and for females only. Do you
+think that the 2 sub-populations correspond to gender?</p>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -409,9 +414,28 @@ with <a class="reference external" href="http://docs.scipy.org/doc/scipy/referen
 </div>
 <div class="section" id="paired-tests">
 <h3>1.2.2. Paired tests<a class="headerlink" href="#paired-tests" title="Permalink to this headline">¶</a></h3>
-<p>VIQ vs another IQ</p>
+<a class="reference external image-reference" href="auto_examples/plot_pandas.html"><img alt="_images/plot_pandas_4.png" class="align-right" src="_images/plot_pandas_4.png" style="width: 280.0px; height: 210.0px;" /></a>
+<p>PIQ, VIQ, and FSIQ give 3 measures of IQ. Let us test if FISQ and PIQ are
+significantly different. We need to use a 2 sample test:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;FSIQ&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PIQ&#39;</span><span class="p">])</span>
+<div class="newline"></div><span class="go">(0.46563759638096403, 0.64277250094148408)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>The problem with this approach is that is forgets that there are links
+between observations: FSIQ and PIQ are measure on the same individuals.
+Thus the variance due to inter-subject variability is confounding, and
+can be removed, using a &#8220;paired test&#8221;, or &#8220;repeated measure test&#8221;:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;FSIQ&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PIQ&#39;</span><span class="p">])</span>
+<div class="newline"></div><span class="go">(1.7842019405859857, 0.082172638183642358)</span>
+<div class="newline"></div></pre></div>
+</div>
+<a class="reference external image-reference" href="auto_examples/plot_pandas.html"><img alt="_images/plot_pandas_5.png" class="align-right" src="_images/plot_pandas_5.png" style="width: 240.0px; height: 180.0px;" /></a>
+<p>This is equivalent to a 1-sample test on the difference:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;FSIQ&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PIQ&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<div class="newline"></div><span class="go">(1.7842019405859857, 0.082172638183642358)</span>
+<div class="newline"></div></pre></div>
+</div>
 <p>Wilcoxon paired</p>
-<p>Binomial test?</p>
 <p><div style="clear: both"></div></p>
 </div>
 </div>

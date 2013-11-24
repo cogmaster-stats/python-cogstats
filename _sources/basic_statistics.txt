@@ -261,6 +261,12 @@ scene) to display statistics on dataframes::
    :scale: 50
    :align: center
 
+.. topic:: **Exercise**
+    :class: green
+
+    Plot the scatter matrix for males only, and for females only. Do you
+    think that the 2 sub-populations correspond to gender?
+
 |
 
 Hypothesis testing: two-group comparisons
@@ -320,8 +326,35 @@ with :func:`scipy.stats.ttest_ind`::
 Paired tests
 ------------
 
-VIQ vs another IQ
+.. image:: auto_examples/images/plot_pandas_4.png
+   :target: auto_examples/plot_pandas.html
+   :scale: 70
+   :align: right
+
+PIQ, VIQ, and FSIQ give 3 measures of IQ. Let us test if FISQ and PIQ are
+significantly different. We need to use a 2 sample test::
+
+    >>> stats.ttest_ind(data['FSIQ'], data['PIQ'])
+    (0.46563759638096403, 0.64277250094148408)
+
+The problem with this approach is that is forgets that there are links
+between observations: FSIQ and PIQ are measure on the same individuals.
+Thus the variance due to inter-subject variability is confounding, and
+can be removed, using a "paired test", or "repeated measure test"::
+
+    >>> stats.ttest_rel(data['FSIQ'], data['PIQ'])
+    (1.7842019405859857, 0.082172638183642358)
+
+.. image:: auto_examples/images/plot_pandas_5.png
+   :target: auto_examples/plot_pandas.html
+   :scale: 60
+   :align: right
+
+This is equivalent to a 1-sample test on the difference::
+
+    >>> stats.ttest_1samp(data['FSIQ'] - data['PIQ'], 0)
+    (1.7842019405859857, 0.082172638183642358)
+
 
 Wilcoxon paired
 
-Binomial test?
