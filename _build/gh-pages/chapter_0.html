@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>First course &mdash; Statistics for the CogMaster</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2013',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <link rel="top" title="Statistics for the CogMaster" href="../../index.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../index.html">Statistics for the CogMaster</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="first-course">
+<h1>First course<a class="headerlink" href="#first-course" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="activation-irmf">
+<h2>Activation IRMf<a class="headerlink" href="#activation-irmf" title="Permalink to this headline">¶</a></h2>
+<p>Why do we do activation fMRI?
+Basically: localization
+Hypothesis: functional specialization
+Aim: given a target process, detect the brain areas involved
+Principle: the experimenter imposes on the subject a temporal variation related to the target process and looks for whichever part of the brain displays a signal in which the same variation could be found.</p>
+<p>=&gt; we need to get the time series of BOLD signal AND the time series of what happened to the subject AND they both have to be synchonous!</p>
+<p>also
+- resting state fMRI
+- more than localization: connectivity</p>
+</div>
+<div class="section" id="bold-signal">
+<h2>BOLD signal<a class="headerlink" href="#bold-signal" title="Permalink to this headline">¶</a></h2>
+<p>BOLD signal: local vascular changes somehow related to increased brain activity can be detected by a MRI scanner (T2* signal increases).
+However the fluctuation of the signal induced by the BOLD effect is about few percents.</p>
+</div>
+<div class="section" id="fmri-data">
+<h2>fMRI data<a class="headerlink" href="#fmri-data" title="Permalink to this headline">¶</a></h2>
+<p>As usual, we would like to measure a variation =&gt; temporal resolution
+Localization =&gt; spatial resolution
+Trade-off : it takes more time to acquire more data points.</p>
+<p>The MRI scanner allows the BOLD signal to be recorded in a given space where the experimenter puts the object to measure, in our case, a living brain (and around: the human that sustains it).</p>
+<p>Scanner =&gt; sequential acquisition of data
+- 2D: one slice n * n voxels (a voxel is an element of volume, think 3D pixel)
+- 3D: many slices = one volume, which usually covers the whole brain
+- 4D: time series of sequentially acquired volumes == for each voxel, we get a time series</p>
+<p>Let&#8217;s look at the data:</p>
+<p>1) a volume:
+montrer qu&#8217;un volume est une matrice dont les dimensions sont imposées par le champ de vue, le nombre de coupes et la taille des voxels
+sous SPM :
+v=spm_read_vols(spm_vol_nifti(&#8216;path_vers_mon_image.nii&#8217;));
+size(v);
+signal in a pixel:
+v(i,j,k);</p>
+<p>2) a slice
+surf(v(:,:,size(v,3)/2));</p>
+<p>3) time series
+SPM8 ne manipule pas de nifti 4D donc c&#8217;est un peu pedestre
+P=ls(path_to_images/<a href="#id1"><span class="problematic" id="id2">*</span></a>.nii);
+or
+P=&#8217;&#8216;;for nf=numero_image_debut:numero_image_end
+P(nf,:)=sprintf(&#8216;path_to_image/nom_image-%.4d.nii&#8217;,nf);end
+end
+s(:,1)=spm_get_data(P,[i;j;k]);
+figure;plot(s);
+s(:,1)=spm_get_data(P,[i;j;k]);
+hold on;
+plot(s(:,2));
+characteristics:
+- NOISY!!!!
+- Highly correlated, spatially, temporally!
+- spatial resolution
+- temporal resolution
+- different sources of variations</p>
+<p>Remember, the fluctuation induced by brain activity is few percents =&gt; measurement of a small effect size in huge noise
+=&gt; need for a LOT of repetition!
+=&gt; substractive approach</p>
+<p><div style="clear: both"></div></p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../index.html">Statistics for the CogMaster</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
