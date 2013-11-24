@@ -88,12 +88,14 @@ zip: html
 install: html
 	rm -rf _build/gh-pages
 	cd _build/ && \
-        git clone git@github.com:cogmaster-stats/python-cogstats.git && \
-	cd python-cogstats && git checkout gh-pages && \
+        git clone .. python-cogstats && \
+	cd python-cogstats && \
+        git remote add github git@github.com:cogmaster-stats/python-cogstats.git && \
+	git checkout gh-pages && \
 	cp -r ../html/* . && \
 	git add * && \
 	git commit -a -m 'Make install' && \
-	git push
+	git push github 
 
 epub:
 	$(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) _build/epub
