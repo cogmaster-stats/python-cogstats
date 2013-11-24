@@ -88,10 +88,12 @@ zip: html
 install: html
 	rm -rf _build/gh-pages
 	cd _build/ && \
-        git clone .. python-cogstats && \
-	cd python-cogstats && \
+        git clone .. gh-pages && \
+	cd gh-pages && \
         git remote add github git@github.com:cogmaster-stats/python-cogstats.git && \
 	git checkout gh-pages && \
+	git fetch github && \
+	git merge github/gh-pages && \
 	cp -r ../html/* . && \
 	git add * && \
 	git commit -a -m 'Make install' && \
