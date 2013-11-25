@@ -359,9 +359,90 @@ This is equivalent to a 1-sample test on the difference::
 
 T-tests assume Gaussian errors. The bi-modal distribution viewed on the
 scatter matrices tells us that a Gaussian distribution is unlikely. We
-can use a Wilcoxon signed-rank test, that relaxes this assumption::
+can use a `Wilcoxon signed-rank test
+<http://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test>`_, that relaxes
+this assumption::
 
     >>> stats.wilcoxon(data['FSIQ'], data['PIQ'])
     (274.5, 0.034714577290489719)
+
+.. note::
+
+   The corresponding test in the non paired case is the `Mann–Whitney U
+   test <http://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U>`_,
+   :func:`scipy.stats.mannwhitneyu`.
+
+.. topic:: **Exercice**
+   :class: green
+
+   * Test the difference between weights in males and females.
+
+   * Use non parametric statistics to test the difference between VIQ in
+     males and females.
+
+|
+
+Linear models, ANOVA
+======================
+
+A simple linear regression
+---------------------------
+
+.. image:: auto_examples/images/plot_regression_1.png
+   :target: auto_examples/plot_regression.html
+   :scale: 60
+   :align: right
+
+Given two set of observations, `x` and `y`, we want to test the
+hypothesis that `y` is a linear function of `x`. In other terms:
+
+    :math:`y = x * coef + e`
+
+where `e` is observation noise. We will use the `statmodels
+<http://statsmodels.sourceforge.net/>`_ module to:
+
+#. Fit a linear model. We will use the simplest strategy, `ordinary least
+   squares <http://en.wikipedia.org/wiki/Ordinary_least_squares>`_ (OLS).
+
+#. Test that `coef` is non zero.
+
+|
+
+First, we generate simulated data according to the model::
+
+    >>> x = np.linspace(-5, 5, 20)
+    >>> np.random.seed(1)
+    >>> # normal distributed noise
+    >>> y = -5 + 3*x + 4 * np.random.normal(size=x.shape)
+    >>> # Create a data frame containing all the relevant variables
+    >>> data = pandas.DataFrame({'x': x, 'y': y})
+
+Specify an OLS model and fit it::
+
+    >>> from statsmodels.formula.api import ols
+    >>> model = ols("y ~ x", data).fit()
+    >>> print(model.summary())  # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE 
+                                OLS Regression Results                            
+    ==============================================================================
+    Dep. Variable:                      y   R-squared:                       0.804
+    Model:                            OLS   Adj. R-squared:                  0.794
+    Method:                 Least Squares   F-statistic:                     74.03
+    Date:                ...                Prob (F-statistic):           8.56e-08
+    Time:                        ...        Log-Likelihood:                -57.988
+    No. Observations:                  20   AIC:                             120.0
+    Df Residuals:                      18   BIC:                             122.0
+    Df Model:                           1                                         
+    ==============================================================================
+                     coef    std err          t      P>|t|      [95.0% Conf. Int.]
+    ------------------------------------------------------------------------------
+    Intercept     -5.5335      1.036     -5.342      0.000        -7.710    -3.357
+    x              2.9369      0.341      8.604      0.000         2.220     3.654
+    ==============================================================================
+    Omnibus:                        0.100   Durbin-Watson:                   2.956
+    Prob(Omnibus):                  0.951   Jarque-Bera (JB):                0.322
+    Skew:                          -0.058   Prob(JB):                        0.851
+    Kurtosis:                       2.390   Cond. No.                         3.03
+    ==============================================================================
+
 
 
