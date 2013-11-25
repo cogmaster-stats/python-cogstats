@@ -366,8 +366,7 @@ This is equivalent to a 1-sample test on the difference::
 
 |
 
-T-tests assume Gaussian errors. The bi-modal distribution viewed on the
-scatter matrices tells us that a Gaussian distribution is unlikely. We
+T-tests assume Gaussian errors. We
 can use a `Wilcoxon signed-rank test
 <http://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test>`_, that relaxes
 this assumption::
