@@ -435,7 +435,16 @@ can be removed, using a &#8220;paired test&#8221;, or &#8220;repeated measure te
 <div class="newline"></div><span class="go">(1.7842019405859857, 0.082172638183642358)</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>Wilcoxon paired</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>T-tests assume Gaussian errors. The bi-modal distribution viewed on the
+scatter matrices tells us that a Gaussian distribution is unlikely. We
+can use a Wilcoxon signed-rank test, that relaxes this assumption:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">wilcoxon</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;FSIQ&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PIQ&#39;</span><span class="p">])</span>
+<div class="newline"></div><span class="go">(274.5, 0.034714577290489719)</span>
+<div class="newline"></div></pre></div>
+</div>
 <p><div style="clear: both"></div></p>
 </div>
 </div>

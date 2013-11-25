@@ -25,7 +25,7 @@ More specifically:
 
     *
 
-      .. image:: images/plot_localizer_analysis_3.png
+      .. image:: images/plot_localizer_analysis_1.png
 
     *
 
@@ -33,7 +33,15 @@ More specifically:
 
     *
 
+      .. image:: images/plot_localizer_analysis_3.png
+
+    *
+
       .. image:: images/plot_localizer_analysis_4.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_5.png
 
     *
 
@@ -41,7 +49,7 @@ More specifically:
 
     *
 
-      .. image:: images/plot_localizer_analysis_1.png
+      .. image:: images/plot_localizer_analysis_7.png
 
     *
 
@@ -49,15 +57,63 @@ More specifically:
 
     *
 
-      .. image:: images/plot_localizer_analysis_7.png
-
-    *
-
       .. image:: images/plot_localizer_analysis_9.png
 
     *
 
-      .. image:: images/plot_localizer_analysis_5.png
+      .. image:: images/plot_localizer_analysis_10.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_11.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_12.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_13.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_14.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_15.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_16.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_17.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_18.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_19.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_20.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_21.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_22.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_23.png
 
 
 **Script output**:
@@ -101,6 +157,6 @@ More specifically:
 .. literalinclude:: plot_localizer_analysis.py
     :lines: 17-
 
-**Total running time of the example:**  29.12 seconds
-( 0 minutes  29.12 seconds)
+**Total running time of the example:**  29.35 seconds
+( 0 minutes  29.35 seconds)
     
