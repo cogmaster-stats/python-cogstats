@@ -405,7 +405,7 @@ A simple linear regression
 Given two set of observations, `x` and `y`, we want to test the
 hypothesis that `y` is a linear function of `x`. In other terms:
 
-    :math:`y = x * coef + e`
+    :math:`y = x * coef + intercept + e`
 
 where `e` is observation noise. We will use the `statmodels
 <http://statsmodels.sourceforge.net/>`_ module to:
@@ -454,9 +454,26 @@ Specify an OLS model and fit it::
     ==============================================================================
 
 .. topic:: **Exercise**
+   :class: green
 
    Retrieve the estimated parameters from the model above. **Hint**:
    use tab-completion to find the relevent attribute.
 
+
+Multiple Regression
+--------------------
+
+.. image:: auto_examples/images/plot_regression_3d_1.png
+   :target: auto_examples/plot_regression_3d.html
+   :scale: 50
+   :align: right
+
+Consider a linear model explaining a variable `z` (the dependent
+variable) with 2 variables `x` and `y`:
+
+    :math:`z = x \, c_1 + y \, c_2 + i + e`
+
+Such a model can be seen in 3D as fitting a plane to a cloud of (`x`,
+`y`, `z`) points.
 
 

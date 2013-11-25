@@ -42,8 +42,6 @@ ax.view_init(20, -120)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Z')
-fig.colorbar(surf, shrink=0.6)
-
 
 ##############################################################################
 # Multilinear regression model, calculating fit, P-values, confidence
