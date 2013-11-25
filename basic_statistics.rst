@@ -7,7 +7,16 @@ Basic statistics
    This course assumes that you already know Python. The `scipy-lectures
    <http://scipy-lectures.github.io>`_ give an introduction to Python.
 
-.. contents:: This page contents
+.. tip::
+
+    This course gives an introduction to statistics with Python. It is
+    useful to get acquainted with data representations in Python. In
+    terms of experimental psychology, the patterns demonstrated here can
+    be applied to simple dataset that arise from psychophysics, or
+    reaction time experiments. We will see how to process efficiently
+    more complex data as produced by brain imaging in the next course.
+
+.. contents:: Contents
    :local:
    :depth: 1
 
@@ -443,6 +452,11 @@ Specify an OLS model and fit it::
     Skew:                          -0.058   Prob(JB):                        0.851
     Kurtosis:                       2.390   Cond. No.                         3.03
     ==============================================================================
+
+.. topic:: **Exercise**
+
+   Retrieve the estimated parameters from the model above. **Hint**:
+   use tab-completion to find the relevent attribute.
 
 
 
