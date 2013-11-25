@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.1.3. Multiple Regression &mdash; Statistics for the CogMaster</title>
+    <title>3.1.4. Multiple Regression &mdash; Statistics for the CogMaster</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -26,8 +26,8 @@
     <script type="text/javascript" src="../_static/copybutton.js"></script>
     <link rel="top" title="Statistics for the CogMaster" href="../index.html" />
     <link rel="up" title="3. Examples" href="index.html" />
-    <link rel="next" title="3.1.4. GLM fitting in fMRI" href="plot_localizer_analysis.html" />
-    <link rel="prev" title="3.1.2. Plotting quantities from a CSV file" href="plot_pandas.html" /> 
+    <link rel="next" title="3.1.5. GLM fitting in fMRI" href="plot_localizer_analysis.html" />
+    <link rel="prev" title="3.1.3. Simple Regression" href="plot_regression.html" /> 
   </head>
   <body>
    <!-- Use the header to add javascript -->
@@ -95,10 +95,10 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="plot_localizer_analysis.html" title="3.1.4. GLM fitting in fMRI"
+          <a href="plot_localizer_analysis.html" title="3.1.5. GLM fitting in fMRI"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="plot_pandas.html" title="3.1.2. Plotting quantities from a CSV file"
+          <a href="plot_regression.html" title="3.1.3. Simple Regression"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Statistics for the CogMaster</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">3. Examples</a> &raquo;</li>
@@ -124,7 +124,7 @@
           <div class="body">
             
   <div class="section" id="multiple-regression">
-<span id="example-plot-regression-3d-py"></span><h1>3.1.3. Multiple Regression<a class="headerlink" href="#multiple-regression" title="Permalink to this headline">¶</a></h1>
+<span id="example-plot-regression-3d-py"></span><h1>3.1.4. Multiple Regression<a class="headerlink" href="#multiple-regression" title="Permalink to this headline">¶</a></h1>
 <p>Calculate using &#8216;statsmodels&#8217; just the best fit, or all the corresponding
 statistical parameters.</p>
 <p>Also shows how to make 3d plots.</p>
@@ -132,29 +132,35 @@ statistical parameters.</p>
 <p><strong>Script output</strong>:</p>
 <div class="max-height highlight-python"><pre>  OLS Regression Results
 ==============================================================================
-Dep. Variable:                      z   R-squared:                       0.987
-Model:                            OLS   Adj. R-squared:                  0.987
-Method:                 Least Squares   F-statistic:                 3.997e+05
-Date:                Mon, 25 Nov 2013   Prob (F-statistic):               0.00
-Time:                        17:15:50   Log-Likelihood:                -14501.
-No. Observations:               10201   AIC:                         2.901e+04
-Df Residuals:                   10198   BIC:                         2.903e+04
+Dep. Variable:                      z   R-squared:                       0.594
+Model:                            OLS   Adj. R-squared:                  0.592
+Method:                 Least Squares   F-statistic:                     320.4
+Date:                Mon, 25 Nov 2013   Prob (F-statistic):           1.89e-86
+Time:                        18:55:13   Log-Likelihood:                -1537.7
+No. Observations:                 441   AIC:                             3081.
+Df Residuals:                     438   BIC:                             3094.
 Df Model:                           2
 ==============================================================================
                  coef    std err          t      P&gt;|t|      [95.0% Conf. Int.]
 ------------------------------------------------------------------------------
-Intercept     -4.9975      0.010   -503.369      0.000        -5.017    -4.978
-x              3.0025      0.003    881.703      0.000         2.996     3.009
-y             -0.5051      0.003   -148.340      0.000        -0.512    -0.498
+Intercept     -4.5052      0.378    -11.924      0.000        -5.248    -3.763
+x              3.1173      0.125     24.979      0.000         2.872     3.363
+y             -0.5109      0.125     -4.094      0.000        -0.756    -0.266
 ==============================================================================
-Omnibus:                        3.692   Durbin-Watson:                   1.970
-Prob(Omnibus):                  0.158   Jarque-Bera (JB):                3.511
-Skew:                           0.012   Prob(JB):                        0.173
-Kurtosis:                       2.912   Cond. No.                         2.92
+Omnibus:                        0.260   Durbin-Watson:                   2.057
+Prob(Omnibus):                  0.878   Jarque-Bera (JB):                0.204
+Skew:                          -0.052   Prob(JB):                        0.903
+Kurtosis:                       3.015   Cond. No.                         3.03
 ==============================================================================
 
- Retrieving manually the parameter estimates:
-[-4.99754526  3.00250049 -0.50514907]</pre>
+Retrieving manually the parameter estimates:
+[-4.50523303  3.11734237 -0.51091248]
+
+ANOVA results
+           df        sum_sq       mean_sq           F        PR(&gt;F)
+x           1  39284.301219  39284.301219  623.962799  2.888238e-86
+y           1   1055.220089   1055.220089   16.760336  5.050899e-05
+Residual  438  27576.201607     62.959364         NaN           NaN</pre>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_regression_3d.py"><tt class="xref download docutils literal"><span class="pre">plot_regression_3d.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Original author: Thomas Haslwanter</span>
@@ -168,29 +174,30 @@ Kurtosis:                       2.912   Cond. No.                         2.92
 <div class="newline"></div>
 <div class="newline"></div><span class="c"># For statistics. Requires statsmodels 5.0 or more</span>
 <div class="newline"></div><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+<div class="newline"></div><span class="c"># Analysis of Variance (ANOVA) on linear models</span>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">statsmodels.stats.anova</span> <span class="kn">import</span> <span class="n">anova_lm</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c">##############################################################################</span>
 <div class="newline"></div><span class="c"># Generate and show the data</span>
-<div class="newline"></div><span class="n">x</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.linspace.html#numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<div class="newline"></div><span class="n">x</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.linspace.html#numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
 <div class="newline"></div><span class="c"># We generate a 2D grid</span>
 <div class="newline"></div><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.meshgrid.html#numpy.meshgrid"><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span></a><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c"># To get reproducable values, provide a seed value</span>
-<div class="newline"></div><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">987654321</span><span class="p">)</span>
+<div class="newline"></div><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c"># Z is the elevation of this 2D grid</span>
-<div class="newline"></div><span class="n">Z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">X</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">Y</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="newline"></div><span class="n">Z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">X</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">Y</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="c"># Plot the figure</span>
+<div class="newline"></div><span class="c"># Plot the data</span>
 <div class="newline"></div><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
 <div class="newline"></div><span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">&#39;3d&#39;</span><span class="p">)</span>
-<div class="newline"></div><span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">)</span>
+<div class="newline"></div><span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">,</span>
+<div class="newline"></div>                       <span class="n">rstride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">)</span>
 <div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;X&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Y&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s">&#39;Z&#39;</span><span class="p">)</span>
-<div class="newline"></div><a href="http://matplotlib.org/api/colorbar_api.html#matplotlib.colorbar"><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<div class="newline"></div>
 <div class="newline"></div>
 <div class="newline"></div><span class="c">##############################################################################</span>
 <div class="newline"></div><span class="c"># Multilinear regression model, calculating fit, P-values, confidence</span>
@@ -212,16 +219,21 @@ Kurtosis:                       2.912   Cond. No.                         2.92
 <div class="newline"></div><span class="c"># Print the summary</span>
 <div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s"> Retrieving manually the parameter estimates:&quot;</span><span class="p">)</span>
+<div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Retrieving manually the parameter estimates:&quot;</span><span class="p">)</span>
 <div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_results</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
 <div class="newline"></div><span class="c"># should be array([-4.99754526,  3.00250049, -0.50514907])</span>
 <div class="newline"></div>
+<div class="newline"></div><span class="c"># Peform analysis of variance on fitted linear model</span>
+<div class="newline"></div><span class="n">anova_results</span> <span class="o">=</span> <span class="n">anova_lm</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">ANOVA results&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="n">anova_results</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.38 seconds
-( 0 minutes  0.38 seconds)</p>
+<p><strong>Total running time of the example:</strong>  0.34 seconds
+( 0 minutes  0.34 seconds)</p>
 <p><div style="clear: both"></div></p>
 </div>
 
@@ -234,10 +246,10 @@ Kurtosis:                       2.912   Cond. No.                         2.92
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="plot_localizer_analysis.html" title="3.1.4. GLM fitting in fMRI"
+          <a href="plot_localizer_analysis.html" title="3.1.5. GLM fitting in fMRI"
              >next</a></li>
         <li class="right" >
-          <a href="plot_pandas.html" title="3.1.2. Plotting quantities from a CSV file"
+          <a href="plot_regression.html" title="3.1.3. Simple Regression"
              >previous</a> |</li>
         <li><a href="../index.html">Statistics for the CogMaster</a> &raquo;</li>
           <li><a href="index.html" >3. Examples</a> &raquo;</li>

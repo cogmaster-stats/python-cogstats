@@ -81,6 +81,30 @@ Code examples for the Python statistics course at the cogmaster.
 .. raw:: html
 
 
+    <div class="thumbnailContainer" tooltip="Fit a simple linear regression using 'statsmodels', compute corresponding p-values. ">
+
+.. figure:: ./images/thumb/plot_regression.png
+   :target: ./plot_regression.html
+
+   :ref:`example_plot_regression.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_regression
+
+
+
+.. raw:: html
+
+
     <div class="thumbnailContainer" tooltip="Calculate using 'statsmodels' just the best fit, or all the corresponding statistical parameter...">
 
 .. figure:: ./images/thumb/plot_regression_3d.png

@@ -127,11 +127,21 @@
 <p class="topic-title first"><strong>Prerequisites</strong></p>
 <p>This course assumes that you already know Python. The <a class="reference external" href="http://scipy-lectures.github.io">scipy-lectures</a> give an introduction to Python.</p>
 </div>
-<div class="contents local topic" id="this-page-contents">
-<p class="topic-title first">This page contents</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">This course gives an introduction to statistics with Python. It is
+useful to get acquainted with data representations in Python. In
+terms of experimental psychology, the patterns demonstrated here can
+be applied to simple dataset that arise from psychophysics, or
+reaction time experiments. We will see how to process efficiently
+more complex data as produced by brain imaging in the next course.</p>
+</div>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#interacting-with-data" id="id3">Interacting with data</a></li>
 <li><a class="reference internal" href="#hypothesis-testing-two-group-comparisons" id="id4">Hypothesis testing: two-group comparisons</a></li>
+<li><a class="reference internal" href="#linear-models-anova" id="id5">Linear models, ANOVA</a></li>
 </ul>
 </div>
 <div class="line-block">
@@ -440,11 +450,100 @@ can be removed, using a &#8220;paired test&#8221;, or &#8220;repeated measure te
 </div>
 <p>T-tests assume Gaussian errors. The bi-modal distribution viewed on the
 scatter matrices tells us that a Gaussian distribution is unlikely. We
-can use a Wilcoxon signed-rank test, that relaxes this assumption:</p>
+can use a <a class="reference external" href="http://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test">Wilcoxon signed-rank test</a>, that relaxes
+this assumption:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">wilcoxon</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;FSIQ&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;PIQ&#39;</span><span class="p">])</span>
 <div class="newline"></div><span class="go">(274.5, 0.034714577290489719)</span>
 <div class="newline"></div></pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The corresponding test in the non paired case is the <a class="reference external" href="http://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U">Mann–Whitney U
+test</a>,
+<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html#scipy.stats.mannwhitneyu" title="(in SciPy v0.13.0)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.stats.mannwhitneyu()</span></tt></a>.</p>
+</div>
+<div class="green topic">
+<p class="topic-title first"><strong>Exercice</strong></p>
+<ul class="simple">
+<li>Test the difference between weights in males and females.</li>
+<li>Use non parametric statistics to test the difference between VIQ in
+males and females.</li>
+</ul>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="linear-models-anova">
+<h2><a class="toc-backref" href="#id5">1.3. Linear models, ANOVA</a><a class="headerlink" href="#linear-models-anova" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-simple-linear-regression">
+<h3>1.3.1. A simple linear regression<a class="headerlink" href="#a-simple-linear-regression" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_regression.html"><img alt="_images/plot_regression_1.png" class="align-right" src="_images/plot_regression_1.png" style="width: 300.0px; height: 240.0px;" /></a>
+<p>Given two set of observations, <cite>x</cite> and <cite>y</cite>, we want to test the
+hypothesis that <cite>y</cite> is a linear function of <cite>x</cite>. In other terms:</p>
+<blockquote>
+<div><img class="math" src="_images/math/7d0241012551ecd2126887c9d39ed81bf33dc320.png" alt="y = x * coef + intercept + e" style="vertical-align: -6px"/></div></blockquote>
+<p>where <cite>e</cite> is observation noise. We will use the <a class="reference external" href="http://statsmodels.sourceforge.net/">statmodels</a> module to:</p>
+<ol class="arabic simple">
+<li>Fit a linear model. We will use the simplest strategy, <a class="reference external" href="http://en.wikipedia.org/wiki/Ordinary_least_squares">ordinary least
+squares</a> (OLS).</li>
+<li>Test that <cite>coef</cite> is non zero.</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>First, we generate simulated data according to the model:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c"># normal distributed noise</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c"># Create a data frame containing all the relevant variables</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">})</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Specify an OLS model and fit it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s">&quot;y ~ x&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>  
+<div class="newline"></div><span class="go">                            OLS Regression Results</span>
+<div class="newline"></div><span class="go">==============================================================================</span>
+<div class="newline"></div><span class="go">Dep. Variable:                      y   R-squared:                       0.804</span>
+<div class="newline"></div><span class="go">Model:                            OLS   Adj. R-squared:                  0.794</span>
+<div class="newline"></div><span class="go">Method:                 Least Squares   F-statistic:                     74.03</span>
+<div class="newline"></div><span class="go">Date:                ...                Prob (F-statistic):           8.56e-08</span>
+<div class="newline"></div><span class="go">Time:                        ...        Log-Likelihood:                -57.988</span>
+<div class="newline"></div><span class="go">No. Observations:                  20   AIC:                             120.0</span>
+<div class="newline"></div><span class="go">Df Residuals:                      18   BIC:                             122.0</span>
+<div class="newline"></div><span class="go">Df Model:                           1</span>
+<div class="newline"></div><span class="go">==============================================================================</span>
+<div class="newline"></div><span class="go">                 coef    std err          t      P&gt;|t|      [95.0% Conf. Int.]</span>
+<div class="newline"></div><span class="go">------------------------------------------------------------------------------</span>
+<div class="newline"></div><span class="go">Intercept     -5.5335      1.036     -5.342      0.000        -7.710    -3.357</span>
+<div class="newline"></div><span class="go">x              2.9369      0.341      8.604      0.000         2.220     3.654</span>
+<div class="newline"></div><span class="go">==============================================================================</span>
+<div class="newline"></div><span class="go">Omnibus:                        0.100   Durbin-Watson:                   2.956</span>
+<div class="newline"></div><span class="go">Prob(Omnibus):                  0.951   Jarque-Bera (JB):                0.322</span>
+<div class="newline"></div><span class="go">Skew:                          -0.058   Prob(JB):                        0.851</span>
+<div class="newline"></div><span class="go">Kurtosis:                       2.390   Cond. No.                         3.03</span>
+<div class="newline"></div><span class="go">==============================================================================</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="green topic">
+<p class="topic-title first"><strong>Exercise</strong></p>
+<p>Retrieve the estimated parameters from the model above. <strong>Hint</strong>:
+use tab-completion to find the relevent attribute.</p>
+</div>
+</div>
+<div class="section" id="multiple-regression">
+<h3>1.3.2. Multiple Regression<a class="headerlink" href="#multiple-regression" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="auto_examples/plot_regression_3d.html"><img alt="_images/plot_regression_3d_1.png" class="align-right" src="_images/plot_regression_3d_1.png" style="width: 400.0px; height: 300.0px;" /></a>
+<p>Consider a linear model explaining a variable <cite>z</cite> (the dependent
+variable) with 2 variables <cite>x</cite> and <cite>y</cite>:</p>
+<blockquote>
+<div><img class="math" src="_images/math/f31d1d1f862952dea8697f7a1c10ce19d2532663.png" alt="z = x \, c_1 + y \, c_2 + i + e" style="vertical-align: -6px"/></div></blockquote>
+<p>Such a model can be seen in 3D as fitting a plane to a cloud of (<cite>x</cite>,
+<cite>y</cite>, <cite>z</cite>) points.</p>
 <p><div style="clear: both"></div></p>
 </div>
 </div>
