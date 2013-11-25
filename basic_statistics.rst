@@ -355,6 +355,13 @@ This is equivalent to a 1-sample test on the difference::
     >>> stats.ttest_1samp(data['FSIQ'] - data['PIQ'], 0)
     (1.7842019405859857, 0.082172638183642358)
 
+|
 
-Wilcoxon paired
+T-tests assume Gaussian errors. The bi-modal distribution viewed on the
+scatter matrices tells us that a Gaussian distribution is unlikely. We
+can use a Wilcoxon signed-rank test, that relaxes this assumption::
+
+    >>> stats.wilcoxon(data['FSIQ'], data['PIQ'])
+    (274.5, 0.034714577290489719)
+
 
