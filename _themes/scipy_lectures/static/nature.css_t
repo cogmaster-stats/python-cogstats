@@ -156,6 +156,15 @@ div.body h1, div.body h2, div.body h3, div.body h4, hr {
     clear: both;
 }
 
+/* Page title should have a lot of space */
+div.body h1 {
+    text-align: center;
+    font-size: 200%;
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+}
+
 /* pre */
 div.body pre {
     font-weight: 500;
