@@ -1,0 +1,61 @@
+
+
+.. _example_plot_regression_3d.py:
+
+
+Multiple Regression
+====================
+
+Calculate using 'statsmodels' just the best fit, or all the corresponding
+statistical parameters.
+
+Also shows how to make 3d plots.
+
+
+
+.. image:: images/plot_regression_3d_1.png
+    :align: center
+
+
+**Script output**:
+
+.. rst-class:: max_height
+
+ ::
+
+    OLS Regression Results                            
+  ==============================================================================
+  Dep. Variable:                      z   R-squared:                       0.987
+  Model:                            OLS   Adj. R-squared:                  0.987
+  Method:                 Least Squares   F-statistic:                 3.997e+05
+  Date:                Mon, 25 Nov 2013   Prob (F-statistic):               0.00
+  Time:                        17:15:50   Log-Likelihood:                -14501.
+  No. Observations:               10201   AIC:                         2.901e+04
+  Df Residuals:                   10198   BIC:                         2.903e+04
+  Df Model:                           2                                         
+  ==============================================================================
+                   coef    std err          t      P>|t|      [95.0% Conf. Int.]
+  ------------------------------------------------------------------------------
+  Intercept     -4.9975      0.010   -503.369      0.000        -5.017    -4.978
+  x              3.0025      0.003    881.703      0.000         2.996     3.009
+  y             -0.5051      0.003   -148.340      0.000        -0.512    -0.498
+  ==============================================================================
+  Omnibus:                        3.692   Durbin-Watson:                   1.970
+  Prob(Omnibus):                  0.158   Jarque-Bera (JB):                3.511
+  Skew:                           0.012   Prob(JB):                        0.173
+  Kurtosis:                       2.912   Cond. No.                         2.92
+  ==============================================================================
+  
+   Retrieving manually the parameter estimates:
+  [-4.99754526  3.00250049 -0.50514907]
+
+
+
+**Python source code:** :download:`plot_regression_3d.py <plot_regression_3d.py>`
+
+.. literalinclude:: plot_regression_3d.py
+    :lines: 10-
+
+**Total running time of the example:**  0.38 seconds
+( 0 minutes  0.38 seconds)
+    
