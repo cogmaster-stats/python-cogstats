@@ -465,8 +465,10 @@ Multiple Regression
 
 .. image:: auto_examples/images/plot_regression_3d_1.png
    :target: auto_examples/plot_regression_3d.html
-   :scale: 50
+   :scale: 45
    :align: right
+
+|
 
 Consider a linear model explaining a variable `z` (the dependent
 variable) with 2 variables `x` and `y`:
@@ -476,4 +478,68 @@ variable) with 2 variables `x` and `y`:
 Such a model can be seen in 3D as fitting a plane to a cloud of (`x`,
 `y`, `z`) points.
 
+|
+|
+
+**Example: the iris data**
+
+
+.. image:: auto_examples/images/plot_iris_analysis_1.png
+   :target: auto_examples/plot_iris_analysis_1.html
+   :scale: 80
+   :align: center
+
+::
+
+    >>> data = pandas.read_csv('examples/iris.csv')
+    >>> model = ols('sepal_width ~ name + petal_length', data).fit()
+    >>> print(model.summary())  # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE 
+                                OLS Regression Results                            
+    ==============================================================================
+    Dep. Variable:            sepal_width   R-squared:                       0.478
+    Model:                            OLS   Adj. R-squared:                  0.468
+    Method:                 Least Squares   F-statistic:                     44.63
+    Date:                ...                Prob (F-statistic):           1.58e-20
+    Time:                        ...        Log-Likelihood:                -38.185
+    No. Observations:                 150   AIC:                             84.37
+    Df Residuals:                     146   BIC:                             96.41
+    Df Model:                           3                                       
+    ===============================================================================...
+                             coef    std err          t     P>|t|  [95.0% Conf. Int.]
+    -------------------------------------------------------------------------------...
+    Intercept              2.9813      0.099     29.989     0.000      2.785     3.178
+    name[T.versicolor]    -1.4821      0.181     -8.190     0.000     -1.840    -1.124
+    name[T.virginica]     -1.6635      0.256     -6.502     0.000     -2.169    -1.158
+    petal_length           0.2983      0.061      4.920     0.000      0.178     0.418
+    ==============================================================================
+    Omnibus:                        2.868   Durbin-Watson:                   1.753
+    Prob(Omnibus):                  0.238   Jarque-Bera (JB):                2.885
+    Skew:                          -0.082   Prob(JB):                        0.236
+    Kurtosis:                       3.659   Cond. No.                         54.0
+    ==============================================================================
+
+Post-hoc ANOVA: contrast vectors
+---------------------------------
+
+In the above iris example, we wish to test if the petal width is
+different between versicolor and virginica, after removing the effect of
+sepal width. This can be formulated as testing the difference between the
+coefficient associated to versicolor and virginica in the linear model
+estimated above (it is an Analysis of Variance, ANOVA). For this, we
+write a vector of 'contrast' on the parameters estimated: we want to test
+"name[T.versicolor] - name[T.virginica]", with an 'F-test'::
+
+    >>> print(model.f_test([0, 1, -1, 0]))
+    <F test: F=array([[ 3.24533535]]), p=[[ 0.07369059]], df_denom=146, df_num=1>
+
+Is this difference significant?
+
+|
+
+.. topic:: **Exercice**
+   :class: green
+
+   Going back to the brain size + IQ data, test if the VIQ of male and
+   female are different after removing the effect of brain size, height
+   and weight.
 

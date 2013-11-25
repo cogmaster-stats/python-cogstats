@@ -81,6 +81,30 @@ Code examples for the Python statistics course at the cogmaster.
 .. raw:: html
 
 
+    <div class="thumbnailContainer" tooltip="Ilustrate an analysis on a real dataset:">
+
+.. figure:: ./images/thumb/plot_iris_analysis.png
+   :target: ./plot_iris_analysis.html
+
+   :ref:`example_plot_iris_analysis.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_iris_analysis
+
+
+
+.. raw:: html
+
+
     <div class="thumbnailContainer" tooltip="Fit a simple linear regression using 'statsmodels', compute corresponding p-values. ">
 
 .. figure:: ./images/thumb/plot_regression.png
