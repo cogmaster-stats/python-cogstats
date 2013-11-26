@@ -53,6 +53,11 @@ CogMaster Statistics course: Python materials
          collection of data for experimental psychology
 
 
+.. note:: 
+
+   To install Python, we recommend that you download `Anaconda Python
+   <http://continuum.io/downloads>`_
+
 _____
 
 .. nice layout in the toc
