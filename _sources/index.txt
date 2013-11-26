@@ -21,9 +21,9 @@ CogMaster Statistics course: Python materials
 .. sidebar:: Download 
     
 
-    * `HTML and example files <https://github.com/scipy-lectures/scipy-lectures.github.com/zipball/master>`_
+    * `HTML and example files <https://github.com/cogmaster-stats/python-cogstats/zipball/master>`_
     
-    * `Source code (github) <https://github.com/scipy-lectures/scipy-lecture-notes>`_
+    * `Source code (github) <https://github.com/cogmaster-stats/python-cogstats>`_
 
 .. topic:: Python materials for the statistics course of the `CogMaster <http://sapience.dec.ens.fr/cogmaster/www/>`_.
 
