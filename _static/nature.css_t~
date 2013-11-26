@@ -156,6 +156,14 @@ div.body h1, div.body h2, div.body h3, div.body h4, hr {
     clear: both;
 }
 
+div.body h1 {
+    text-align: center;
+    font-size: 200%;
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+}
+
 /* pre */
 div.body pre {
     font-weight: 500;
@@ -173,6 +181,11 @@ div.highlight pre {
     white-space: pre-wrap;
     padding-left: 3.6em;
     text-indent: -3.5em;
+}
+
+div.highlight pre a {
+    color: #111;
+    text-decoration:underline;    
 }
 
 /* Hack to have indented line wraps */
@@ -506,10 +519,3 @@ div.thumbnailContainer div p {
 div.thumbnailContainer div a {
     display: block; /* To have a better hover behavior */
 }
-
-div.highlight pre a {
-    color = #111;
-    text-decoration:underline;    
-}
-
-
