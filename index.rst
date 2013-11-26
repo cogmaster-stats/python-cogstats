@@ -25,12 +25,33 @@ CogMaster Statistics course: Python materials
     
     * `Source code (github) <https://github.com/scipy-lectures/scipy-lecture-notes>`_
 
-.. topic:: This document
-
-    These are the Python materials for the statistics course of the
-    `CogMaster <http://sapience.dec.ens.fr/cogmaster/www/>`_.
+.. topic:: Python materials for the statistics course of the `CogMaster <http://sapience.dec.ens.fr/cogmaster/www/>`_.
 
     **Authors:** S. Charron, `G. Varoquaux <http://gael-varoquaux.info/>`_
+
+|
+
+.. tip::
+
+    **Why Python for statistics in experimental psychology?**
+
+    R is a language dedicated to statistics. Python is a general purpose
+    language with statistics module. R has more statistical analysis
+    features than Python, and specialized syntaxes. However, when it
+    comes to building complex analysis pipelines that mix statistics with
+    e.g. image analysis, as in the case of brain imaging, the richness of
+    Python is an invaluable asset.
+
+    .. seealso::
+
+       * `MNE Python <http://martinos.org/mne/python_tutorial.html>`_:
+         Analysis of EEG and MEG in Python 
+
+       * `Nipy <http://nipy.org/>`_ The NeuroImaging in Python ecosystem
+
+       * `PyschoPy <http://www.psychopy.org>`_: presention of stimuli and
+         collection of data for experimental psychology
+
 
 _____
 

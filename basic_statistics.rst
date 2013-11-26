@@ -9,7 +9,7 @@ Basic statistics
 
 .. tip::
 
-    This course gives an introduction to statistics with Python. It is
+    This page gives an introduction to statistics with Python. It is
     useful to get acquainted with data representations in Python. In
     terms of experimental psychology, the patterns demonstrated here can
     be applied to simple dataset that arise from psychophysics, or
