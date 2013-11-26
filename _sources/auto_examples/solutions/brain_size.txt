@@ -1,0 +1,18 @@
+
+
+.. _example_solutions_brain_size.py:
+
+
+Relating Gender and IQ
+=======================
+
+Going back to the brain size + IQ data, test if the VIQ of male and
+female are different after removing the effect of brain size, height and
+weight.
+
+
+**Python source code:** :download:`brain_size.py <brain_size.py>`
+
+.. literalinclude:: brain_size.py
+    :lines: 9-
+    
