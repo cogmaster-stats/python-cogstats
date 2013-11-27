@@ -390,7 +390,7 @@ scipy, see <a class="reference external" href="http://scipy-lectures.github.io/"
 <h3>1.2.1. Student&#8217;s t-test<a class="headerlink" href="#student-s-t-test" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="sample-t-test">
 <h4>1.2.1.1. 1-sample t-test<a class="headerlink" href="#sample-t-test" title="Permalink to this headline">¶</a></h4>
-<p><tt class="xref py py-func docutils literal"><span class="pre">scipy.stats.ttest_1samp()</span></tt> tests if observations are drawn from a
+<p><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html#scipy.stats.ttest_1samp" title="(in SciPy v0.13.0)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.stats.ttest_1samp()</span></tt></a> tests if observations are drawn from a
 Gaussian distributions of given population mean. It returns the T
 statistic, and the p-value (see the function&#8217;s help):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;VIQ&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
@@ -413,7 +413,7 @@ we use, and what is the corresponding p-value?</p>
 <h4>1.2.1.2. 2-sample t-test<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <p>We have seen above that the mean VIQ in the male and female populations
 were different. To test if this is significant, we do a 2-sample t-test
-with <tt class="xref py py-func docutils literal"><span class="pre">scipy.stats.ttest_ind()</span></tt>:</p>
+with <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html#scipy.stats.ttest_ind" title="(in SciPy v0.13.0)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.stats.ttest_ind()</span></tt></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">female_viq</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;Gender&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;Female&#39;</span><span class="p">][</span><span class="s">&#39;VIQ&#39;</span><span class="p">]</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">male_viq</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;Gender&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;Male&#39;</span><span class="p">][</span><span class="s">&#39;VIQ&#39;</span><span class="p">]</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">female_viq</span><span class="p">,</span> <span class="n">male_viq</span><span class="p">)</span>
@@ -459,7 +459,7 @@ this assumption:</p>
 <p class="first admonition-title">Note</p>
 <p class="last">The corresponding test in the non paired case is the <a class="reference external" href="http://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U">Mann–Whitney U
 test</a>,
-<tt class="xref py py-func docutils literal"><span class="pre">scipy.stats.mannwhitneyu()</span></tt>.</p>
+<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html#scipy.stats.mannwhitneyu" title="(in SciPy v0.13.0)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.stats.mannwhitneyu()</span></tt></a>.</p>
 </div>
 <div class="green topic">
 <p class="topic-title first"><strong>Exercice</strong></p>
