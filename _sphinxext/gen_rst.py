@@ -562,7 +562,8 @@ def generate_dir_rst(dir, fhindex, example_dir, root_dir, plot_gallery):
     """)  # clear at the end of the section
 
 # modules for which we embed links into example code
-DOCMODULES = ['sklearn', 'matplotlib', 'numpy', 'scipy']
+DOCMODULES = ['sklearn', 'matplotlib', 'numpy', 'scipy', 'statsmodels',
+              'pandas']
 
 
 def make_thumbnail(in_fname, out_fname, width, height):
@@ -863,17 +864,24 @@ def embed_code_links(app, exception):
 
         # Add resolvers for the packages for which we want to show links
         doc_resolvers = {}
-        doc_resolvers['sklearn'] = SphinxDocLinkResolver(app.builder.outdir,
-                                                         relative=True)
+        doc_resolvers['sklearn'] = SphinxDocLinkResolver(
+                'http://scikit-learn.org/stable')
 
         doc_resolvers['matplotlib'] = SphinxDocLinkResolver(
-            'http://matplotlib.org')
+                'http://matplotlib.org')
 
         doc_resolvers['numpy'] = SphinxDocLinkResolver(
-            'http://docs.scipy.org/doc/numpy-1.6.0')
+                'http://docs.scipy.org/doc/numpy-1.6.0')
 
         doc_resolvers['scipy'] = SphinxDocLinkResolver(
             'http://docs.scipy.org/doc/scipy-0.11.0/reference')
+
+        doc_resolvers['pandas'] = SphinxDocLinkResolver(
+                'http://pandas.pydata.org')
+
+        doc_resolvers['statsmodels'] = SphinxDocLinkResolver(
+                'http://statsmodels.sourceforge.net')
+
 
         example_dir = os.path.join(app.builder.srcdir, 'auto_examples')
         html_example_dir = os.path.abspath(os.path.join(app.builder.outdir,

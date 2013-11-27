@@ -427,6 +427,7 @@ First, we generate simulated data according to the model::
 
 Specify an OLS model and fit it::
 
+    >>> # The following will work only with a recent version of statsmodels
     >>> from statsmodels.formula.api import ols
     >>> model = ols("y ~ x", data).fit()
     >>> print(model.summary())  # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE 
