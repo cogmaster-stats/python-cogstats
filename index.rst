@@ -68,6 +68,7 @@ _____
    :numbered:
 
    basic_statistics.rst
+   install.rst
    fmri_signals.rst
    auto_examples/index.rst
 
