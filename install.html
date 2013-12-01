@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.1. Getting ready: installing the software &mdash; Statistics for the CogMaster</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2013',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <link rel="top" title="Statistics for the CogMaster" href="index.html" />
+    <link rel="up" title="2. FMRI signals" href="fmri_signals.html" />
+    <link rel="next" title="3. Examples" href="auto_examples/index.html" />
+    <link rel="prev" title="2. FMRI signals" href="fmri_signals.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="auto_examples/index.html" title="3. Examples"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="fmri_signals.html" title="2. FMRI signals"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Statistics for the CogMaster</a> &raquo;</li>
+          <li><a href="fmri_signals.html" accesskey="U">2. FMRI signals</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-ready-installing-the-software">
+<h1>2.1. Getting ready: installing the software<a class="headerlink" href="#getting-ready-installing-the-software" title="Permalink to this headline">¶</a></h1>
+<div class="topic">
+<p class="topic-title first"><strong>Content</strong></p>
+<p>This page will help you installing a virtual machine that
+includes all the softwares we will use during the next courses on the
+analysis of fMRI data.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The installation is a bit tricky, please read the corresponding
+paragraph <strong>before</strong> trying anything, usually a computer doesn&#8217;t work the
+way you suppose it would: it follows the tortuous mind of its
+programmer. If you fail to install the virtual machine, ask a friend
+to help you, if it doesn&#8217;t work, please sit next to someone who made
+it for the next lecture: questions related to the installation will
+only be answered at the end of the lecture. By the way the downloads
+and installations might take quite a while, make sure you have some
+articles to read nearby and do it earlier than on the morning of the
+first course.</p>
+</div>
+<div class="topic">
+<p class="topic-title first"><strong>Prerequisites</strong></p>
+<p>Make sure you know where a file that you download from the internet is
+saved on your computer. Usually, there is a default &#8220;Download&#8221; folder
+not that deep from your home directory (check the preferences of your
+favorite browser), for example:</p>
+<blockquote>
+<div><ul class="simple">
+<li>On windows: C:\User\your_user_name\Download\</li>
+<li>On mac: /Users/your_user_name/Downloads/</li>
+<li>On some linux: /home/your_user_name/Download/</li>
+</ul>
+</div></blockquote>
+<p>If you are using a recent enough Mozilla Firefox browser, the general
+panel in the preferences allows you to select the option &#8220;always ask me
+where to save file&#8221;, which is useful to download a file where you want
+it to be stored.</p>
+</div>
+<div class="section" id="installation">
+<h2>2.1.1. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sanity-check">
+<h3>2.1.1.1. Sanity check<a class="headerlink" href="#sanity-check" title="Permalink to this headline">¶</a></h3>
+<p>Check that the Operating System currently running on your computer (the
+so-called &#8220;host&#8221; OS, which is usually windows, macOS or linux) currently
+running on your computer) appears in the following list:
+<a class="reference external" href="https://www.virtualbox.org/manual/ch01.html#hostossupport">https://www.virtualbox.org/manual/ch01.html#hostossupport</a> If not, well,
+too bad for you, please install one of the supported OS on a different
+partition.</p>
+</div>
+<div class="section" id="download-the-neurodebian-virtual-machine">
+<h3>2.1.1.2. Download the neurodebian virtual machine<a class="headerlink" href="#download-the-neurodebian-virtual-machine" title="Permalink to this headline">¶</a></h3>
+<p>Go the the website of the NeuroDebian repository <a class="reference external" href="http://neuro.debian.net/">http://neuro.debian.net/</a>
+and under &#8220;Get NeuroDebian&#8221;, select the Operating System (the so-called
+&#8220;host&#8221; OS, which is usually windows, macOS or linux) currently running on
+your computer. Then select the nearest server and download the &#8220;Virtual
+applicance image dile&#8221;, which is a rather heavy file with a &#8221;.oda&#8221;
+extension.</p>
+<p>For those using windows, I suggest you try the Germany (Nikilaus Valentin
+Haenel, Vogtland) server so you would get an .ova file and wouldn&#8217;t have
+to struggle to decompress the file.</p>
+<p>If you are using a linux system, unless you know exacly what you are
+doing and you&#8217;d rather install the various packages by yourself and won&#8217;t
+complain if you miss something during the lecture, I recommend that you
+install the neurodebian virtual machine as well. You can pick either the
+32bit or 64bit version from the MS Windows choice in the list.</p>
+</div>
+<div class="section" id="download-the-virtualbox-installer">
+<h3>2.1.1.3. Download the VirtualBox installer<a class="headerlink" href="#download-the-virtualbox-installer" title="Permalink to this headline">¶</a></h3>
+<p>From the website <a class="reference external" href="http://www.virtualbox.org/wiki/Downloads">http://www.virtualbox.org/wiki/Downloads</a> download the
+last available &#8220;VirtualBox platform package&#8221; corresponding to your host
+OS (the X stands for the version numbers, which changed twice this weak,
+it doen&#8217;t really matter):</p>
+<ul class="simple">
+<li>VirtualBox 4.X.X for Windows hosts if you are using Windows;</li>
+<li>VirtualBox 4.X.X for OS X hosts if you are using a Mac;</li>
+<li>and follow the link for the Linux hosts if you are using a linux, and
+proceed according to your distribution.</li>
+</ul>
+</div>
+<div class="section" id="install-virtualbox">
+<h3>2.1.1.4. Install VirtualBox<a class="headerlink" href="#install-virtualbox" title="Permalink to this headline">¶</a></h3>
+<p><strong>Read the installation instructions</strong> related to your host OS
+<a class="reference external" href="https://www.virtualbox.org/manual/ch02.html">https://www.virtualbox.org/manual/ch02.html</a></p>
+<p>Go in the directory where the installer file is and then:</p>
+<ul class="simple">
+<li>on window, double click on the downloaded .exe file (on windows 7 and
+probably vista and 8, wait until the warning windows on darkened
+blackground appears, and click &#8220;yes&#8221;; It usually takes few seconds, so
+wait and don&#8217;t click again and again on the installer). Then click on
+&#8220;Next&#8221; on the installer until you have to click on &#8220;install&#8221;. You will be
+then see several pop up windows asking you to install drivers, select
+&#8220;install&#8221; each time.</li>
+<li>on macOS, double click on the VirtualBox-4.3.2-90405-OSX.dmg file and
+once the virtual disk content pops up, double click on the VirtualBox.pkg
+icon and then click on &#8220;continue&#8221; and &#8220;install&#8221; and enter your
+administrator password as prompted. When the Install is done, close the
+package installer and dismount (&#8220;eject&#8221;) the virtual disk from your
+finder.</li>
+<li>on Ubuntu linux or debian-based distribution, run apt-get to install
+dkms and then dpkg to install VirtualBox. For other distributions I
+assume you know what to do.</li>
+</ul>
+<p>Now, <strong>before</strong> you do anything, go read the instructions on the
+neurodebian website: <a class="reference external" href="http://neuro.debian.net/vm.html#chap-vm">http://neuro.debian.net/vm.html#chap-vm</a> Don&#8217;t follow
+the configuration instructions from the virtualbox website. Don&#8217;t start
+the VirtualBox and click everywhere, especially not on that shiny blue
+sunny &#8220;New&#8221; button.</p>
+</div>
+<div class="section" id="configure-the-neurodebian-virtual-machine">
+<h3>2.1.1.5. Configure the neurodebian virtual machine<a class="headerlink" href="#configure-the-neurodebian-virtual-machine" title="Permalink to this headline">¶</a></h3>
+<p>Follow the instructions from
+<a class="reference external" href="http://neuro.debian.net/vm.html#chap-vm">http://neuro.debian.net/vm.html#chap-vm</a></p>
+<ol class="arabic simple">
+<li>No need to create a new machine, you already downloaded one, thus use
+&#8220;Import Appliance&#8221; from the file menu and sleect the NeuroDebian virtual
+appliance file in the folder where it was stored.</li>
+<li>Wait while the NeuroDevian__disk1.vmdk is retrieved and installed</li>
+<li>Once your wirtual machine appears in the left column, DON&#8217;T START IT:
+you have to configure it first using the &#8220;Settings&#8221; cog-like button. Yep,
+there&#8217;s a good reason it&#8217;s on the left of the start button.</li>
+<li>first important thing to configure: the alount of RAM you are
+allocating to the wirtual machine. More is better, but try to keep some
+RAM for the host OS.</li>
+<li>second important thing to configure: the shared folder: usually, a
+carefully named (i.e. no space, no accent, no weird character, mine is
+called &#8220;ndb&#8221;) folder in your home directory.</li>
+</ol>
+<p>Finally it is time to actually start using the virtual machine: click on
+the &#8220;arrow&#8221; stat icon. You can see the different steps of a debian boot,
+on text mode, before it switches to graphic environment if anything goes
+wrong, i.e. it does get stuck in the boot process (I experiences a kernel
+panic once). Just shut down the virutal machine, using the virtual
+machine menu called &#8220;machine&#8221; and then &#8220;APIC Shutdown&#8221;. Then right click
+on the Virtual Machine in the left panel and remove it. Then proceed to
+the virtual machine installation again.</p>
+<p>Automatically, on the first boot, the NeuroDebian Setup Wizard starts and
+welcomes you. Once again, you&#8217;d better do some configuration before
+clicking on the &#8220;OK&#8221; button at the bottom of the Setup Wizard window that
+just poped up. So Click on &#8220;Applications Menu&#8221; on the top left of the
+screen, then &#8220;Settings&#8221;, &#8220;Keyboard&#8221;, the &#8220;Layout&#8221; tab, unselect the &#8220;Use
+system defaults&#8221; option, select the &#8220;Keyboard model&#8221; if needed, and &#8220;Add&#8221;
+a french layout, or any layout that matches yours (delete the other ones
+to be sure), then close the window. You can test your keyboard on a
+&#8220;Application Menu&#8221;-&gt;&#8221;Terminal Emulator&#8221;. Unless you&#8217;d like to enter
+the password neurodebian as it you had a qwerty keyboard (thus typing
+&#8220;neurodebiqn with a French keyboard&#8221;).</p>
+<p>So, back to the NeuroDebian Setup Wizard.
+First you will be asked to install some updates to your system, make sure your computer is connected to the internet, then carry on, and enter the password &#8220;neurodebian&#8221;.
+Once you have downloaded and installed the , click on the &#8220;Close&#8221; button and a new setup wizard window appears that will help you install some very useful additional packages. You can participate to the packages popularity survey if you want, then, select Python: Neuroimaging. If you want to look at the virtual machine video demo from within the virtual machine, you&#8217;d better select the Adobe Flash plugin as well.
+This installation will take few minutes.</p>
+<p>As the installation completes, the web browser will show you the NeuroDebian Virtual Machine Welcome page.
+However the installation for our purpose still needs few steps: we will now install specific neuroimaging packages.
+Go to the &#8220;Application menu&#8221; -&gt; &#8220;NeuroDebian&#8221; -&gt; &#8220;Medical Imaging&#8221;, then select the following packages and install them one after the other:</p>
+<ul class="simple">
+<li>&#8220;dcm2nii&#8221;</li>
+<li>&#8220;FSLView&#8221;</li>
+<li>&#8220;FSL 4.1&#8221;, this one is quite long, you can use that time to look at the
+video tutorial on the Neurodebian Virtual MAchine Welcome page.</li>
+</ul>
+<p>Now you are ready.
+You can shutdown the virtual machine using the little exit icone on the
+right of the Application Menu on the to left of the wirtual machine
+window. Then quit the virtualbox application.
+On Monday, you will get another email telling you to get the last version
+of the course files from the git repository. I&#8217;m still working on the
+examples, it&#8217;s not online yet.</p>
+<p><div style="clear: both"></div></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="auto_examples/index.html" title="3. Examples"
+             >next</a></li>
+        <li class="right" >
+          <a href="fmri_signals.html" title="2. FMRI signals"
+             >previous</a> |</li>
+        <li><a href="index.html">Statistics for the CogMaster</a> &raquo;</li>
+          <li><a href="fmri_signals.html" >2. FMRI signals</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
