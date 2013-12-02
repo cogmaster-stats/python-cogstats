@@ -46,8 +46,8 @@ Sanity check
 ------------
 
 Check that the Operating System currently running on your computer (the
-so-called "host" OS, which is usually windows, macOS or linux) currently
-running on your computer) appears in the following list:
+so-called "host" OS, which is usually windows, macOS or linux) appears in
+the following list:
 https://www.virtualbox.org/manual/ch01.html#hostossupport If not, well,
 too bad for you, please install one of the supported OS on a different
 partition. 
@@ -56,11 +56,10 @@ Download the neurodebian virtual machine
 ----------------------------------------
 
 Go the the website of the NeuroDebian repository http://neuro.debian.net/
-and under "Get NeuroDebian", select the Operating System (the so-called
-"host" OS, which is usually windows, macOS or linux) currently running on
-your computer. Then select the nearest server and download the "Virtual
-applicance image dile", which is a rather heavy file with a ".oda"
-extension.
+and under "Get NeuroDebian", select your "host" OS (again, usually
+windows, macOS or linux). Then select the nearest server and download the
+"Virtual applicance image dile", which is a rather heavy file with a
+".oda" extension.
 
 For those using windows, I suggest you try the Germany (Nikilaus Valentin
 Haenel, Vogtland) server so you would get an .ova file and wouldn't have
@@ -72,8 +71,7 @@ complain if you miss something during the lecture, I recommend that you
 install the neurodebian virtual machine as well. You can pick either the
 32bit or 64bit version from the MS Windows choice in the list. 
 
-Download the VirtualBox installer
----------------------------------
+Download the VirtualBox installer ---------------------------------
 
 From the website http://www.virtualbox.org/wiki/Downloads download the
 last available "VirtualBox platform package" corresponding to your host
@@ -115,7 +113,7 @@ Go in the directory where the installer file is and then:
 
 Now, **before** you do anything, go read the instructions on the
 neurodebian website: http://neuro.debian.net/vm.html#chap-vm Don't follow
-the configuration instructions from the virtualbox website. Don't start
+the configuration instructions from the virtualbox website.  Don't start
 the VirtualBox and click everywhere, especially not on that shiny blue
 sunny "New" button.
 
@@ -139,14 +137,21 @@ http://neuro.debian.net/vm.html#chap-vm
    allocating to the wirtual machine. More is better, but try to keep some
    RAM for the host OS.
 
-5. second important thing to configure: the shared folder: usually, a
+5. second very important thing to configure: the shared folder: usually
+   your home directory (but it could be dangerous if you are not used to
+   command line file manipulations), or a carefully named (i.e. no space,
+   no accent, no weird character) folder in your home directory. See the
+   picture on the instruction website to find the location of the little
+   add folder icon: http://neuro.debian.net/_images/vm_add_host_folder.jpg
+
+second important thing to configure: the shared folder: usually, a
    carefully named (i.e. no space, no accent, no weird character, mine is
    called "ndb") folder in your home directory.
 
 Finally it is time to actually start using the virtual machine: click on
-the "arrow" stat icon. You can see the different steps of a debian boot,
+the "arrow" start icon. You can see the different steps of a debian boot,
 on text mode, before it switches to graphic environment if anything goes
-wrong, i.e. it does get stuck in the boot process (I experiences a kernel
+wrong, i.e. it does get stuck in the boot process (I experienced a kernel
 panic once). Just shut down the virutal machine, using the virtual
 machine menu called "machine" and then "APIC Shutdown". Then right click
 on the Virtual Machine in the left panel and remove it. Then proceed to
@@ -164,14 +169,23 @@ to be sure), then close the window. You can test your keyboard on a
 the password neurodebian as it you had a qwerty keyboard (thus typing
 "neurodebiqn with a French keyboard").
 
-So, back to the NeuroDebian Setup Wizard.
-First you will be asked to install some updates to your system, make sure your computer is connected to the internet, then carry on, and enter the password "neurodebian".
-Once you have downloaded and installed the , click on the "Close" button and a new setup wizard window appears that will help you install some very useful additional packages. You can participate to the packages popularity survey if you want, then, select Python: Neuroimaging. If you want to look at the virtual machine video demo from within the virtual machine, you'd better select the Adobe Flash plugin as well.
-This installation will take few minutes.
+So, back to the NeuroDebian Setup Wizard.  First you will be asked to
+install some updates to your system, make sure your computer is connected
+to the internet, then carry on, and enter the password "neurodebian".
+Once you have downloaded and installed the updates, click on the "Close"
+button and a new setup wizard window appears that will help you install
+some very useful additional packages. You can participate to the packages
+popularity survey if you want, then, select Python: Neuroimaging. If you
+want to look at the virtual machine video demo from within the virtual
+machine, you'd better select the Adobe Flash plugin as well.  This
+installation will take few minutes.
 
-As the installation completes, the web browser will show you the NeuroDebian Virtual Machine Welcome page.
-However the installation for our purpose still needs few steps: we will now install specific neuroimaging packages.
-Go to the "Application menu" -> "NeuroDebian" -> "Medical Imaging", then select the following packages and install them one after the other:
+As the installation completes, the web browser will show you the
+NeuroDebian Virtual Machine Welcome page.  However the installation for
+our purpose still needs few steps: we will now install specific
+neuroimaging packages.  Go to the "Application menu" -> "NeuroDebian" ->
+"Medical Imaging", then select the following packages and install them
+one after the other:
 
 - "dcm2nii"
 - "FSLView"

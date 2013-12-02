@@ -1,0 +1,57 @@
+
+
+.. _example_plot_auditory_analysis.py:
+
+
+GLM fitting in fMRI
+===================
+
+Full step-by-step example of fitting a GLM to experimental data and visualizing
+the results.
+
+More specifically:
+
+1. A sequence of fMRI volumes are loaded
+2. A design matrix describing all the effects related to the data is computed
+3. a mask of the useful brain volume is computed
+4. A GLM is applied to the dataset (effect/covariance,
+   then contrast estimation)
+
+
+
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_auditory_analysis_2.png
+
+    *
+
+      .. image:: images/plot_auditory_analysis_1.png
+
+
+**Script output**:
+
+.. rst-class:: max_height
+
+ ::
+
+    Computation will be performed in directory: /home/varoquau/work/papers/talks/stats-cogmaster/examples/results
+  Loading design matrix...
+  Fitting a GLM (this takes time)...
+  Computing contrasts...
+    Contrast  1 out of 1: audio
+  All the  results were witten in /home/varoquau/work/papers/talks/stats-cogmaster/examples/results
+
+
+
+**Python source code:** :download:`plot_auditory_analysis.py <plot_auditory_analysis.py>`
+
+.. literalinclude:: plot_auditory_analysis.py
+    :lines: 17-
+
+**Total running time of the example:**  19.48 seconds
+( 0 minutes  19.48 seconds)
+    

@@ -131,8 +131,8 @@ weight.</p>
 Dep. Variable:                    VIQ   R-squared:                       0.246
 Model:                            OLS   Adj. R-squared:                  0.181
 Method:                 Least Squares   F-statistic:                     3.809
-Date:                Tue, 26 Nov 2013   Prob (F-statistic):             0.0184
-Time:                        16:37:42   Log-Likelihood:                -172.34
+Date:                Mon, 02 Dec 2013   Prob (F-statistic):             0.0184
+Time:                        22:10:29   Log-Likelihood:                -172.34
 No. Observations:                  39   AIC:                             352.7
 Df Residuals:                      35   BIC:                             359.3
 Df Model:                           3
@@ -174,6 +174,9 @@ strong multicollinearity or other numerical problems.
 <div class="newline"></div><span class="c"># Here we plot a scatter matrix to get intuitions on our results.</span>
 <div class="newline"></div><span class="c"># This goes beyond what was asked in the exercise</span>
 <div class="newline"></div>
+<div class="newline"></div><span class="c"># This plotting is useful to get an intuitions on the relationships between</span>
+<div class="newline"></div><span class="c"># our different variables</span>
+<div class="newline"></div>
 <div class="newline"></div><span class="kn">from</span> <span class="nn">pandas.tools</span> <span class="kn">import</span> <span class="n">plotting</span>
 <div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <div class="newline"></div>
@@ -181,6 +184,9 @@ strong multicollinearity or other numerical problems.
 <div class="newline"></div><span class="n">data</span><span class="p">[</span><span class="s">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&#39;pad&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c"># The parameter &#39;c&#39; is passed to plt.scatter and will control the color</span>
+<div class="newline"></div><span class="c"># The same holds for parameters &#39;marker&#39;, &#39;alpha&#39; and &#39;cmap&#39;, that</span>
+<div class="newline"></div><span class="c"># control respectively the type of marker used, their transparency and</span>
+<div class="newline"></div><span class="c"># the colormap</span>
 <div class="newline"></div><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s">&#39;VIQ&#39;</span><span class="p">,</span> <span class="s">&#39;MRI_Count&#39;</span><span class="p">,</span> <span class="s">&#39;Height&#39;</span><span class="p">]],</span>
 <div class="newline"></div>                        <span class="n">c</span><span class="o">=</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;Gender&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;Female&#39;</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">,</span>
 <div class="newline"></div>                        <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">&#39;winter&#39;</span><span class="p">)</span>
@@ -191,8 +197,8 @@ strong multicollinearity or other numerical problems.
 <div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  4.32 seconds
-( 0 minutes  4.32 seconds)</p>
+<p><strong>Total running time of the example:</strong>  4.76 seconds
+( 0 minutes  4.76 seconds)</p>
 <p><div style="clear: both"></div></p>
 </div>
 

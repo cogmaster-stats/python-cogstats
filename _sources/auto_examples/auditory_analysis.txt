@@ -1,0 +1,26 @@
+
+
+.. _example_auditory_analysis.py:
+
+
+GLM fitting in fMRI
+===================
+
+Full step-by-step example of fitting a GLM to experimental data and visualizing
+the results.
+
+More specifically:
+
+1. A sequence of fMRI volumes are loaded
+2. A design matrix describing all the effects related to the data is computed
+3. a mask of the useful brain volume is computed
+4. A GLM is applied to the dataset (effect/covariance,
+   then contrast estimation)
+
+
+
+**Python source code:** :download:`auditory_analysis.py <auditory_analysis.py>`
+
+.. literalinclude:: auditory_analysis.py
+    :lines: 17-
+    

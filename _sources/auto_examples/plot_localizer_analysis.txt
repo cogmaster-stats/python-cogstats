@@ -66,33 +66,27 @@ More specifically:
 
  ::
 
-    Computation will be performed in directory: /home/varoquau/work/papers/talks/stats-cogmaster/examples/results
-  Loading design matrix...
-  Fitting a GLM (this takes time)...
-  Computing contrasts...
-    Contrast  1 out of 22: damier_V
-    Contrast  2 out of 22: V-H
-    Contrast  3 out of 22: clicGaudio
-    Contrast  4 out of 22: sentences
-    Contrast  5 out of 22: audio-video
-    Contrast  6 out of 22: video
-    Contrast  7 out of 22: computation
-    Contrast  8 out of 22: video-audio
-    Contrast  9 out of 22: damier_H
-    Contrast  10 out of 22: clicDaudio
-    Contrast  11 out of 22: effects_of_interest
-    Contrast  12 out of 22: computation-sentences
-    Contrast  13 out of 22: clicGvideo
-    Contrast  14 out of 22: reading-visual
-    Contrast  15 out of 22: calculaudio
-    Contrast  16 out of 22: H-V
-    Contrast  17 out of 22: left-right
-    Contrast  18 out of 22: clicDvideo
-    Contrast  19 out of 22: phraseaudio
-    Contrast  20 out of 22: calculvideo
-    Contrast  21 out of 22: phrasevideo
-    Contrast  22 out of 22: audio
-  All the  results were witten in /home/varoquau/work/papers/talks/stats-cogmaster/examples/results
+    Contrast  1 out of 21: left-right
+    Contrast  2 out of 21: audio
+    Contrast  3 out of 21: damier_V
+    Contrast  4 out of 21: V-H
+    Contrast  5 out of 21: clicGaudio
+    Contrast  6 out of 21: calculaudio
+    Contrast  7 out of 21: H-V
+    Contrast  8 out of 21: phrasevideo
+    Contrast  9 out of 21: video-audio
+    Contrast  10 out of 21: clicDaudio
+    Contrast  11 out of 21: clicDvideo
+    Contrast  12 out of 21: audio-video
+    Contrast  13 out of 21: phraseaudio
+    Contrast  14 out of 21: sentences
+    Contrast  15 out of 21: reading-visual
+    Contrast  16 out of 21: video
+    Contrast  17 out of 21: calculvideo
+    Contrast  18 out of 21: clicGvideo
+    Contrast  19 out of 21: computation-sentences
+    Contrast  20 out of 21: computation
+    Contrast  21 out of 21: damier_H
 
 
 
@@ -101,6 +95,6 @@ More specifically:
 .. literalinclude:: plot_localizer_analysis.py
     :lines: 17-
 
-**Total running time of the example:**  29.35 seconds
-( 0 minutes  29.35 seconds)
+**Total running time of the example:**  128.34 seconds
+( 2 minutes  8.34 seconds)
     

@@ -155,6 +155,30 @@ Code examples for the Python statistics course at the cogmaster.
 
     <div class="thumbnailContainer" tooltip="Full step-by-step example of fitting a GLM to experimental data and visualizing the results.">
 
+.. figure:: ./images/thumb/plot_auditory_analysis.png
+   :target: ./plot_auditory_analysis.html
+
+   :ref:`example_plot_auditory_analysis.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_auditory_analysis
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Full step-by-step example of fitting a GLM to experimental data and visualizing the results.">
+
 .. figure:: ./images/thumb/plot_localizer_analysis.png
    :target: ./plot_localizer_analysis.html
 
