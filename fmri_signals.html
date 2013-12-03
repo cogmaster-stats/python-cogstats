@@ -124,6 +124,25 @@
   <div class="section" id="fmri-signals">
 <h1>2. FMRI signals<a class="headerlink" href="#fmri-signals" title="Permalink to this headline">¶</a></h1>
 <p>Here we will cover fMRI signals and their analysis.</p>
+<div class="topic">
+<p class="topic-title first">This page content</p>
+<p>The aim of this first part is to get familiar with fMRI data.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Carve in your mind that the only characters you can safely use in a
+file name are non-accented upper and lower case letters, numbers and two
+special characters: the underscore &#8220;_&#8221; and the dot &#8221;.&#8221; . Don&#8217;t cry if you
+run into problems with file names including accents and space.</p>
+<p class="last">Most of the problems one has to solve in any hands-on lab course are
+related to the students not knowing how to deal with the file structure
+of their own computer. If you are still unsure about concepts such as
+&#8220;home directory&#8221;, &#8220;working directory&#8221;, or &#8220;path&#8221;, go back to your first
+lectures on python by Christophe Pallier and make sure you are able to
+explertly navigate in your file structure.</p>
+</div>
+<div class="topic">
+<p class="topic-title first"><strong>Before we start: installing the software</strong></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">2.1. Getting ready: installing the software</a><ul>
@@ -138,7 +157,137 @@
 </li>
 </ul>
 </div>
+</div>
+<div class="section" id="activation-irmf">
+<h2>2.2. Activation IRMf<a class="headerlink" href="#activation-irmf" title="Permalink to this headline">¶</a></h2>
+<p>Why do we do activation fMRI?  Basically: localization Hypothesis:
+functional specialization Aim: given a target process, detect the brain
+areas involved Principle: the experimenter imposes on the subject a
+temporal variation related to the target process and looks for whichever
+part of the brain displays a signal in which the same variation could be
+found.</p>
+<p>=&gt; we need to get the time series of BOLD signal AND the time series of
+what happened to the subject AND they both have to be synchonous!</p>
+<p>also</p>
+<ul class="simple">
+<li>resting state fMRI</li>
+<li>more than localization: connectivity</li>
+</ul>
+</div>
+<div class="section" id="bold-signal">
+<h2>2.3. BOLD signal<a class="headerlink" href="#bold-signal" title="Permalink to this headline">¶</a></h2>
+<p>BOLD signal: local vascular changes somehow related to increased brain
+activity can be detected by a MRI scanner (T2* signal increases).
+However the fluctuation of the signal induced by the BOLD effect is about
+few percents.</p>
+</div>
+<div class="section" id="fmri-stimulation-data">
+<h2>2.4. fMRI stimulation data<a class="headerlink" href="#fmri-stimulation-data" title="Permalink to this headline">¶</a></h2>
+<p>Same time reference than the MRI acquisitions.  Describe the time series
+of conditions.</p>
+<p>Reminder: we are looking for voxels in which part of the signal variance
+is explained by our manipulation, thus we need to know what is the
+shape of the temporal variation induces by our experimental paradigm.</p>
+<p>Let&#8217;s start with a basi example taken from a classical auditory
+stimulation dataset (exerpt from the SPM manual describing the
+paradigm):</p>
+<div class="highlight-python"><pre>This data set comprises whole brain BOLD/EPI images
+acquired on a modified 2T Siemens MAGNETOM Vision system. Each
+acquisition consisted of 64 contiguous slices (64×64×64 3×3mm×3 mm3
+voxels). Acquisition took 6.05s, with the scan to scan repeat time (TR)
+set arbitrarily to 7s.  96 acquisitions were made (TR=7s) from a single
+subject, in blocks of 6, giving 16 42s blocks. The condition for
+successive blocks alternated between rest and auditory stimulation,
+starting with rest. Auditory stimulation was bi-syllabic words presented
+binaurally at a rate of 60 per minute.
+
+To avoid T1 effects in the initial scans of an fMRI time series we
+recommend discarding the first few scans. To make this example simple,
+we’ll discard the first complete cycle (12 scans, 04-15), leaving 84
+scans, image files 16-99.</pre>
+</div>
+<p>Two different ways of defining a regressor</p>
+<ol class="arabic">
+<li><p class="first">manually:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">84</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="p">[</span><span class="mi">18</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p class="first">using a .csv file which defines in different columns the runs, the
+conditions, the onset time and the duration.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="convolution">
+<h2>2.5. Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">nipy.modalities.fmri.hemodynamic_models</span> <span class="kn">as</span> <span class="nn">hm</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">hrf</span> <span class="o">=</span> <span class="n">hm</span><span class="o">.</span><span class="n">spm_hrf</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">oversampling</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">reg</span><span class="p">,</span> <span class="n">hrf</span><span class="p">))</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Try to play a bit with the convolution using different regressors</p>
+</div>
+<div class="section" id="fmri-scanner-data">
+<h2>2.6. fMRI scanner data<a class="headerlink" href="#fmri-scanner-data" title="Permalink to this headline">¶</a></h2>
+<p>As usual, we would like to measure a variation =&gt; temporal resolution
+Localization =&gt; spatial resolution Trade-off : it takes more time to
+acquire more data points.</p>
+<p>The MRI scanner allows the BOLD signal to be recorded in a given space
+where the experimenter puts the object to measure, in our case, a living
+brain (and around: the human that sustains it).</p>
+<p>Scanner =&gt; sequential acquisition of data</p>
+<ul class="simple">
+<li>2D: one slice n * n voxels (a voxel is an element of volume, think 3D
+pixel)</li>
+<li>3D: many slices = one volume, which usually covers the whole brain</li>
+<li>4D: time series of sequentially acquired volumes == for each voxel, we
+get a time series</li>
+</ul>
+<p>Let&#8217;s look at the data:</p>
+<p>Few words about DICOM files and nifti
+Conversion:
+Application Menu-&gt;NeuroDebian-&gt;Medical Imaging -&gt; dcm2nii:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nipy</span> <span class="kn">import</span> <span class="n">load_image</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">=</span><span class="n">load_image</span><span class="p">(</span><span class="s">&#39;host/python-cogstats/examples/wrf4d.nii.gz&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">shape</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Now you can play with python in order to visualize</p>
+<ol class="arabic simple">
+<li>a slice:</li>
+<li>a volume:</li>
+<li>a time series in a given voxel</li>
+</ol>
+<p>Now, try to get some time series using
+Application Menu-&gt;NeuroDebian-&gt;Medical Imaging -&gt; FSLview</p>
+<p>Conclusions about the signal characteristics:</p>
+<ul class="simple">
+<li>NOISY!!!!</li>
+<li>Highly correlated, spatially, temporally!</li>
+<li>spatial resolution</li>
+<li>temporal resolution</li>
+<li>different sources of variations</li>
+</ul>
+<p>Remember, the fluctuation induced by brain activity is few percents =&gt;
+measurement of a small effect size in huge noise =&gt; need for a LOT of
+repetition!  =&gt; substractive approach</p>
+</div>
+<div class="section" id="analysis-principle">
+<h2>2.7. Analysis principle<a class="headerlink" href="#analysis-principle" title="Permalink to this headline">¶</a></h2>
+<p>As said earlier, the idea is to find voxels in which the regressor
+describing a condition has some effect on the BOLD signal. Each regressor
+is actually explaining a part of the variance in a Linear Model</p>
+</div>
+<div class="section" id="analysis-example">
+<h2>2.8. Analysis example<a class="headerlink" href="#analysis-example" title="Permalink to this headline">¶</a></h2>
+<p>The example file is &#8216;host/examples/auditory_analysis.py&#8217;</p>
 <p><div style="clear: both"></div></p>
+</div>
 </div>
 
 
