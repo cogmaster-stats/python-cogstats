@@ -70,15 +70,15 @@ Let's start with a basi example taken from a classical auditory
 stimulation dataset (exerpt from the SPM manual describing the
 paradigm)::
 
-    This data set comprises whole brain BOLD/EPI images
-    acquired on a modified 2T Siemens MAGNETOM Vision system. Each
-    acquisition consisted of 64 contiguous slices (64×64×64 3×3mm×3 mm3
-    voxels). Acquisition took 6.05s, with the scan to scan repeat time (TR)
-    set arbitrarily to 7s.  96 acquisitions were made (TR=7s) from a single
-    subject, in blocks of 6, giving 16 42s blocks. The condition for
-    successive blocks alternated between rest and auditory stimulation,
-    starting with rest. Auditory stimulation was bi-syllabic words presented
-    binaurally at a rate of 60 per minute.
+    This data set comprises whole brain BOLD/EPI images acquired on a
+    modified 2T Siemens MAGNETOM Vision system. Each acquisition consisted
+    of 64 contiguous slices (64×64×64 3×3mm×3 mm3 voxels). Acquisition took
+    6.05s, with the scan to scan repeat time (TR) set arbitrarily to 7s.
+    96 acquisitions were made (TR=7s) from a single subject, in blocks of 6,
+    giving 16 42s blocks. The condition for successive blocks alternated
+    between rest and auditory stimulation, starting with rest. Auditory
+    stimulation was bi-syllabic words presented binaurally at a rate of 60
+    per minute. The functional data starts at acquisition 4
 
     To avoid T1 effects in the initial scans of an fMRI time series we
     recommend discarding the first few scans. To make this example simple,
@@ -145,9 +145,9 @@ Application Menu->NeuroDebian->Medical Imaging -> dcm2nii::
 
 Now you can play with python in order to visualize
 
-1) a slice:
+1) a slice
 
-2) a volume:
+2) a volume
 
 3) a time series in a given voxel
 
