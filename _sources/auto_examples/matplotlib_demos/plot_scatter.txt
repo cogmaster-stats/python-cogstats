@@ -22,6 +22,6 @@ Scatter plots display unconnected data points.
 .. literalinclude:: plot_scatter.py
     :lines: 8-
 
-**Total running time of the example:**  0.08 seconds
-( 0 minutes  0.08 seconds)
+**Total running time of the example:**  0.24 seconds
+( 0 minutes  0.24 seconds)
     

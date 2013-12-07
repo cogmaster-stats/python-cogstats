@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -30,67 +32,6 @@
     <link rel="prev" title="3.1.4. Simple Regression" href="plot_regression.html" /> 
   </head>
   <body>
-   <!-- Use the header to add javascript -->
-    
-    <script type="text/javascript">
-    // Function to collapse the tip divs
-    function collapse_tip_div(obj){
-	// Update the representation on the tip div based on whether it
-	// has the 'collapsed' css class or not: we only want to
-	// collapse divs that are not already collapsed
-	if($(obj).hasClass("collapsed")) {
-	} else {
-	    $(obj).find("p.summary").remove();
-	    var content = $(obj).text();
-	    var html = $(obj).html();
-
-	    if(content.length > 40) {
-		if ($.browser.msie) {
-		    // We start at '3' to avoid 'tip', as IE
-		    // does not count whitespace
-		    var content = content.substr(3, 50);
-		} else {
-		    // We start at '5' to avoid 'tip '
-		    var content = content.substr(5, 50);
-		}
-	    }
-	    $(obj).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
-	}
-    }
-    </script>
-
-    <script type="text/javascript">
-    $(function () {
-	$(".tip")
-	    .click(function(event){
-		$(this).toggleClass("collapsed");
-		// Change state of the global button
-		$('div.related li.transparent').removeClass('transparent')
-		$(this).find("p.summary").remove();
-		if($(this).hasClass("collapsed")) {
-		    var content = $(this).text();
-		    var html = $(this).html();
-    
-		    if(content.length > 40) {
-			if ($.browser.msie) {
-			    // We start at '3' to avoid 'tip', as IE
-			    // does not count whitespace
-			    var content = content.substr(3, 50);
-			} else {
-			    // We start at '5' to avoid 'tip '
-			    var content = content.substr(5, 50);
-			}
-		    }
-		    $(this).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
-		}
-		if (event.target.tagName.toLowerCase() != "a") {
-                   return true; //Makes links clickable
-		}
-	});
-    });
-    </script>
-
-
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -101,21 +42,7 @@
           <a href="plot_regression.html" title="3.1.4. Simple Regression"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Statistics for the CogMaster</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">3. Examples</a> &raquo;</li>
-     
-    <!-- Insert a menu in the navigation bar -->
-    <li class="left">
-	<!-- On click toggle the 'tip' on or off-->
-	<a onclick="$('.tip').each(function (index, obj) {
-			    collapse_tip_div(obj);
-		    });
-		    $('.tip').addClass('collapsed');
-		    $('.left').addClass('transparent');">
-	<img src="../_static/minus.png"
-         alt="Collapse to compact view" style="padding: 1ex;"/>
-	<span class="hiddenlink">Collapse document to compact view</span>
-    </a></li>
-
+          <li><a href="index.html" accesskey="U">3. Examples</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -128,41 +55,7 @@
 <p>Calculate using &#8216;statsmodels&#8217; just the best fit, or all the corresponding
 statistical parameters.</p>
 <p>Also shows how to make 3d plots.</p>
-<img alt="../_images/plot_regression_3d_1.png" class="align-center" src="../_images/plot_regression_3d_1.png" />
-<p><strong>Script output</strong>:</p>
-<div class="max-height highlight-python"><pre>  OLS Regression Results
-==============================================================================
-Dep. Variable:                      z   R-squared:                       0.594
-Model:                            OLS   Adj. R-squared:                  0.592
-Method:                 Least Squares   F-statistic:                     320.4
-Date:                Mon, 25 Nov 2013   Prob (F-statistic):           1.89e-86
-Time:                        18:55:13   Log-Likelihood:                -1537.7
-No. Observations:                 441   AIC:                             3081.
-Df Residuals:                     438   BIC:                             3094.
-Df Model:                           2
-==============================================================================
-                 coef    std err          t      P&gt;|t|      [95.0% Conf. Int.]
-------------------------------------------------------------------------------
-Intercept     -4.5052      0.378    -11.924      0.000        -5.248    -3.763
-x              3.1173      0.125     24.979      0.000         2.872     3.363
-y             -0.5109      0.125     -4.094      0.000        -0.756    -0.266
-==============================================================================
-Omnibus:                        0.260   Durbin-Watson:                   2.057
-Prob(Omnibus):                  0.878   Jarque-Bera (JB):                0.204
-Skew:                          -0.052   Prob(JB):                        0.903
-Kurtosis:                       3.015   Cond. No.                         3.03
-==============================================================================
-
-Retrieving manually the parameter estimates:
-[-4.50523303  3.11734237 -0.51091248]
-
-ANOVA results
-           df        sum_sq       mean_sq           F        PR(&gt;F)
-x           1  39284.301219  39284.301219  623.962799  2.888238e-86
-y           1   1055.220089   1055.220089   16.760336  5.050899e-05
-Residual  438  27576.201607     62.959364         NaN           NaN</pre>
-</div>
-<p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_regression_3d.py"><tt class="xref download docutils literal"><span class="pre">plot_regression_3d.py</span></tt></a></p>
+<p class="horizontal"><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_regression_3d.py"><tt class="xref download docutils literal"><span class="pre">plot_regression_3d.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Original author: Thomas Haslwanter</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -179,9 +72,9 @@ Residual  438  27576.201607     62.959364         NaN           NaN</pre>
 <div class="newline"></div>
 <div class="newline"></div><span class="c">##############################################################################</span>
 <div class="newline"></div><span class="c"># Generate and show the data</span>
-<div class="newline"></div><span class="n">x</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.linspace.html#numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<div class="newline"></div><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
 <div class="newline"></div><span class="c"># We generate a 2D grid</span>
-<div class="newline"></div><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.meshgrid.html#numpy.meshgrid"><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span></a><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<div class="newline"></div><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c"># To get reproducable values, provide a seed value</span>
 <div class="newline"></div><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -190,8 +83,8 @@ Residual  438  27576.201607     62.959364         NaN           NaN</pre>
 <div class="newline"></div><span class="n">Z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">X</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">Y</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c"># Plot the data</span>
-<div class="newline"></div><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
-<div class="newline"></div><span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">&#39;3d&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="newline"></div><span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">&#39;3d&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">,</span>
 <div class="newline"></div>                       <span class="n">rstride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">)</span>
@@ -229,11 +122,11 @@ Residual  438  27576.201607     62.959364         NaN           NaN</pre>
 <div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">ANOVA results&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="n">anova_results</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.34 seconds
-( 0 minutes  0.34 seconds)</p>
+<p><strong>Total running time of the example:</strong>  0.00 seconds
+( 0 minutes  0.00 seconds)</p>
 <p><div style="clear: both"></div></p>
 </div>
 
@@ -252,26 +145,12 @@ Residual  438  27576.201607     62.959364         NaN           NaN</pre>
           <a href="plot_regression.html" title="3.1.4. Simple Regression"
              >previous</a> |</li>
         <li><a href="../index.html">Statistics for the CogMaster</a> &raquo;</li>
-          <li><a href="index.html" >3. Examples</a> &raquo;</li>
-     
-    <!-- Insert a menu in the navigation bar -->
-    <li class="left">
-	<!-- On click toggle the 'tip' on or off-->
-	<a onclick="$('.tip').each(function (index, obj) {
-			    collapse_tip_div(obj);
-		    });
-		    $('.tip').addClass('collapsed');
-		    $('.left').addClass('transparent');">
-	<img src="../_static/minus.png"
-         alt="Collapse to compact view" style="padding: 1ex;"/>
-	<span class="hiddenlink">Collapse document to compact view</span>
-    </a></li>
-
+          <li><a href="index.html" >3. Examples</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012,2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

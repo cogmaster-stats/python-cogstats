@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -30,67 +32,6 @@
     <link rel="prev" title="3.1.5. Multiple Regression" href="plot_regression_3d.html" /> 
   </head>
   <body>
-   <!-- Use the header to add javascript -->
-    
-    <script type="text/javascript">
-    // Function to collapse the tip divs
-    function collapse_tip_div(obj){
-	// Update the representation on the tip div based on whether it
-	// has the 'collapsed' css class or not: we only want to
-	// collapse divs that are not already collapsed
-	if($(obj).hasClass("collapsed")) {
-	} else {
-	    $(obj).find("p.summary").remove();
-	    var content = $(obj).text();
-	    var html = $(obj).html();
-
-	    if(content.length > 40) {
-		if ($.browser.msie) {
-		    // We start at '3' to avoid 'tip', as IE
-		    // does not count whitespace
-		    var content = content.substr(3, 50);
-		} else {
-		    // We start at '5' to avoid 'tip '
-		    var content = content.substr(5, 50);
-		}
-	    }
-	    $(obj).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
-	}
-    }
-    </script>
-
-    <script type="text/javascript">
-    $(function () {
-	$(".tip")
-	    .click(function(event){
-		$(this).toggleClass("collapsed");
-		// Change state of the global button
-		$('div.related li.transparent').removeClass('transparent')
-		$(this).find("p.summary").remove();
-		if($(this).hasClass("collapsed")) {
-		    var content = $(this).text();
-		    var html = $(this).html();
-    
-		    if(content.length > 40) {
-			if ($.browser.msie) {
-			    // We start at '3' to avoid 'tip', as IE
-			    // does not count whitespace
-			    var content = content.substr(3, 50);
-			} else {
-			    // We start at '5' to avoid 'tip '
-			    var content = content.substr(5, 50);
-			}
-		    }
-		    $(this).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
-		}
-		if (event.target.tagName.toLowerCase() != "a") {
-                   return true; //Makes links clickable
-		}
-	});
-    });
-    </script>
-
-
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -101,21 +42,7 @@
           <a href="plot_regression_3d.html" title="3.1.5. Multiple Regression"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Statistics for the CogMaster</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">3. Examples</a> &raquo;</li>
-     
-    <!-- Insert a menu in the navigation bar -->
-    <li class="left">
-	<!-- On click toggle the 'tip' on or off-->
-	<a onclick="$('.tip').each(function (index, obj) {
-			    collapse_tip_div(obj);
-		    });
-		    $('.tip').addClass('collapsed');
-		    $('.left').addClass('transparent');">
-	<img src="../_static/minus.png"
-         alt="Collapse to compact view" style="padding: 1ex;"/>
-	<span class="hiddenlink">Collapse document to compact view</span>
-    </a></li>
-
+          <li><a href="index.html" accesskey="U">3. Examples</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -135,21 +62,7 @@ the results.</p>
 <li>A GLM is applied to the dataset (effect/covariance,
 then contrast estimation)</li>
 </ol>
-<ul class="horizontal">
-<li><img alt="../_images/plot_auditory_analysis_2.png" class="first" src="../_images/plot_auditory_analysis_2.png" />
-</li>
-<li><img alt="../_images/plot_auditory_analysis_1.png" class="first" src="../_images/plot_auditory_analysis_1.png" />
-</li>
-</ul>
-<p><strong>Script output</strong>:</p>
-<div class="max-height highlight-python"><pre>  Computation will be performed in directory: /home/varoquau/work/papers/talks/stats-cogmaster/examples/results
-Loading design matrix...
-Fitting a GLM (this takes time)...
-Computing contrasts...
-  Contrast  1 out of 1: audio
-All the  results were witten in /home/varoquau/work/papers/talks/stats-cogmaster/examples/results</pre>
-</div>
-<p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_auditory_analysis.py"><tt class="xref download docutils literal"><span class="pre">plot_auditory_analysis.py</span></tt></a></p>
+<p class="horizontal"><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_auditory_analysis.py"><tt class="xref download docutils literal"><span class="pre">plot_auditory_analysis.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">mkdir</span><span class="p">,</span> <span class="n">getcwd</span><span class="p">,</span> <span class="n">path</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -179,7 +92,7 @@ All the  results were witten in /home/varoquau/work/papers/talks/stats-cogmaster
 <div class="newline"></div><span class="n">tr</span> <span class="o">=</span> <span class="mi">7</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c"># paradigm</span>
-<div class="newline"></div><span class="n">frametimes</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_scans</span> <span class="o">*</span> <span class="n">tr</span><span class="p">,</span><span class="n">tr</span><span class="p">)</span>
+<div class="newline"></div><span class="n">frametimes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_scans</span> <span class="o">*</span> <span class="n">tr</span><span class="p">,</span><span class="n">tr</span><span class="p">)</span>
 <div class="newline"></div><span class="c"># confounds</span>
 <div class="newline"></div><span class="n">hrf_model</span> <span class="o">=</span> <span class="s">&#39;canonical&#39;</span>
 <div class="newline"></div><span class="n">drift_model</span> <span class="o">=</span> <span class="s">&quot;cosine&quot;</span>
@@ -207,7 +120,7 @@ All the  results were witten in /home/varoquau/work/papers/talks/stats-cogmaster
 <div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">set_position</span><span class="p">([</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span> <span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">9</span><span class="p">,</span> <span class="o">.</span><span class="mi">65</span><span class="p">])</span>
 <div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Design matrix&#39;</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.savefig"><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span></a><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">write_dir</span><span class="p">,</span> <span class="s">&#39;design_matrix.png&#39;</span><span class="p">))</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">write_dir</span><span class="p">,</span> <span class="s">&#39;design_matrix.png&#39;</span><span class="p">))</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c">#########################################</span>
 <div class="newline"></div><span class="c"># Specify the contrasts</span>
@@ -217,7 +130,7 @@ All the  results were witten in /home/varoquau/work/papers/talks/stats-cogmaster
 <div class="newline"></div><span class="n">contrasts</span> <span class="o">=</span> <span class="p">{}</span>
 <div class="newline"></div><span class="n">n_columns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">design_matrix</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&#39;audio&#39;</span><span class="p">]</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<div class="newline"></div><span class="n">contrasts</span><span class="p">[</span><span class="s">&#39;audio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c">########################################</span>
 <div class="newline"></div><span class="c"># Perform a GLM analysis</span>
@@ -247,15 +160,15 @@ All the  results were witten in /home/varoquau/work/papers/talks/stats-cogmaster
 <div class="newline"></div>             <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">cold_hot</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="n">vmax</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
 <div class="newline"></div>             <span class="n">slicer</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span> <span class="n">black_bg</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
 <div class="newline"></div>             <span class="n">title</span><span class="o">=</span><span class="n">contrast_id</span><span class="p">)</span>
-<div class="newline"></div>    <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.savefig"><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span></a><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">write_dir</span><span class="p">,</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">_z_map.png&#39;</span> <span class="o">%</span> <span class="n">contrast_id</span><span class="p">))</span>
+<div class="newline"></div>    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">write_dir</span><span class="p">,</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">_z_map.png&#39;</span> <span class="o">%</span> <span class="n">contrast_id</span><span class="p">))</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="s">&quot;All the  results were witten in </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">write_dir</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  19.48 seconds
-( 0 minutes  19.48 seconds)</p>
+<p><strong>Total running time of the example:</strong>  0.00 seconds
+( 0 minutes  0.00 seconds)</p>
 <p><div style="clear: both"></div></p>
 </div>
 
@@ -274,26 +187,12 @@ All the  results were witten in /home/varoquau/work/papers/talks/stats-cogmaster
           <a href="plot_regression_3d.html" title="3.1.5. Multiple Regression"
              >previous</a> |</li>
         <li><a href="../index.html">Statistics for the CogMaster</a> &raquo;</li>
-          <li><a href="index.html" >3. Examples</a> &raquo;</li>
-     
-    <!-- Insert a menu in the navigation bar -->
-    <li class="left">
-	<!-- On click toggle the 'tip' on or off-->
-	<a onclick="$('.tip').each(function (index, obj) {
-			    collapse_tip_div(obj);
-		    });
-		    $('.tip').addClass('collapsed');
-		    $('.left').addClass('transparent');">
-	<img src="../_static/minus.png"
-         alt="Collapse to compact view" style="padding: 1ex;"/>
-	<span class="hiddenlink">Collapse document to compact view</span>
-    </a></li>
-
+          <li><a href="index.html" >3. Examples</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012,2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

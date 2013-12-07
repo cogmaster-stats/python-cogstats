@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -27,85 +29,10 @@
     <link rel="top" title="Statistics for the CogMaster" href="../../index.html" /> 
   </head>
   <body>
-   <!-- Use the header to add javascript -->
-    
-    <script type="text/javascript">
-    // Function to collapse the tip divs
-    function collapse_tip_div(obj){
-	// Update the representation on the tip div based on whether it
-	// has the 'collapsed' css class or not: we only want to
-	// collapse divs that are not already collapsed
-	if($(obj).hasClass("collapsed")) {
-	} else {
-	    $(obj).find("p.summary").remove();
-	    var content = $(obj).text();
-	    var html = $(obj).html();
-
-	    if(content.length > 40) {
-		if ($.browser.msie) {
-		    // We start at '3' to avoid 'tip', as IE
-		    // does not count whitespace
-		    var content = content.substr(3, 50);
-		} else {
-		    // We start at '5' to avoid 'tip '
-		    var content = content.substr(5, 50);
-		}
-	    }
-	    $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
-	}
-    }
-    </script>
-
-    <script type="text/javascript">
-    $(function () {
-	$(".tip")
-	    .click(function(event){
-		$(this).toggleClass("collapsed");
-		// Change state of the global button
-		$('div.related li.transparent').removeClass('transparent')
-		$(this).find("p.summary").remove();
-		if($(this).hasClass("collapsed")) {
-		    var content = $(this).text();
-		    var html = $(this).html();
-    
-		    if(content.length > 40) {
-			if ($.browser.msie) {
-			    // We start at '3' to avoid 'tip', as IE
-			    // does not count whitespace
-			    var content = content.substr(3, 50);
-			} else {
-			    // We start at '5' to avoid 'tip '
-			    var content = content.substr(5, 50);
-			}
-		    }
-		    $(this).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
-		}
-		if (event.target.tagName.toLowerCase() != "a") {
-                   return true; //Makes links clickable
-		}
-	});
-    });
-    </script>
-
-
     <div class="related">
       <h3>Navigation</h3>
       <ul>
-        <li><a href="../../index.html">Statistics for the CogMaster</a> &raquo;</li>
-     
-    <!-- Insert a menu in the navigation bar -->
-    <li class="left">
-	<!-- On click toggle the 'tip' on or off-->
-	<a onclick="$('.tip').each(function (index, obj) {
-			    collapse_tip_div(obj);
-		    });
-		    $('.tip').addClass('collapsed');
-		    $('.left').addClass('transparent');">
-	<img src="../../_static/minus.png"
-         alt="Collapse to compact view" style="padding: 1ex;"/>
-	<span class="hiddenlink">Collapse document to compact view</span>
-    </a></li>
-
+        <li><a href="../../index.html">Statistics for the CogMaster</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -117,9 +44,6 @@
 <h1>CogMaster Statistics course: Python materials<a class="headerlink" href="#cogmaster-statistics-course-python-materials" title="Permalink to this headline">¶</a></h1>
 <style type="text/css">
   div.documentwrapper h1 {
-      text-align: center;
-      font-size: 200% ;
-      font-weight: bold;
       margin-bottom: 30px;
   }
 
@@ -132,15 +56,40 @@
 </style><div class="sidebar">
 <p class="first sidebar-title">Download</p>
 <ul class="last simple">
-<li><a class="reference external" href="https://github.com/scipy-lectures/scipy-lectures.github.com/zipball/master">HTML and example files</a></li>
-<li><a class="reference external" href="https://github.com/scipy-lectures/scipy-lecture-notes">Source code (github)</a></li>
+<li><a class="reference external" href="https://github.com/cogmaster-stats/python-cogstats/zipball/master">HTML and example files</a></li>
+<li><a class="reference external" href="https://github.com/cogmaster-stats/python-cogstats">Source code (github)</a></li>
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">This document</p>
-<p>These are the Python materials for the statistics course of the
-<a class="reference external" href="http://sapience.dec.ens.fr/cogmaster/www/">CogMaster</a>.</p>
+<p class="topic-title first">Python materials for the statistics course of the <a class="reference external" href="http://sapience.dec.ens.fr/cogmaster/www/">CogMaster</a>.</p>
 <p><strong>Authors:</strong> S. Charron, <a class="reference external" href="http://gael-varoquaux.info/">G. Varoquaux</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p><strong>Why Python for statistics in experimental psychology?</strong></p>
+<p>R is a language dedicated to statistics. Python is a general purpose
+language with statistics module. R has more statistical analysis
+features than Python, and specialized syntaxes. However, when it
+comes to building complex analysis pipelines that mix statistics with
+e.g. image analysis, as in the case of brain imaging, the richness of
+Python is an invaluable asset.</p>
+<div class="admonition-see-also last admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://martinos.org/mne/python_tutorial.html">MNE Python</a>:
+Analysis of EEG and MEG in Python</li>
+<li><a class="reference external" href="http://nipy.org/">Nipy</a> The NeuroImaging in Python ecosystem</li>
+<li><a class="reference external" href="http://www.psychopy.org">PyschoPy</a>: presention of stimuli and
+collection of data for experimental psychology</li>
+</ul>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To install Python, we recommend that you download <a class="reference external" href="http://continuum.io/downloads">Anaconda Python</a></p>
 </div>
 <hr class="docutils" />
  <SCRIPT>
@@ -282,23 +231,49 @@
 <li class="toctree-l2"><a class="reference internal" href="basic_statistics.html#interacting-with-data">1.1. Interacting with data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="basic_statistics.html#work-environment-ipython">1.1.1. Work environment: IPython</a></li>
 <li class="toctree-l3"><a class="reference internal" href="basic_statistics.html#basic-array-manipulation-numpy">1.1.2. Basic array manipulation: numpy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="basic_statistics.html#basic-plotting-pylab">1.1.3. Basic plotting: pylab</a></li>
-<li class="toctree-l3"><a class="reference internal" href="basic_statistics.html#mixed-type-data-pandas">1.1.4. Mixed-type data: pandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_statistics.html#basic-plotting-pylab">1.1.3. Basic plotting: pylab</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="basic_statistics.html#the-box-plot">1.1.3.1. The box plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basic_statistics.html#more-plots">1.1.3.2. More plots</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="basic_statistics.html#mixed-type-data-pandas">1.1.4. Mixed-type data: pandas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="basic_statistics.html#inputing-data">1.1.4.1. Inputing data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basic_statistics.html#manipulating-data">1.1.4.2. Manipulating data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basic_statistics.html#plotting-data">1.1.4.3. Plotting data</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="basic_statistics.html#hypothesis-testing-two-group-comparisons">1.2. Hypothesis testing: two-group comparisons</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="basic_statistics.html#student-s-t-test">1.2.1. Student&#8217;s t-test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_statistics.html#student-s-t-test">1.2.1. Student&#8217;s t-test</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="basic_statistics.html#sample-t-test">1.2.1.1. 1-sample t-test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basic_statistics.html#id2">1.2.1.2. 2-sample t-test</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="basic_statistics.html#paired-tests">1.2.2. Paired tests</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="basic_statistics.html#linear-models-anova">1.3. Linear models, ANOVA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic_statistics.html#a-simple-linear-regression">1.3.1. A simple linear regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_statistics.html#multiple-regression">1.3.2. Multiple Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_statistics.html#post-hoc-anova-contrast-vectors">1.3.3. Post-hoc ANOVA: contrast vectors</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="fmri_signals.html">2. FMRI signals</a></li>
 </ul>
-</div>
-<hr class="docutils" />
-<div class="toctree-wrapper compound">
-<ul class="simple">
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fmri_signals.html">2. FMRI signals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html">2.1. Getting ready: installing the software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#installation">2.1.1. Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="install.html#sanity-check">2.1.1.1. Sanity check</a></li>
+<li class="toctree-l4"><a class="reference internal" href="install.html#download-the-neurodebian-virtual-machine">2.1.1.2. Download the neurodebian virtual machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="install.html#install-virtualbox">2.1.1.3. Install VirtualBox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="install.html#configure-the-neurodebian-virtual-machine">2.1.1.4. Configure the neurodebian virtual machine</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <p><div style="clear: both"></div></p>
@@ -312,26 +287,12 @@
     <div class="related">
       <h3>Navigation</h3>
       <ul>
-        <li><a href="../../index.html">Statistics for the CogMaster</a> &raquo;</li>
-     
-    <!-- Insert a menu in the navigation bar -->
-    <li class="left">
-	<!-- On click toggle the 'tip' on or off-->
-	<a onclick="$('.tip').each(function (index, obj) {
-			    collapse_tip_div(obj);
-		    });
-		    $('.tip').addClass('collapsed');
-		    $('.left').addClass('transparent');">
-	<img src="../../_static/minus.png"
-         alt="Collapse to compact view" style="padding: 1ex;"/>
-	<span class="hiddenlink">Collapse document to compact view</span>
-    </a></li>
-
+        <li><a href="../../index.html">Statistics for the CogMaster</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012,2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>

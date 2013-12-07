@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -13,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '2013',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -28,88 +30,13 @@
     <link rel="next" title="1. Basic statistics" href="basic_statistics.html" /> 
   </head>
   <body>
-   <!-- Use the header to add javascript -->
-    
-    <script type="text/javascript">
-    // Function to collapse the tip divs
-    function collapse_tip_div(obj){
-	// Update the representation on the tip div based on whether it
-	// has the 'collapsed' css class or not: we only want to
-	// collapse divs that are not already collapsed
-	if($(obj).hasClass("collapsed")) {
-	} else {
-	    $(obj).find("p.summary").remove();
-	    var content = $(obj).text();
-	    var html = $(obj).html();
-
-	    if(content.length > 40) {
-		if ($.browser.msie) {
-		    // We start at '3' to avoid 'tip', as IE
-		    // does not count whitespace
-		    var content = content.substr(3, 50);
-		} else {
-		    // We start at '5' to avoid 'tip '
-		    var content = content.substr(5, 50);
-		}
-	    }
-	    $(obj).html('<p class="summary"><img src="_static/plus.png">' + content + '...</p>' + html);
-	}
-    }
-    </script>
-
-    <script type="text/javascript">
-    $(function () {
-	$(".tip")
-	    .click(function(event){
-		$(this).toggleClass("collapsed");
-		// Change state of the global button
-		$('div.related li.transparent').removeClass('transparent')
-		$(this).find("p.summary").remove();
-		if($(this).hasClass("collapsed")) {
-		    var content = $(this).text();
-		    var html = $(this).html();
-    
-		    if(content.length > 40) {
-			if ($.browser.msie) {
-			    // We start at '3' to avoid 'tip', as IE
-			    // does not count whitespace
-			    var content = content.substr(3, 50);
-			} else {
-			    // We start at '5' to avoid 'tip '
-			    var content = content.substr(5, 50);
-			}
-		    }
-		    $(this).html('<p class="summary"><img src="_static/plus.png">' + content + '...</p>' + html);
-		}
-		if (event.target.tagName.toLowerCase() != "a") {
-                   return true; //Makes links clickable
-		}
-	});
-    });
-    </script>
-
-
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="basic_statistics.html" title="1. Basic statistics"
              accesskey="N">next</a></li>
-        <li><a href="#">Statistics for the CogMaster</a> &raquo;</li>
-     
-    <!-- Insert a menu in the navigation bar -->
-    <li class="left">
-	<!-- On click toggle the 'tip' on or off-->
-	<a onclick="$('.tip').each(function (index, obj) {
-			    collapse_tip_div(obj);
-		    });
-		    $('.tip').addClass('collapsed');
-		    $('.left').addClass('transparent');">
-	<img src="_static/minus.png"
-         alt="Collapse to compact view" style="padding: 1ex;"/>
-	<span class="hiddenlink">Collapse document to compact view</span>
-    </a></li>
-
+        <li><a href="#">Statistics for the CogMaster</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -153,7 +80,7 @@ features than Python, and specialized syntaxes. However, when it
 comes to building complex analysis pipelines that mix statistics with
 e.g. image analysis, as in the case of brain imaging, the richness of
 Python is an invaluable asset.</p>
-<div class="last admonition seealso">
+<div class="admonition-see-also last admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
 <li><a class="reference external" href="http://martinos.org/mne/python_tutorial.html">MNE Python</a>:
@@ -386,26 +313,12 @@ collection of data for experimental psychology</li>
         <li class="right" style="margin-right: 10px">
           <a href="basic_statistics.html" title="1. Basic statistics"
              >next</a></li>
-        <li><a href="#">Statistics for the CogMaster</a> &raquo;</li>
-     
-    <!-- Insert a menu in the navigation bar -->
-    <li class="left">
-	<!-- On click toggle the 'tip' on or off-->
-	<a onclick="$('.tip').each(function (index, obj) {
-			    collapse_tip_div(obj);
-		    });
-		    $('.tip').addClass('collapsed');
-		    $('.left').addClass('transparent');">
-	<img src="_static/minus.png"
-         alt="Collapse to compact view" style="padding: 1ex;"/>
-	<span class="hiddenlink">Collapse document to compact view</span>
-    </a></li>
-
+        <li><a href="#">Statistics for the CogMaster</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012,2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
 </html>
