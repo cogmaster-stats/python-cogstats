@@ -445,6 +445,30 @@ Solutions to the exercises of the course
    solutions/plot_brain_size
 
 
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Basically you need to know in which condition the subject was when each measurement was recorde...">
+
+.. figure:: solutions/images/thumb/plot_time_series.png
+   :target: ./solutions/plot_time_series.html
+
+   :ref:`example_solutions_plot_time_series.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   solutions/plot_time_series
+
+
 .. raw:: html
 
     <div style="clear: both"></div>

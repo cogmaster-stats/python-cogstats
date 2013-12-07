@@ -1,0 +1,196 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.3.2. Time series of conditions and scans &mdash; Statistics for the CogMaster</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2013',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <link rel="top" title="Statistics for the CogMaster" href="../../index.html" />
+    <link rel="up" title="3. Examples" href="../index.html" />
+    <link rel="prev" title="3.3.1. Relating Gender and IQ" href="plot_brain_size.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_brain_size.html" title="3.3.1. Relating Gender and IQ"
+             accesskey="P">previous</a></li>
+        <li><a href="../../index.html">Statistics for the CogMaster</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">3. Examples</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="time-series-of-conditions-and-scans">
+<span id="example-solutions-plot-time-series-py"></span><h1>3.3.2. Time series of conditions and scans<a class="headerlink" href="#time-series-of-conditions-and-scans" title="Permalink to this headline">¶</a></h1>
+<p>The aim of this exercise is to represent the time series of conditions
+that the experimenter imposes on the subject.  It is important to get a
+good picture of the shape of this time series, because this is the shape
+of the modulation of the measured signal that we expect to see in brain
+regions involved in the targetted process.</p>
+<p>Basically you need to know in which condition the subject was when each
+measurement was recorded.</p>
+<p>The best way to make sense of the description of the experimental
+paradigm is actually to get a pencil and a piece of paper and to start
+scribbling, but here, we are going to do it with python.</p>
+<p>Relevant information in the example:</p>
+<ul class="simple">
+<li>There is only one factor that the experimenter manipulates: the auditory
+stimulation, with 2 modalities : either ON or OFF.</li>
+<li>This auditory stimulation starts every other 42s and lasts for 42s. The
+experimental paradigm starts with 42s of rest, i.e. auditory
+stimulation OFF.</li>
+<li>There are 16 alternated blocks of 42s, thus 8 repetitions of the auditory
+stimulation.</li>
+</ul>
+<ul class="horizontal">
+<li><img alt="../../_images/plot_time_series_1.png" class="first" src="../../_images/plot_time_series_1.png" />
+</li>
+<li><img alt="../../_images/plot_time_series_2.png" class="first" src="../../_images/plot_time_series_2.png" />
+</li>
+<li><img alt="../../_images/plot_time_series_3.png" class="first" src="../../_images/plot_time_series_3.png" />
+</li>
+</ul>
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_time_series.py"><tt class="xref download docutils literal"><span class="pre">plot_time_series.py</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Polygon"><span class="n">Polygon</span></a>
+<div class="newline"></div><span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection"><span class="n">PatchCollection</span></a>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># Considering we repeat 8 times a basic pattern &quot;42s OFF, then 42s ON&quot;</span>
+<div class="newline"></div><span class="n">stim</span><span class="o">=</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.hstack.html#numpy.hstack"><span class="n">np</span><span class="o">.</span><span class="n">hstack</span></a><span class="p">([</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.zeros.html#numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">(</span><span class="mi">42</span><span class="p">),</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.ones.html#numpy.ones"><span class="n">np</span><span class="o">.</span><span class="n">ones</span></a><span class="p">(</span><span class="mi">42</span><span class="p">)])</span>
+<div class="newline"></div><span class="n">stim</span><span class="o">=</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.tile.html#numpy.tile"><span class="n">np</span><span class="o">.</span><span class="n">tile</span></a><span class="p">(</span><span class="n">stim</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># check the total time</span>
+<div class="newline"></div><span class="n">stim</span><span class="o">.</span><span class="n">shape</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># prepare a nice figure</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">=</span><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">=</span><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">])</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Rest and audio stim alternating for 16 blocks&#39;</span><span class="p">)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s">&#39;OFF&#39;</span><span class="p">,</span><span class="s">&#39;ON&#39;</span><span class="p">])</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Condition: audio stimulation&#39;</span><span class="p">)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Time (second)&#39;</span><span class="p">)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axis_api.html#matplotlib.axis"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">stim</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.25</span><span class="p">])</span>
+<div class="newline"></div><span class="c"># then plot</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">stim</span><span class="p">);</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># Now let&#39;s represent the time series of measurements.</span>
+<div class="newline"></div><span class="c"># </span>
+<div class="newline"></div><span class="c"># definition: the repetition time (RT) is the time it takes for the scanner</span>
+<div class="newline"></div><span class="c"># to do two consecutive measurements in the same voxel, in our case RT = 7s.</span>
+<div class="newline"></div><span class="c">#</span>
+<div class="newline"></div><span class="c"># The experimental manipulation starts at the 4th scan, which means the</span>
+<div class="newline"></div><span class="c"># image acquisition started 3*7 seconds before.</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">=</span><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">=</span><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">],</span><span class="n">title</span><span class="o">=</span><span class="s">&#39;Time series of conditions and scans.&#39;</span><span class="p">,)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">stim</span><span class="p">)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axis_api.html#matplotlib.axis"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="mi">7</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="n">stim</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">1.4</span><span class="p">])</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s">&#39;OFF&#39;</span><span class="p">,</span><span class="s">&#39;ON&#39;</span><span class="p">])</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Condition: audio stimulation&#39;</span><span class="p">)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Time (second)&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c">#</span>
+<div class="newline"></div><span class="c"># Here it&#39;s a bit tricky: we create a bunch of polygons and collect them</span>
+<div class="newline"></div><span class="n">patches</span><span class="o">=</span><span class="p">[]</span>
+<div class="newline"></div><span class="k">for</span> <span class="n">ttl</span> <span class="ow">in</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span><span class="mi">42</span><span class="o">*</span><span class="mi">16</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span>
+<div class="newline"></div>    <a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Polygon"><span class="n">poly</span></a><span class="o">=</span><a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Polygon"><span class="n">Polygon</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([[</span><span class="n">ttl</span><span class="p">,</span><span class="o">-.</span><span class="mi">15</span><span class="p">],[</span><span class="n">ttl</span><span class="p">,</span><span class="mf">1.15</span><span class="p">],[</span><span class="n">ttl</span><span class="o">+</span><span class="mf">6.05</span><span class="p">,</span><span class="mf">1.15</span><span class="p">],[</span><span class="n">ttl</span><span class="o">+</span><span class="mf">6.05</span><span class="p">,</span><span class="o">-.</span><span class="mi">15</span><span class="p">]]),</span><span class="bp">True</span><span class="p">)</span>
+<div class="newline"></div>    <span class="n">patches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Polygon"><span class="n">poly</span></a><span class="p">)</span>
+<div class="newline"></div>    
+<div class="newline"></div><a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection"><span class="n">p</span></a><span class="o">=</span><a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection"><span class="n">PatchCollection</span></a><span class="p">(</span><span class="n">patches</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection"><span class="n">p</span></a><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># now the legend for which it&#39;s acutally easier to create dummy objects</span>
+<div class="newline"></div><span class="c"># because the PatchCollection is not well supported by plt.legend</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Rectangle"><span class="n">pp</span></a><span class="o">=</span><a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Rectangle"><span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span></a><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">fc</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">ec</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/artist_api.html#matplotlib.lines.Line2D"><span class="n">l</span></a><span class="o">=</span><a href="http://matplotlib.org/api/artist_api.html#matplotlib.lines.Line2D"><span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span></a><span class="p">([</span><a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Rectangle"><span class="n">pp</span></a><span class="p">,</span><a href="http://matplotlib.org/api/artist_api.html#matplotlib.lines.Line2D"><span class="n">l</span></a><span class="p">],[</span><span class="s">&quot;Scans&quot;</span><span class="p">,</span><span class="s">&quot;Stimulation&quot;</span><span class="p">])</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="c"># Now 12 contaminated scans are discarded (on top of the 3 initial scans),</span>
+<div class="newline"></div><span class="c"># thus 12*7 seconds have to be renoved from our time series of conditions</span>
+<div class="newline"></div><span class="c"># in order to keep both time series with the same time reference:</span>
+<div class="newline"></div><span class="c"># the beginning of the second stimulation basic pattern.</span>
+<div class="newline"></div><span class="c"># Thus only 14 blocks are kept for the analysis.</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">stim</span><span class="o">=</span><span class="n">stim</span><span class="p">[</span><span class="mi">12</span><span class="o">*</span><span class="mi">7</span><span class="p">:]</span>
+<div class="newline"></div><span class="n">stim</span><span class="o">.</span><span class="n">shape</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">=</span><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">=</span><a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure"><span class="n">fig</span></a><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span><span class="o">.</span><span class="mi">8</span><span class="p">],</span><span class="n">title</span><span class="o">=</span><span class="s">&#39;Time series kept for the analysis.&#39;</span><span class="p">,)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot"><span class="n">plt</span><span class="o">.</span><span class="n">plot</span></a><span class="p">(</span><span class="n">stim</span><span class="p">)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axis_api.html#matplotlib.axis"><span class="n">plt</span><span class="o">.</span><span class="n">axis</span></a><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="mi">7</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="n">stim</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">1.4</span><span class="p">])</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s">&#39;OFF&#39;</span><span class="p">,</span><span class="s">&#39;ON&#39;</span><span class="p">])</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Condition: audio stimulation&#39;</span><span class="p">)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Time (second)&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">patches</span><span class="o">=</span><span class="p">[]</span>
+<div class="newline"></div><span class="k">for</span> <span class="n">ttl</span> <span class="ow">in</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">42</span><span class="o">*</span><span class="mi">14</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span>
+<div class="newline"></div>    <a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Polygon"><span class="n">poly</span></a><span class="o">=</span><a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Polygon"><span class="n">Polygon</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([[</span><span class="n">ttl</span><span class="p">,</span><span class="o">-.</span><span class="mi">15</span><span class="p">],[</span><span class="n">ttl</span><span class="p">,</span><span class="mf">1.15</span><span class="p">],[</span><span class="n">ttl</span><span class="o">+</span><span class="mf">6.05</span><span class="p">,</span><span class="mf">1.15</span><span class="p">],[</span><span class="n">ttl</span><span class="o">+</span><span class="mf">6.05</span><span class="p">,</span><span class="o">-.</span><span class="mi">15</span><span class="p">]]),</span><span class="bp">True</span><span class="p">)</span>
+<div class="newline"></div>    <span class="n">patches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Polygon"><span class="n">poly</span></a><span class="p">)</span>
+<div class="newline"></div>    
+<div class="newline"></div><a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection"><span class="n">p</span></a><span class="o">=</span><a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection"><span class="n">PatchCollection</span></a><span class="p">(</span><span class="n">patches</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes"><span class="n">ax</span></a><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><a href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection"><span class="n">p</span></a><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Rectangle"><span class="n">pp</span></a><span class="o">=</span><a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Rectangle"><span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span></a><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">fc</span><span class="o">=</span><span class="s">&#39;0.5&#39;</span><span class="p">,</span><span class="n">ec</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/artist_api.html#matplotlib.lines.Line2D"><span class="n">l</span></a><span class="o">=</span><a href="http://matplotlib.org/api/artist_api.html#matplotlib.lines.Line2D"><span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+<div class="newline"></div><a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span></a><span class="p">([</span><a href="http://matplotlib.org/api/artist_api.html#matplotlib.patches.Rectangle"><span class="n">pp</span></a><span class="p">,</span><a href="http://matplotlib.org/api/artist_api.html#matplotlib.lines.Line2D"><span class="n">l</span></a><span class="p">],[</span><span class="s">&quot;Scans&quot;</span><span class="p">,</span><span class="s">&quot;Stimulation&quot;</span><span class="p">])</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><strong>Total running time of the example:</strong>  0.21 seconds
+( 0 minutes  0.21 seconds)</p>
+<p><div style="clear: both"></div></p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="plot_brain_size.html" title="3.3.1. Relating Gender and IQ"
+             >previous</a></li>
+        <li><a href="../../index.html">Statistics for the CogMaster</a> &raquo;</li>
+          <li><a href="../index.html" >3. Examples</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

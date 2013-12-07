@@ -1,0 +1,59 @@
+
+
+.. _example_solutions_plot_time_series.py:
+
+
+Time series of conditions and scans
+===================================
+The aim of this exercise is to represent the time series of conditions
+that the experimenter imposes on the subject.  It is important to get a
+good picture of the shape of this time series, because this is the shape
+of the modulation of the measured signal that we expect to see in brain
+regions involved in the targetted process.
+
+Basically you need to know in which condition the subject was when each
+measurement was recorded.
+
+The best way to make sense of the description of the experimental
+paradigm is actually to get a pencil and a piece of paper and to start
+scribbling, but here, we are going to do it with python.
+
+Relevant information in the example:
+
+- There is only one factor that the experimenter manipulates: the auditory
+  stimulation, with 2 modalities : either ON or OFF.
+- This auditory stimulation starts every other 42s and lasts for 42s. The
+  experimental paradigm starts with 42s of rest, i.e. auditory
+  stimulation OFF.
+- There are 16 alternated blocks of 42s, thus 8 repetitions of the auditory
+  stimulation.
+
+
+
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_time_series_1.png
+
+    *
+
+      .. image:: images/plot_time_series_2.png
+
+    *
+
+      .. image:: images/plot_time_series_3.png
+
+
+
+
+**Python source code:** :download:`plot_time_series.py <plot_time_series.py>`
+
+.. literalinclude:: plot_time_series.py
+    :lines: 29-
+
+**Total running time of the example:**  0.21 seconds
+( 0 minutes  0.21 seconds)
+    
