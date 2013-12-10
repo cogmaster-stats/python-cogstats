@@ -25,7 +25,7 @@ More specifically:
 
     *
 
-      .. image:: images/plot_localizer_analysis_1.png
+      .. image:: images/plot_localizer_analysis_3.png
 
     *
 
@@ -33,15 +33,7 @@ More specifically:
 
     *
 
-      .. image:: images/plot_localizer_analysis_3.png
-
-    *
-
       .. image:: images/plot_localizer_analysis_4.png
-
-    *
-
-      .. image:: images/plot_localizer_analysis_5.png
 
     *
 
@@ -49,7 +41,7 @@ More specifically:
 
     *
 
-      .. image:: images/plot_localizer_analysis_7.png
+      .. image:: images/plot_localizer_analysis_1.png
 
     *
 
@@ -57,7 +49,15 @@ More specifically:
 
     *
 
+      .. image:: images/plot_localizer_analysis_7.png
+
+    *
+
       .. image:: images/plot_localizer_analysis_9.png
+
+    *
+
+      .. image:: images/plot_localizer_analysis_5.png
 
 
 **Script output**:
@@ -95,6 +95,6 @@ More specifically:
 .. literalinclude:: plot_localizer_analysis.py
     :lines: 17-
 
-**Total running time of the example:**  25.76 seconds
-( 0 minutes  25.76 seconds)
+**Total running time of the example:**  128.34 seconds
+( 2 minutes  8.34 seconds)
     

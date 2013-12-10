@@ -25,11 +25,11 @@ More specifically:
 
     *
 
-      .. image:: images/plot_auditory_analysis_1.png
+      .. image:: images/plot_auditory_analysis_2.png
 
     *
 
-      .. image:: images/plot_auditory_analysis_2.png
+      .. image:: images/plot_auditory_analysis_1.png
 
 
 **Script output**:
@@ -38,12 +38,12 @@ More specifically:
 
  ::
 
-    Computation will be performed in directory: /media/sf_host/python-cogstats/examples/results
+    Computation will be performed in directory: /home/varoquau/work/papers/talks/stats-cogmaster/examples/results
   Loading design matrix...
   Fitting a GLM (this takes time)...
   Computing contrasts...
     Contrast  1 out of 1: audio
-  All the  results were witten in /media/sf_host/python-cogstats/examples/results
+  All the  results were witten in /home/varoquau/work/papers/talks/stats-cogmaster/examples/results
 
 
 
@@ -52,6 +52,6 @@ More specifically:
 .. literalinclude:: plot_auditory_analysis.py
     :lines: 17-
 
-**Total running time of the example:**  4.70 seconds
-( 0 minutes  4.70 seconds)
+**Total running time of the example:**  19.48 seconds
+( 0 minutes  19.48 seconds)
     

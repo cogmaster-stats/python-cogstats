@@ -22,6 +22,6 @@ The 'subplot' command can be used to stack multiple plots in a figure.
 .. literalinclude:: plot_multiplot.py
     :lines: 8-
 
-**Total running time of the example:**  0.17 seconds
-( 0 minutes  0.17 seconds)
+**Total running time of the example:**  0.20 seconds
+( 0 minutes  0.20 seconds)
     

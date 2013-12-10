@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -32,6 +30,67 @@
     <link rel="prev" title="3.1.1. Basic plotting example" href="plot_basic_statistics.html" /> 
   </head>
   <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -42,7 +101,21 @@
           <a href="plot_basic_statistics.html" title="3.1.1. Basic plotting example"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Statistics for the CogMaster</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">3. Examples</a> &raquo;</li> 
+          <li><a href="index.html" accesskey="U">3. Examples</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
       </ul>
     </div>  
 
@@ -57,11 +130,15 @@ categorical entries, and plots a few quantities, separately for females
 and males, thanks to the pandas integrating plotting tool (that uses
 matplotlib behind the scene).</p>
 <ul class="horizontal">
-<li><img alt="../_images/plot_pandas_1.png" class="first" src="../_images/plot_pandas_1.png" />
-</li>
 <li><img alt="../_images/plot_pandas_2.png" class="first" src="../_images/plot_pandas_2.png" />
 </li>
+<li><img alt="../_images/plot_pandas_5.png" class="first" src="../_images/plot_pandas_5.png" />
+</li>
+<li><img alt="../_images/plot_pandas_4.png" class="first" src="../_images/plot_pandas_4.png" />
+</li>
 <li><img alt="../_images/plot_pandas_3.png" class="first" src="../_images/plot_pandas_3.png" />
+</li>
+<li><img alt="../_images/plot_pandas_1.png" class="first" src="../_images/plot_pandas_1.png" />
 </li>
 </ul>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_pandas.py"><tt class="xref download docutils literal"><span class="pre">plot_pandas.py</span></tt></a></p>
@@ -88,8 +165,8 @@ matplotlib behind the scene).</p>
 <div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  0.54 seconds
-( 0 minutes  0.54 seconds)</p>
+<p><strong>Total running time of the example:</strong>  1.54 seconds
+( 0 minutes  1.54 seconds)</p>
 <p><div style="clear: both"></div></p>
 </div>
 
@@ -108,12 +185,26 @@ matplotlib behind the scene).</p>
           <a href="plot_basic_statistics.html" title="3.1.1. Basic plotting example"
              >previous</a> |</li>
         <li><a href="../index.html">Statistics for the CogMaster</a> &raquo;</li>
-          <li><a href="index.html" >3. Examples</a> &raquo;</li> 
+          <li><a href="index.html" >3. Examples</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012,2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
 </html>

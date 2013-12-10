@@ -36,11 +36,11 @@ Relevant information in the example:
 
     *
 
-      .. image:: images/plot_time_series_1.png
+      .. image:: images/plot_time_series_2.png
 
     *
 
-      .. image:: images/plot_time_series_2.png
+      .. image:: images/plot_time_series_1.png
 
     *
 
@@ -54,6 +54,6 @@ Relevant information in the example:
 .. literalinclude:: plot_time_series.py
     :lines: 29-
 
-**Total running time of the example:**  0.21 seconds
-( 0 minutes  0.21 seconds)
+**Total running time of the example:**  1.09 seconds
+( 0 minutes  1.09 seconds)
     
