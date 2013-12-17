@@ -1,0 +1,65 @@
+
+
+.. _example_plot_permutation.py:
+
+
+Cluster-size permutation in fMRI
+=================================
+
+Here we do a cluster-size analysis: we are going to find a threshold for
+the size of clusters. Clusters that are found to be smaller than that
+threshold are deemed non significant.
+
+To find the threshold, we need to do a permutation: we randomly shuffle
+the two conditions that we are interested in, which gives a sampling of
+the null hypothesis. We can then set the threshold on cluster size as the
+95 percentile of this distribution.
+
+
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_permutation_1.png
+
+    *
+
+      .. image:: images/plot_permutation_2.png
+
+
+**Script output**:
+
+.. rst-class:: max_height
+
+ ::
+
+    Cluster sizes:
+  [  1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1
+     1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1
+     1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1
+     1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1
+     1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   2
+     2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2
+     2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2
+     2   2   2   2   2   3   3   3   3   3   3   3   3   3   3   3   3   3
+     3   3   3   3   3   4   4   4   4   4   4   4   4   4   4   4   4   4
+     4   4   4   4   4   5   5   5   5   5   5   5   5   5   5   5   6   6
+     6   6   6   6   6   6   6   6   6   6   6   6   6   7   7   7   7   7
+     7   7   7   7   8   8   8   8   8   8   8   8   9   9   9   9   9   9
+     9   9   9   9   9  10  10  10  11  11  11  11  11  11  12  12  12  12
+    13  13  14  15  15  15  16  16  16  16  16  17  18  19  19  19  20  23
+    24  26  31  35  43  47  48  50  58  89 158 240 502]
+  Percentile 95 for cluster size under permutation: 20
+
+
+
+**Python source code:** :download:`plot_permutation.py <plot_permutation.py>`
+
+.. literalinclude:: plot_permutation.py
+    :lines: 14-
+
+**Total running time of the example:**  417.30 seconds
+( 6 minutes  57.30 seconds)
+    

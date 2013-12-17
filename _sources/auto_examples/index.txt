@@ -197,6 +197,30 @@ Code examples for the Python statistics course at the cogmaster.
    ./plot_localizer_analysis
 
 
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="Here we do a cluster-size analysis: we are going to find a threshold for the size of clusters. ...">
+
+.. figure:: ./images/thumb/plot_permutation.png
+   :target: ./plot_permutation.html
+
+   :ref:`example_plot_permutation.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   ./plot_permutation
+
+
 .. raw:: html
 
     <div style="clear: both"></div>
