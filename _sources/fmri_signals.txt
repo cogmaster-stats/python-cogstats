@@ -178,5 +178,92 @@ is actually explaining a part of the variance in a Linear Model
 Analysis example
 ----------------
 
-The example file is 'host/examples/auditory_analysis.py'
+The first example file is 'host/examples/plot_auditory_analysis.py'.
+
+.. topic:: **Exercise**
+    :class: green
+
+    * Run the example.
+    * Change the .csv file to make it match the actual paradigm.
+    * Compare with a random-generated regressor.
+    * Remarks?
+
+Contrasts for T- and F-tests
+----------------------------
+
+- T-tests are used to compare the contributions of different regressors :
+  one contrast vector
+- F-tests are used to compare a model to a submodel (same as
+  anova(model0,model 1) in R) : matrix identifying regressors that will
+  NOT be in the submodel 
+
+Another example
+---------------
+
+The second example file is 'host/examples/plot_localizer_analysis.py'
+
+.. topic:: **Exercise**
+    :class: green
+
+    * Define some interesting contrasts prior to the analysis.
+    * Run the example.
+
+Multiple comparisons
+--------------------
+
+Several strategies.
+
+1. Voxel-level
+
+   * Uncorrected (silly)
+   * Family-Wise: Bonferroni and others (only type I risk)
+   * Estimation of independant elements of volume related to
+     the spatial correlation: Random Field Theory
+   * False Discovery Rate (type I and type II risks)
+   * Reduce the number of voxels for the correction (ROI)
+
+
+Number of voxels on which the model is estimated:
+
+    >>> fmri_glm.glms[0].get_beta().shape
+    >>> np.sum(fmri_glm.mask.get_data()!=0)
+
+cumulative 
+    >>> from scipy.stats import norm
+    >>> norm.ppf(1-0.001)
+
+.. topic:: **Exercise**
+    :class: green
+
+    1. Caclulate a Bonferroni-correcter threshold
+    2. Apply 
+
+2. Cluster-level
+
+   * Permutation test
+
+
+
+.. topic:: **Exercise**
+    :class: green
+
+    1. From the Z-map of a contrast, retrieve cluster sizes.
+    2. Sort the Cluster sizes.
+   
+    >>> Z = z_map.get_data()
+    >>> cluster_map, n_clusters = ndimage.label(np.abs(Z) > 2.5)
+    >>> cluster_sizes_h0.append(np.bincount(cluster_map.ravel())[1:])
+
+    3. What is the relathinship between the permutation and H0?
+    4. What is permuted exactly?
+    5. Run the file 'host/python-cogstats/examples/plot_permutation.py'
+
+Second-level analysis
+---------------------
+
+Is related to between-subject comparison.
+Fixed or Random effect analysis.
+Necessitate normalization.
+
+
 

@@ -285,7 +285,101 @@ is actually explaining a part of the variance in a Linear Model</p>
 </div>
 <div class="section" id="analysis-example">
 <h2>2.8. Analysis example<a class="headerlink" href="#analysis-example" title="Permalink to this headline">¶</a></h2>
-<p>The example file is &#8216;host/examples/auditory_analysis.py&#8217;</p>
+<p>The first example file is &#8216;host/examples/plot_auditory_analysis.py&#8217;.</p>
+<div class="green topic">
+<p class="topic-title first"><strong>Exercise</strong></p>
+<ul class="simple">
+<li>Run the example.</li>
+<li>Change the .csv file to make it match the actual paradigm.</li>
+<li>Compare with a random-generated regressor.</li>
+<li>Remarks?</li>
+</ul>
+</div>
+</div>
+<div class="section" id="contrasts-for-t-and-f-tests">
+<h2>2.9. Contrasts for T- and F-tests<a class="headerlink" href="#contrasts-for-t-and-f-tests" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>T-tests are used to compare the contributions of different regressors :
+one contrast vector</li>
+<li>F-tests are used to compare a model to a submodel (same as
+anova(model0,model 1) in R) : matrix identifying regressors that will
+NOT be in the submodel</li>
+</ul>
+</div>
+<div class="section" id="another-example">
+<h2>2.10. Another example<a class="headerlink" href="#another-example" title="Permalink to this headline">¶</a></h2>
+<p>The second example file is &#8216;host/examples/plot_localizer_analysis.py&#8217;</p>
+<div class="green topic">
+<p class="topic-title first"><strong>Exercise</strong></p>
+<ul class="simple">
+<li>Define some interesting contrasts prior to the analysis.</li>
+<li>Run the example.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="multiple-comparisons">
+<h2>2.11. Multiple comparisons<a class="headerlink" href="#multiple-comparisons" title="Permalink to this headline">¶</a></h2>
+<p>Several strategies.</p>
+<ol class="arabic simple">
+<li>Voxel-level<ul>
+<li>Uncorrected (silly)</li>
+<li>Family-Wise: Bonferroni and others (only type I risk)</li>
+<li>Estimation of independant elements of volume related to
+the spatial correlation: Random Field Theory</li>
+<li>False Discovery Rate (type I and type II risks)</li>
+<li>Reduce the number of voxels for the correction (ROI)</li>
+</ul>
+</li>
+</ol>
+<p>Number of voxels on which the model is estimated:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fmri_glm</span><span class="o">.</span><span class="n">glms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_beta</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fmri_glm</span><span class="o">.</span><span class="n">mask</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<dl class="docutils">
+<dt>cumulative</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.001</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+</dd>
+</dl>
+<div class="green topic">
+<p class="topic-title first"><strong>Exercise</strong></p>
+<ol class="arabic simple">
+<li>Caclulate a Bonferroni-correcter threshold</li>
+<li>Apply</li>
+</ol>
+</div>
+<ol class="arabic simple" start="2">
+<li>Cluster-level<ul>
+<li>Permutation test</li>
+</ul>
+</li>
+</ol>
+<div class="green topic">
+<p class="topic-title first"><strong>Exercise</strong></p>
+<ol class="arabic simple">
+<li>From the Z-map of a contrast, retrieve cluster sizes.</li>
+<li>Sort the Cluster sizes.</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">z_map</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">cluster_map</span><span class="p">,</span> <span class="n">n_clusters</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">cluster_sizes_h0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">cluster_map</span><span class="o">.</span><span class="n">ravel</span><span class="p">())[</span><span class="mi">1</span><span class="p">:])</span>
+<div class="newline"></div></pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>What is the relathinship between the permutation and H0?</li>
+<li>What is permuted exactly?</li>
+<li>Run the file &#8216;host/python-cogstats/examples/plot_permutation.py&#8217;</li>
+</ol>
+</div>
+</div>
+<div class="section" id="second-level-analysis">
+<h2>2.12. Second-level analysis<a class="headerlink" href="#second-level-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Is related to between-subject comparison.
+Fixed or Random effect analysis.
+Necessitate normalization.</p>
 <p><div style="clear: both"></div></p>
 </div>
 </div>
