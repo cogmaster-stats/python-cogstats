@@ -521,7 +521,7 @@ Such a model can be seen in 3D as fitting a plane to a cloud of (`x`,
 Post-hoc ANOVA: contrast vectors
 ---------------------------------
 
-In the above iris example, we wish to test if the petal width is
+In the above iris example, we wish to test if the petal length is
 different between versicolor and virginica, after removing the effect of
 sepal width. This can be formulated as testing the difference between the
 coefficient associated to versicolor and virginica in the linear model
