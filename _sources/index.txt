@@ -18,6 +18,7 @@ CogMaster Statistics course: Python materials
   
   </style>
 
+
 .. sidebar:: Download 
     
 
@@ -52,6 +53,14 @@ CogMaster Statistics course: Python materials
        * `PyschoPy <http://www.psychopy.org>`_: presention of stimuli and
          collection of data for experimental psychology
 
+
+.. seealso:: **Scipy lecture notes**
+
+   The `scipy lecture notes <http://www.scipy-lectures.org/>`_ have a 
+   `chapter on statistics in Python
+   <http://www.scipy-lectures.org/packages/statistics/index.html>`_ 
+   that is kept up to date and is a good complement to these notes for
+   statistic topics not specific to experimental psyschology.
 
 .. note:: 
 

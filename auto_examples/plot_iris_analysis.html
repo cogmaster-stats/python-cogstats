@@ -134,31 +134,32 @@ of a continuous confound</li>
 </ul>
 <img alt="../_images/plot_iris_analysis_1.png" class="align-center" src="../_images/plot_iris_analysis_1.png" />
 <p><strong>Script output</strong>:</p>
-<div class="max-height highlight-python"><pre>  OLS Regression Results
-==============================================================================
-Dep. Variable:            sepal_width   R-squared:                       0.478
-Model:                            OLS   Adj. R-squared:                  0.468
-Method:                 Least Squares   F-statistic:                     44.63
-Date:                Mon, 25 Nov 2013   Prob (F-statistic):           1.58e-20
-Time:                        23:37:50   Log-Likelihood:                -38.185
-No. Observations:                 150   AIC:                             84.37
-Df Residuals:                     146   BIC:                             96.41
-Df Model:                           3
-======================================================================================
-                         coef    std err          t      P&gt;|t|      [95.0% Conf. Int.]
---------------------------------------------------------------------------------------
-Intercept              2.9813      0.099     29.989      0.000         2.785     3.178
-name[T.versicolor]    -1.4821      0.181     -8.190      0.000        -1.840    -1.124
-name[T.virginica]     -1.6635      0.256     -6.502      0.000        -2.169    -1.158
-petal_length           0.2983      0.061      4.920      0.000         0.178     0.418
-==============================================================================
-Omnibus:                        2.868   Durbin-Watson:                   1.753
-Prob(Omnibus):                  0.238   Jarque-Bera (JB):                2.885
-Skew:                          -0.082   Prob(JB):                        0.236
-Kurtosis:                       3.659   Cond. No.                         54.0
-==============================================================================
-Testing the difference between effect of versicolor and virginica
-&lt;F test: F=array([[ 3.24533535]]), p=[[ 0.07369059]], df_denom=146, df_num=1&gt;</pre>
+<div class="max-height highlight-python"><div class="highlight"><pre>  OLS Regression Results
+<div class="newline"></div>==============================================================================
+<div class="newline"></div>Dep. Variable:            sepal_width   R-squared:                       0.478
+<div class="newline"></div>Model:                            OLS   Adj. R-squared:                  0.468
+<div class="newline"></div>Method:                 Least Squares   F-statistic:                     44.63
+<div class="newline"></div>Date:                Mon, 25 Nov 2013   Prob (F-statistic):           1.58e-20
+<div class="newline"></div>Time:                        23:37:50   Log-Likelihood:                -38.185
+<div class="newline"></div>No. Observations:                 150   AIC:                             84.37
+<div class="newline"></div>Df Residuals:                     146   BIC:                             96.41
+<div class="newline"></div>Df Model:                           3
+<div class="newline"></div>======================================================================================
+<div class="newline"></div>                         coef    std err          t      P&gt;|t|      [95.0% Conf. Int.]
+<div class="newline"></div>--------------------------------------------------------------------------------------
+<div class="newline"></div>Intercept              2.9813      0.099     29.989      0.000         2.785     3.178
+<div class="newline"></div>name[T.versicolor]    -1.4821      0.181     -8.190      0.000        -1.840    -1.124
+<div class="newline"></div>name[T.virginica]     -1.6635      0.256     -6.502      0.000        -2.169    -1.158
+<div class="newline"></div>petal_length           0.2983      0.061      4.920      0.000         0.178     0.418
+<div class="newline"></div>==============================================================================
+<div class="newline"></div>Omnibus:                        2.868   Durbin-Watson:                   1.753
+<div class="newline"></div>Prob(Omnibus):                  0.238   Jarque-Bera (JB):                2.885
+<div class="newline"></div>Skew:                          -0.082   Prob(JB):                        0.236
+<div class="newline"></div>Kurtosis:                       3.659   Cond. No.                         54.0
+<div class="newline"></div>==============================================================================
+<div class="newline"></div>Testing the difference between effect of versicolor and virginica
+<div class="newline"></div>&lt;F test: F=array([[ 3.24533535]]), p=[[ 0.07369059]], df_denom=146, df_num=1&gt;
+<div class="newline"></div></pre></div>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_iris_analysis.py"><tt class="xref download docutils literal"><span class="pre">plot_iris_analysis.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -239,7 +240,7 @@ Testing the difference between effect of versicolor and virginica
     </div>
     <div class="footer">
         &copy; Copyright 2012,2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

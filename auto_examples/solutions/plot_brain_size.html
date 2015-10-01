@@ -130,34 +130,35 @@ female are different after removing the effect of brain size, height and
 weight.</p>
 <img alt="../../_images/plot_brain_size_1.png" class="align-center" src="../../_images/plot_brain_size_1.png" />
 <p><strong>Script output</strong>:</p>
-<div class="max-height highlight-python"><pre>  OLS Regression Results
-==============================================================================
-Dep. Variable:                    VIQ   R-squared:                       0.246
-Model:                            OLS   Adj. R-squared:                  0.181
-Method:                 Least Squares   F-statistic:                     3.809
-Date:                Mon, 02 Dec 2013   Prob (F-statistic):             0.0184
-Time:                        22:10:29   Log-Likelihood:                -172.34
-No. Observations:                  39   AIC:                             352.7
-Df Residuals:                      35   BIC:                             359.3
-Df Model:                           3
-==================================================================================
-                     coef    std err          t      P&gt;|t|      [95.0% Conf. Int.]
-----------------------------------------------------------------------------------
-Intercept        166.6258     88.824      1.876      0.069       -13.696   346.948
-Gender[T.Male]     8.8524     10.710      0.827      0.414       -12.890    30.595
-MRI_Count          0.0002   6.46e-05      2.615      0.013      3.78e-05     0.000
-Height            -3.0837      1.276     -2.417      0.021        -5.674    -0.494
-==============================================================================
-Omnibus:                        7.373   Durbin-Watson:                   2.109
-Prob(Omnibus):                  0.025   Jarque-Bera (JB):                2.252
-Skew:                           0.005   Prob(JB):                        0.324
-Kurtosis:                       1.823   Cond. No.                     2.40e+07
-==============================================================================
-
-Warnings:
-[1] The condition number is large, 2.4e+07. This might indicate that there are
-strong multicollinearity or other numerical problems.
-&lt;F test: F=array([[ 0.68319608]]), p=[[ 0.41408784]], df_denom=35, df_num=1&gt;</pre>
+<div class="max-height highlight-python"><div class="highlight"><pre>  OLS Regression Results
+<div class="newline"></div>==============================================================================
+<div class="newline"></div>Dep. Variable:                    VIQ   R-squared:                       0.246
+<div class="newline"></div>Model:                            OLS   Adj. R-squared:                  0.181
+<div class="newline"></div>Method:                 Least Squares   F-statistic:                     3.809
+<div class="newline"></div>Date:                Mon, 02 Dec 2013   Prob (F-statistic):             0.0184
+<div class="newline"></div>Time:                        22:10:29   Log-Likelihood:                -172.34
+<div class="newline"></div>No. Observations:                  39   AIC:                             352.7
+<div class="newline"></div>Df Residuals:                      35   BIC:                             359.3
+<div class="newline"></div>Df Model:                           3
+<div class="newline"></div>==================================================================================
+<div class="newline"></div>                     coef    std err          t      P&gt;|t|      [95.0% Conf. Int.]
+<div class="newline"></div>----------------------------------------------------------------------------------
+<div class="newline"></div>Intercept        166.6258     88.824      1.876      0.069       -13.696   346.948
+<div class="newline"></div>Gender[T.Male]     8.8524     10.710      0.827      0.414       -12.890    30.595
+<div class="newline"></div>MRI_Count          0.0002   6.46e-05      2.615      0.013      3.78e-05     0.000
+<div class="newline"></div>Height            -3.0837      1.276     -2.417      0.021        -5.674    -0.494
+<div class="newline"></div>==============================================================================
+<div class="newline"></div>Omnibus:                        7.373   Durbin-Watson:                   2.109
+<div class="newline"></div>Prob(Omnibus):                  0.025   Jarque-Bera (JB):                2.252
+<div class="newline"></div>Skew:                           0.005   Prob(JB):                        0.324
+<div class="newline"></div>Kurtosis:                       1.823   Cond. No.                     2.40e+07
+<div class="newline"></div>==============================================================================
+<div class="newline"></div>
+<div class="newline"></div>Warnings:
+<div class="newline"></div>[1] The condition number is large, 2.4e+07. This might indicate that there are
+<div class="newline"></div>strong multicollinearity or other numerical problems.
+<div class="newline"></div>&lt;F test: F=array([[ 0.68319608]]), p=[[ 0.41408784]], df_denom=35, df_num=1&gt;
+<div class="newline"></div></pre></div>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_brain_size.py"><tt class="xref download docutils literal"><span class="pre">plot_brain_size.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span>
@@ -240,7 +241,7 @@ strong multicollinearity or other numerical problems.
     </div>
     <div class="footer">
         &copy; Copyright 2012,2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

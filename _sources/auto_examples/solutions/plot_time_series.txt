@@ -36,11 +36,11 @@ Relevant information in the example:
 
     *
 
-      .. image:: images/plot_time_series_2.png
+      .. image:: images/plot_time_series_1.png
 
     *
 
-      .. image:: images/plot_time_series_1.png
+      .. image:: images/plot_time_series_2.png
 
     *
 

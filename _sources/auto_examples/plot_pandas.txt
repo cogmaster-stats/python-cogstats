@@ -19,15 +19,11 @@ matplotlib behind the scene).
 
     *
 
+      .. image:: images/plot_pandas_1.png
+
+    *
+
       .. image:: images/plot_pandas_2.png
-
-    *
-
-      .. image:: images/plot_pandas_5.png
-
-    *
-
-      .. image:: images/plot_pandas_4.png
 
     *
 
@@ -35,7 +31,11 @@ matplotlib behind the scene).
 
     *
 
-      .. image:: images/plot_pandas_1.png
+      .. image:: images/plot_pandas_4.png
+
+    *
+
+      .. image:: images/plot_pandas_5.png
 
 
 

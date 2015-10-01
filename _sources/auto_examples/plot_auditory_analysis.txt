@@ -25,11 +25,11 @@ More specifically:
 
     *
 
-      .. image:: images/plot_auditory_analysis_2.png
+      .. image:: images/plot_auditory_analysis_1.png
 
     *
 
-      .. image:: images/plot_auditory_analysis_1.png
+      .. image:: images/plot_auditory_analysis_2.png
 
 
 **Script output**:
